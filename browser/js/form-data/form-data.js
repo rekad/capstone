@@ -43,8 +43,6 @@ app.config(function($stateProvider) {
   })
 });
 
-
-
 app.controller('FormDataCtrl', function($scope, FormFactory, forms) {
 
   $scope.forms = forms;
@@ -75,7 +73,5 @@ app.controller('FormDataCtrl', function($scope, FormFactory, forms) {
   			$scope.forms = forms;
   		})
   }
-
-
 
 });
