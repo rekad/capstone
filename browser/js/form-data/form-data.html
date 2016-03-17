@@ -10,8 +10,11 @@
     </div>
     <button ng-click="submitForm()">Submit</button>
   </form>
-  
+
   <div ng-repeat="form in forms">
     {{form.name}} {{form.description}}
   </div>
+
+  <button ng-click="syncToDb()">Sync to DB</button>
+  <button ng-click="syncFromDb()">Sync from DB</button>
 </div>
