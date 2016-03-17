@@ -10,7 +10,8 @@
     </div>
     <button ng-click="submitForm()">Submit</button>
   </form>
-  <div ng-repeat=form in forms>
-    {{datapoint.name}} {{datapoint.description}}
+  
+  <div ng-repeat="form in forms">
+    {{form.name}} {{form.description}}
   </div>
 </div>
