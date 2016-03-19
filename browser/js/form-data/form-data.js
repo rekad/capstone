@@ -31,8 +31,8 @@ app.factory('FormFactory', function($window) {
 })
 
 app.config(function($stateProvider) {
-  $stateProvider.state('form-data', {
-    url: '/form-data',
+  $stateProvider.state('formData', {
+    url: '/forms',
     templateUrl: '/js/form-data/form-data.html',
     controller: 'FormDataCtrl',
     // resolve: {
@@ -43,7 +43,7 @@ app.config(function($stateProvider) {
   })
 });
 
-app.controller('FormDataCtrl', function($scope, FormFactory, forms) {
+app.controller('FormDataCtrl', function($scope) {
 
   // $scope.forms = forms;
   // console.log(forms);
