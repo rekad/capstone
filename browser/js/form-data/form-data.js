@@ -35,11 +35,11 @@ app.config(function($stateProvider) {
     url: '/form-data',
     templateUrl: '/js/form-data/form-data.html',
     controller: 'FormDataCtrl',
-    resolve: {
-      forms: function(FormFactory) {
-        return FormFactory.fetchAll();
-      }
-    }
+    // resolve: {
+    //   forms: function(FormFactory) {
+    //     return FormFactory.fetchAll();
+    //   }
+    // }
   })
 });
 
