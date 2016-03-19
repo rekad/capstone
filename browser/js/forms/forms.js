@@ -30,18 +30,26 @@ app.factory('FormFactory', function($window) {
   }
 })
 
-app.config(function($stateProvider) {
-  $stateProvider.state('formData', {
+app.config(function($stateProvider, FormFactory) {
+  $stateProvider.state('forms', {
     url: '/forms',
-    templateUrl: '/js/form-data/form-data.html',
-    controller: 'FormDataCtrl',
-    // resolve: {
-    //   forms: function(FormFactory) {
-    //     return FormFactory.fetchAll();
-    //   }
-    // }
+    templateUrl: '/js/forms/forms-view.html',
+    controller: 'FormsCtrl',
+    resolve: {
+      forms: function(FormFactory) {
+        return FormFactory.fetchAll();
+      }
+    }
   })
 });
+
+app.config(function($stateProvider) {
+  $stateProvider.state('forms.forms-list', {
+    url: '/list',
+    templateUrl: '/js/forms/forms-list-view.html',
+    controller: ''
+  })
+})
 
 app.controller('FormDataCtrl', function($scope) {
 
