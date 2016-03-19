@@ -1,3 +1,4 @@
+<!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -34,22 +35,6 @@
     <!-- Main content -->
     <section class="content">
         <!-- Your Page Content Here -->
-        <form>
-            <div class="form-group">
-                <label>Form Name:</label>
-                <input type="text" ng-model="newForm.name"></input>
-            </div>
-            <div class="form-group">
-                <label>Form Description:</label>
-                <input type="text" ng-model="newForm.description"></input>
-            </div>
-            <button ng-click="submitForm()">Submit</button>
-        </form>
-        <div ng-repeat="form in forms">
-            {{form.name}} {{form.description}}
-        </div>
-        <button ng-click="syncToDb()">Sync to DB</button>
-        <button ng-click="syncFromDb()">Sync from DB</button>
     </section>
     <!-- /.content -->
 </div>
@@ -63,4 +48,3 @@
     <!-- Default to the left -->
     <strong>Copyright &copy; 2016 <a href="#">KKJP @ Fullstack Academy</a>.</strong> All rights reserved.
 </footer>
-</div>

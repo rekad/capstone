@@ -24,3 +24,11 @@ body {
 @import 'about/main';
 @import 'tutorial/main';
 @import 'login/main';
+
+
+// Fixing content height issue with the AdminLTE CSS template used.
+// Height fixing javascript is executed on page load.
+// When templates are loaded into ui-views this javascript is not run.
+.content-wrapper {
+	min-height: 90vh;
+}

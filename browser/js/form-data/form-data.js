@@ -45,33 +45,33 @@ app.config(function($stateProvider) {
 
 app.controller('FormDataCtrl', function($scope, FormFactory, forms) {
 
-  $scope.forms = forms;
-  console.log(forms);
+  // $scope.forms = forms;
+  // console.log(forms);
 
 
-  $scope.submitForm = function() {
-    console.log('submitting!', $scope.newForm);
-    FormFactory.submitForm($scope.newForm)
-      .then(function() {
-        $scope.forms.push($scope.newForm);
-      })
-  }
-  $scope.syncToDb = function() {
-    FormFactory.syncUp()
-      .then(function() {
-        console.log('Synchronisation to DB was successful!');
-      });
-  }
+  // $scope.submitForm = function() {
+  //   console.log('submitting!', $scope.newForm);
+  //   FormFactory.submitForm($scope.newForm)
+  //     .then(function() {
+  //       $scope.forms.push($scope.newForm);
+  //     })
+  // }
+  // $scope.syncToDb = function() {
+  //   FormFactory.syncUp()
+  //     .then(function() {
+  //       console.log('Synchronisation to DB was successful!');
+  //     });
+  // }
 
-  $scope.syncFromDb = function() {
-  	FormFactory.syncDown()
-  		.then(function() {
-  			console.log('synced down was successful')
-  			return FormFactory.fetchAll();
-  		})
-  		.then(function(forms) {
-  			$scope.forms = forms;
-  		})
-  }
+  // $scope.syncFromDb = function() {
+  // 	FormFactory.syncDown()
+  // 		.then(function() {
+  // 			console.log('synced down was successful')
+  // 			return FormFactory.fetchAll();
+  // 		})
+  // 		.then(function(forms) {
+  // 			$scope.forms = forms;
+  // 		})
+  // }
 
 });
