@@ -6,6 +6,9 @@ app.config(function ($urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     // If we go to a URL that ui-router doesn't have registered, go to the "/" url.
     $urlRouterProvider.otherwise('/');
+
+    // starting page are the forms
+    $urlRouterProvider.when('/', '/forms');
 });
 
 // This app.run is for controlling access to specific states.
@@ -20,6 +23,7 @@ app.run(function ($rootScope, AuthService, $state) {
     // whenever the process of changing a state begins.
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
 
+        console.log('state change', event, toState, toParams)
         if (!destinationStateRequiresAuth(toState)) {
             // The destination state does not require authentication
             // Short circuit with return.
