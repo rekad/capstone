@@ -16,4 +16,16 @@ module.exports = function (app) {
     app.use(express.static(publicPath));
     app.use(express.static(browserPath));
 
+
+
+    app.get('/sw.js', function(req, res, next) {
+    	res.sendFile('/sw.js', {root: root });
+    });
+    app.get('/logging.js', function(req, res, next) {
+    	res.sendFile('/logging.js', {root: root });
+    });
+    app.get('/serviceworker-cache-polyfill.js', function(req, res, next) {
+    	res.sendFile('/serviceworker-cache-polyfill.js', {root: root });
+    });
+
 };
