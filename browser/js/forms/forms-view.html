@@ -15,9 +15,12 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="header">FORM DATA</li>
+
+            <li ui-sref-active="active" ui-sref="forms.forms-list({formTemplateId: form._id})" ng-repeat="form in forms"><a ><i class="fa fa-file-text-o"></i> <span>{{form.name}}</span></a></li>
+
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-file-text-o"></i> <span>An awesome form</span></a></li>
-            <li><a href="#"><i class="fa fa-file-text-o"></i> <span>Another great form</span></a></li>
+<!--             <li class="active"><a href="#"><i class="fa fa-file-text-o"></i> </a></li>
+            <li><a href="#"><i class="fa fa-file-text-o"></i> <span>Another great form</span></a></li> -->
         </ul>
         <!-- /.sidebar-menu -->
     </section>

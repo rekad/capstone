@@ -30,7 +30,7 @@ app.factory('FormFactory', function($window) {
   }
 })
 
-app.config(function($stateProvider, FormFactory) {
+app.config(function($stateProvider) {
   $stateProvider.state('forms', {
     url: '/forms',
     templateUrl: '/js/forms/forms-view.html',
@@ -45,16 +45,20 @@ app.config(function($stateProvider, FormFactory) {
 
 app.config(function($stateProvider) {
   $stateProvider.state('forms.forms-list', {
-    url: '/list',
+    url: '/list/:formTemplateId',
     templateUrl: '/js/forms/forms-list-view.html',
-    controller: ''
+    controller: 'FormsListCtrl'
   })
 })
 
-app.controller('FormDataCtrl', function($scope) {
+app.controller('FormsListCtrl', function($scope) {
 
-  // $scope.forms = forms;
-  // console.log(forms);
+});
+
+app.controller('FormsCtrl', function($scope, forms) {
+
+  $scope.forms = forms;
+  console.log(forms);
 
 
   // $scope.submitForm = function() {
