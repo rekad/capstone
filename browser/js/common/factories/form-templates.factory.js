@@ -7,21 +7,21 @@ app.factory('FormTemplateFactory', function($window) {
 
     fetchAll: function() {
       //fetch all documents that are type formTemplate
-      return db.query('type', {
-        key: 'formTemplate',
-        include_docs: true
-      })
-      .then(function(forms) {
-          return forms.rows.map(function(row) {
-            return row.doc;
-          });
-        });
-      // return db.allDocs({ include_docs: true })
-      //   .then(function(forms) {
+      // return db.query('type', {
+      //   key: 'formTemplate',
+      //   include_docs: true
+      // })
+      // .then(function(forms) {
       //     return forms.rows.map(function(row) {
       //       return row.doc;
       //     });
-      //   })
+      //   });
+      return db.allDocs({ include_docs: true })
+        .then(function(forms) {
+          return forms.rows.map(function(row) {
+            return row.doc;
+          });
+        })
     },
     fetchOne: function(formTemplateId) {
       return db.get(formTemplateId);
