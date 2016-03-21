@@ -28,6 +28,13 @@ app.factory('FormFactory', function($window) {
 
     syncDown: function() {
     	return PouchDB.replicate(remoteDb, db);
+    },
+
+    clearDb: function() {
+      return db.destroy()
+      .then(function() {
+        db = PouchDB('thekraken-test');
+      });
     }
 
   }
