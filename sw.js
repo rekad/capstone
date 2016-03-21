@@ -42,7 +42,13 @@ self.addEventListener('install', function(event) {
                 './admin-lte/dist/img/avatar3.png',
                 new Request('https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGCP2LEk6lMzYsRqr3dHFImA.woff2'),
                 new Request('https://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlJbPFduIYtoLzwST68uhz_Y.woff2'),
-                new Request('https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGJkF8H8ye47wsfpWywda8og.woff2')                 
+                new Request('https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGJkF8H8ye47wsfpWywda8og.woff2'),
+                './pouchdb/dist/pouchdb.js',
+                new Request('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic'),
+                './js/forms/forms-view.html',
+                './js/forms/forms-list-view.html',
+                './js/forms/sync.view.html'
+                               
             ]);
         })
     );
