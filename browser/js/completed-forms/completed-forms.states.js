@@ -1,6 +1,6 @@
 app.config(function($stateProvider) {
-  $stateProvider.state('forms', {
-    url: '/forms',
+  $stateProvider.state('completed-forms', {
+    url: '/completed-forms',
     templateUrl: '/js/completed-forms/completed-forms.view.html',
     controller: 'CompletedFormsCtrl',
     resolve: {
@@ -12,7 +12,7 @@ app.config(function($stateProvider) {
 });
 
 app.config(function($stateProvider) {
-  $stateProvider.state('forms.forms-list', {
+  $stateProvider.state('completed-forms.forms-list', {
     url: '/:formTemplateId/list',
     templateUrl: '/js/completed-forms/completed-forms-list.view.html',
     controller: 'CompletedFormsListCtrl',
