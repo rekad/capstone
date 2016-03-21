@@ -8,7 +8,7 @@ app.config(function ($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
 
     // starting page are the forms
-    $urlRouterProvider.when('/', '/#/forms');
+    $urlRouterProvider.when('/', '/forms');
 });
 
 // This app.run is for controlling access to specific states.

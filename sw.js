@@ -47,7 +47,7 @@ self.addEventListener('install', function(event) {
                 new Request('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic'),
                 './js/forms/forms-view.html',
                 './js/forms/forms-list-view.html',
-                './js/forms/sync.view.html'
+                './js/sync/sync.view.html'
                                
             ]);
         })
