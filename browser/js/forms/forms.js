@@ -1,7 +1,7 @@
 app.factory('FormFactory', function($window) {
   var PouchDB = $window.PouchDB;
-  var db = PouchDB('form-data');
-  var remoteDb = 'http://127.0.0.1:5984/form-data';
+  var db = PouchDB('thekraken-test');
+  var remoteDb = 'http://127.0.0.1:5984/thekraken-test';
 
   return {
 
@@ -12,6 +12,9 @@ app.factory('FormFactory', function($window) {
             return row.doc;
           });
         })
+    },
+    fetchOne: function(formTemplateId) {
+      return db.get(formTemplateId);
     },
 
     submitForm: function(form) {
@@ -47,12 +50,17 @@ app.config(function($stateProvider) {
   $stateProvider.state('forms.forms-list', {
     url: '/list/:formTemplateId',
     templateUrl: '/js/forms/forms-list-view.html',
-    controller: 'FormsListCtrl'
+    controller: 'FormsListCtrl',
+    resolve: {
+      form: function($stateParams, FormFactory) {
+        return FormFactory.fetchOne($stateParams.formTemplateId);
+      }
+    }
   })
 })
 
-app.controller('FormsListCtrl', function($scope) {
-
+app.controller('FormsListCtrl', function($scope, form) {
+  $scope.form = form;
 });
 
 app.controller('FormsCtrl', function($scope, forms) {
