@@ -88,11 +88,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <span class="sr-only">Toggle navigation</span>
                 </a>
                 <!-- Navbar Right Menu -->
-                <div class="navbar-custom-menu">
+                <!-- DELETE THIS CONTROLLER WHEN WE ARE OUT OF DEV. 
+                        Only used for the reset SW button -->
+                <div class="navbar-custom-menu" ng-controller="main">
                     <ul class="nav navbar-nav">
-                        <li><a ui-sref-active = "active" ui-sref="forms"><i class="fa fa-database"></i> Form Data</a></li>
+                        <li><a href="#" ng-click="reset()"><i class="fa fa-refresh"></i> Reset SW </a></li>
+                        <li><a ui-sref-active="active" ui-sref="forms"><i class="fa fa-database"></i> Form Data</a></li>
                         <li><a href=""><i class="fa fa-pie-chart"></i> Analysis</a></li>
-                        <li><a ui-sref-active = "active" ui-sref="sync"><i class="fa fa-cloud-upload"></i> Sync</a></li>
+                        <li><a ui-sref-active="active" ui-sref="sync"><i class="fa fa-cloud-upload"></i> Sync</a></li>
                         <li><a href=""><i class="fa fa-edit"></i> Form Editor</a></li>
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">

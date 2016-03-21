@@ -52,3 +52,36 @@ app.run(function ($rootScope, AuthService, $state) {
     });
 
 });
+
+
+//DELETE ME FOR PRODUCTION!!!! Hopefully a better way of resetting the SW has been implemented
+//This is just temporary to reset the SW in a hard way while we are working
+app.controller('main', function($scope, $state) {
+    $scope.reset = function() {
+        console.log('SW is being reset');
+        // Let's register our serviceworker
+        navigator.serviceWorker.getRegistration('../../').then(function(reg) {
+                console.log('Unregistering ServiceWorker');
+                return reg && reg.unregister();
+            })
+            .then(function(reg) {
+                console.log('Clearing caches');
+                return navigator.serviceWorker.register('/js/clear.js', {
+                    scope: './js/'
+                });
+            })
+            .then(function(reg) {
+                reg.addEventListener('updatefound', function() {
+                    var installing = reg.installing;
+                    reg.installing.addEventListener('statechange', function() {
+                        if (installing.state == 'installed') {
+                            console.log('Done!');
+                            reg.unregister();
+                            window.document.location.reload(true);
+                        }
+                    });
+                });
+            });
+    };
+
+});
