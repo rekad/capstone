@@ -86,8 +86,7 @@ self.addEventListener('fetch', function(event) {
             // it's null, and we'll pass the request to
             // fetch, which will use the network.
             console.log('is there a response', response);
-            return response;
-            // || fetch(event.request);
+            return response || fetch(event.request);
         })
     );
 });
