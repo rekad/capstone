@@ -27,39 +27,149 @@ var db = new(cradle.Connection)().database(dbName);
 
 db.destroy(function() {
     db.create(function(err) {
-        db.save(documents, function(err, res) {
+        db.save(formTemplates, function(err, res) {
             if (err) console.log('Error while seeding database', err);
-            else console.log('Seeding successfull', res);
+            else console.log('Seeding of form templates successful', res);
+
+            completedForms[0].formTemplateId = res[0].id;
+            completedForms[1].formTemplateId = res[0].id;
+            completedForms[1].formTemplateId = res[1].id;
+
+            db.save(completedForms, function(err, res) {
+                if (err) console.log('Error while seeding database', err);
+                else console.log('Seeding of completed forms successful', res);
+            })
         })
     })
 });
 
-var documents = [{
+var formTemplates = [{
+    type: "formTemplate",
     title: "A great Form",
     description: "This is a fantastic form. There might be no better one.",
     formElements: [{
-        type: 'text'
+        type: 'text',
+        label: 'Name'
     }, {
-        type: 'number'
+        type: 'number',
+        label: 'Number of Children'
     }, {
-        type: 'checkboxes'
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"]
     }, {
-        type: 'multipleChoice'
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
     }, {
-        type: 'sectionBreak'
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"]
     }]
 }, {
+    type: "formTemplate",
     title: "Another spectacular Form",
     description: "This is a rather dull form. Please improve.",
     formElements: [{
-        type: 'text'
+        type: 'text',
+        label: 'Boat Name'
     }, {
-        type: 'number'
+        type: 'number',
+        label: 'Length'
     }, {
-        type: 'checkboxes'
+        type: 'sectionBreak',
+        title: 'More Questions',
+        description: 'These questions are rather silly.'
     }, {
-        type: 'multipleChoice'
+        type: 'multipleChoice',
+        label: 'Boat Size',
+        choices: ["large", "medium", "small"]
     }, {
-        type: 'sectionBreak'
+        type: 'checkboxes',
+        label: 'Amenities',
+        choices: ["kitchen", "pool", "pirate flag"]
     }]
 }];
+
+var completedForms = [{
+    type: "completedForm",
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text',
+        label: 'Name',
+        value: "Patrick"
+    }, {
+        type: 'number',
+        label: 'Number of Children',
+        value: 7
+    }, {
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"],
+        value: "male"
+    }, {
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
+    }, {
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"],
+        value: ["cat", "dog"]
+    }]
+}, {
+    type: "completedForm",
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text',
+        label: 'Name',
+        value: "Kate"
+    }, {
+        type: 'number',
+        label: 'Number of Children',
+        value: 5
+    }, {
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"],
+        value: "female"
+    }, {
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
+    }, {
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"],
+        value: ["cat", "parrot"]
+    }]
+}, {
+    type: "completedForm",
+    title: "Another spectacular Form",
+    description: "This is a rather dull form. Please improve.",
+    formElements: [{
+        type: 'text',
+        label: 'Boat Name',
+        value: "Persephone"
+    }, {
+        type: 'number',
+        label: 'Length',
+        value: 500
+    }, {
+        type: 'sectionBreak',
+        title: 'More Questions',
+        description: 'These questions are rather silly.',
+    }, {
+        type: 'multipleChoice',
+        label: 'Boat Size',
+        choices: ["large", "medium", "small"],
+        value: "large"
+    }, {
+        type: 'checkboxes',
+        label: 'Amenities',
+        choices: ["kitchen", "pool", "pirate flag"],
+        value: ["kitchen", "pool"]
+    }]
+}]

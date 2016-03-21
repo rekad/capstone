@@ -20,4 +20,11 @@ app.controller('SyncCtrl', function($scope, FormFactory) {
 			console.log('sync down successful');
 		})
 	}
+
+	$scope.clearLocalDb = function() {
+		FormFactory.clearDb()
+		.then(function() {
+			console.log('cleared local db');
+		})
+	}
 })
