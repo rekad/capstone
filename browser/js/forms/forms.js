@@ -48,7 +48,7 @@ app.config(function($stateProvider) {
 
 app.config(function($stateProvider) {
   $stateProvider.state('forms.forms-list', {
-    url: '/list/:formTemplateId',
+    url: '/:formTemplateId/list',
     templateUrl: '/js/forms/forms-list-view.html',
     controller: 'FormsListCtrl',
     resolve: {
