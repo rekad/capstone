@@ -6,6 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
 
 <head>
+    <base href="/" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>The Kraken</title>
@@ -30,9 +31,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <base href="/" />
     <link rel="stylesheet" type="text/css" href="/style.css" />
     <script src="/lodash/index.js"></script>
+    <script src="/pouchdb/dist/pouchdb.js"></script>
     <script src="/angular/angular.js"></script>
     <script src="/angular-animate/angular-animate.js"></script>
     <script src="/angular-ui-router/release/angular-ui-router.js"></script>
@@ -82,9 +83,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        <li><a href=""><i class="fa fa-database"></i> Form Data</a></li>
+                        <li><a ui-sref-active = "active" ui-sref="forms"><i class="fa fa-database"></i> Form Data</a></li>
                         <li><a href=""><i class="fa fa-pie-chart"></i> Analysis</a></li>
-                        <li><a href=""><i class="fa fa-cloud-upload"></i> Sync</a></li>
+                        <li><a ui-sref-active = "active" ui-sref="sync"><i class="fa fa-cloud-upload"></i> Sync</a></li>
                         <li><a href=""><i class="fa fa-edit"></i> Form Editor</a></li>
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
@@ -119,56 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
             </nav>
         </header>
-        <!-- Left side column. contains the logo and sidebar -->
-        <aside class="main-sidebar">
-            <!-- sidebar: style can be found in sidebar.less -->
-            <section class="sidebar">
-                <!-- search form (Optional) -->
-                <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search...">
-                        <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-                    </div>
-                </form>
-                <!-- /.search form -->
-                <!-- Sidebar Menu -->
-                <ul class="sidebar-menu">
-                    <li class="header">FORM DATA</li>
-                    <!-- Optionally, you can add icons to the links -->
-                    <li class="active"><a href="#"><i class="fa fa-file-text-o"></i> <span>An awesome form</span></a></li>
-                    <li><a href="#"><i class="fa fa-file-text-o"></i> <span>Another great form</span></a></li>
-                </ul>
-                <!-- /.sidebar-menu -->
-            </section>
-            <!-- /.sidebar -->
-        </aside>
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <h1>
-            Form Data
-            <small>This page shows filled out forms</small>
-          </h1>
-            </section>
-            <!-- Main content -->
-            <section class="content">
-                <!-- Your Page Content Here -->
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <!--         <div class="pull-right hidden-xs">
-          Anything you want
-        </div> -->
-            <!-- Default to the left -->
-            <strong>Copyright &copy; 2016 <a href="#">KKJP @ Fullstack Academy</a>.</strong> All rights reserved.
-        </footer>
+        <ui-view></ui-view>
     </div>
     <!-- ./wrapper -->
     <!-- REQUIRED JS SCRIPTS -->
