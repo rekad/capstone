@@ -16,7 +16,10 @@
         <ul class="sidebar-menu">
             <li class="header">FORM DATA</li>
 
-            <li ui-sref-active="active" ui-sref="completed-forms.forms-list({formTemplateId: form._id})" ng-repeat="form in forms"><a ><i class="fa fa-file-text-o"></i> <span>{{form.title}}</span></a></li>
+<!-- ui-sref="forms.forms-list({formTemplateId: form._id})" -->
+            <li><a href=""><i class="fa fa-plus-circle"></i><span>Add new form</span></a></li>
+
+            <li ui-sref-active="active"  ng-repeat="form in forms"><a ><i class="fa fa-file-text-o"></i> <span>{{form.title}}</span></a></li>
 
             <!-- Optionally, you can add icons to the links -->
 <!--             <li class="active"><a href="#"><i class="fa fa-file-text-o"></i> </a></li>
@@ -31,8 +34,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Form Data
-            <small>This page shows filled out forms</small>
+            Form Templates
+            <small>Here you can edit forms!</small>
           </h1>
     </section>
     <!-- Main content -->
