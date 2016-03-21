@@ -17,42 +17,49 @@ name in the environment files.
 
 */
 
-var mongoose = require('mongoose');
-var Promise = require('bluebird');
-var chalk = require('chalk');
-var connectToDb = require('./server/db');
-var User = Promise.promisifyAll(mongoose.model('User'));
+// Rewrite promisified?
+// var bluebird = require('bluebird');
+// var cradle = bluebird.promisifyAll(require('cradle'));
+var cradle = require('cradle');
+var dbName = "thekraken-test";
 
-var seedUsers = function () {
+var db = new(cradle.Connection)().database(dbName);
 
-    var users = [
-        {
-            email: 'testing@fsa.com',
-            password: 'password'
-        },
-        {
-            email: 'obama@gmail.com',
-            password: 'potus'
-        }
-    ];
-
-    return User.createAsync(users);
-
-};
-
-connectToDb.then(function () {
-    User.findAsync({}).then(function (users) {
-        if (users.length === 0) {
-            return seedUsers();
-        } else {
-            console.log(chalk.magenta('Seems to already be user data, exiting!'));
-            process.kill(0);
-        }
-    }).then(function () {
-        console.log(chalk.green('Seed successful!'));
-        process.kill(0);
-    }).catch(function (err) {
-        console.error(err);
-        process.kill(1);
-    });
+db.destroy(function() {
+    db.create(function(err) {
+        db.save(documents, function(err, res) {
+            if (err) console.log('Error while seeding database', err);
+            else console.log('Seeding successfull', res);
+        })
+    })
 });
+
+var documents = [{
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text'
+    }, {
+        type: 'number'
+    }, {
+        type: 'checkboxes'
+    }, {
+        type: 'multipleChoice'
+    }, {
+        type: 'sectionBreak'
+    }]
+}, {
+    title: "Another spectacular Form",
+    description: "This is a rather dull form. Please improve.",
+    formElements: [{
+        type: 'text'
+    }, {
+        type: 'number'
+    }, {
+        type: 'checkboxes'
+    }, {
+        type: 'multipleChoice'
+    }, {
+        type: 'sectionBreak'
+    }]
+}];
