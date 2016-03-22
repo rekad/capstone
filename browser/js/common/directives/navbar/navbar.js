@@ -10,6 +10,10 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                 return $state.is('login');
             }
 
+            scope.signup = function() {
+                
+            }
+
             // scope.items = [
             //     { label: 'Home', state: 'home' },
             //     { label: 'About', state: 'about' },
