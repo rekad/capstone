@@ -4,8 +4,8 @@ app.config(function($stateProvider) {
     templateUrl: '/js/completed-forms/completed-forms.view.html',
     controller: 'CompletedFormsCtrl',
     resolve: {
-      forms: function(FormFactory) {
-        return FormFactory.fetchAll();
+      forms: function(FormTemplatesFactory) {
+        return FormTemplatesFactory.fetchAll();
       }
     }
   })
@@ -17,8 +17,8 @@ app.config(function($stateProvider) {
     templateUrl: '/js/completed-forms/completed-forms-list.view.html',
     controller: 'CompletedFormsListCtrl',
     resolve: {
-      form: function($stateParams, FormFactory) {
-        return FormFactory.fetchOne($stateParams.formTemplateId);
+      form: function($stateParams, FormTemplatesFactory) {
+        return FormTemplatesFactory.fetchOne($stateParams.formTemplateId);
       }
     }
   })

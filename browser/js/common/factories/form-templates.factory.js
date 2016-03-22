@@ -1,4 +1,4 @@
-app.factory('FormFactory', function($window) {
+app.factory('FormTemplatesFactory', function($window) {
   var PouchDB = $window.PouchDB;
   var db = PouchDB('thekraken-test');
   var remoteDb = 'http://127.0.0.1:5984/thekraken-test';
@@ -6,13 +6,17 @@ app.factory('FormFactory', function($window) {
   return {
 
     fetchAll: function() {
-      return db.allDocs({ include_docs: true })
-        .then(function(forms) {
-          return forms.rows.map(function(row) {
-            return row.doc;
-          });
-        })
+      return db.query(function(doc) {
+        if (doc.type === 'formTemplate') emit(doc);
+      })
+      .then(function(results) {
+        return results.rows.map(function(row) {
+          return row.key;
+        });
+      });
+
     },
+    
     fetchOne: function(formTemplateId) {
       return db.get(formTemplateId);
     },
