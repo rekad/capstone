@@ -1,4 +1,4 @@
-app.factory('FormTemplateFactory', function($window) {
+app.factory('FormTemplatesFactory', function($window) {
   var PouchDB = $window.PouchDB;
   var db = PouchDB('thekraken-test');
   var remoteDb = 'http://127.0.0.1:5984/thekraken-test';
@@ -16,6 +16,7 @@ app.factory('FormTemplateFactory', function($window) {
         });
       });
     },
+    
     fetchOne: function(formTemplateId) {
       return db.get(formTemplateId);
     },

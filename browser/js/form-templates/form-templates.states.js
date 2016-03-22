@@ -4,8 +4,8 @@ app.config(function($stateProvider) {
     templateUrl: '/js/form-templates/form-templates.view.html',
     controller: 'FormTemplatesCtrl',
     resolve: {
-      forms: function(FormTemplateFactory) {
-        return FormTemplateFactory.fetchAll();
+      forms: function(FormTemplatesFactory) {
+        return FormTemplatesFactory.fetchAll();
       }
     }
   })
