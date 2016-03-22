@@ -14,8 +14,8 @@ app.factory('CompletedFormsFactory', function($window) {
 				});
 			});
 		},
-		fetchOne: function(formTemplateId) {
-			return db.get(formTemplateId);
+		fetchOne: function(completedFormId) {
+			return db.get(completedFormId);
 		}
 	};
 });
