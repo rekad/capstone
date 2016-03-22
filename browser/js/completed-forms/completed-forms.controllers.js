@@ -4,4 +4,5 @@ app.controller('CompletedFormsListCtrl', function($scope, form) {
 
 app.controller('CompletedFormsCtrl', function($scope, forms) {
   $scope.forms = forms;
+  console.log(forms)
 });
