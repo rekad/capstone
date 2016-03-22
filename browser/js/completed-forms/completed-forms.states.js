@@ -14,7 +14,10 @@ app.config(function($stateProvider) {
     templateUrl: '/js/completed-forms/completed-forms-list.view.html',
     controller: 'CompletedFormsListCtrl',
     resolve: {
-      form: function($stateParams, FormTemplateFactory) {
+      forms: function($stateParams, CompletedFormsFactory) {
+        return CompletedFormsFactory.fetchAll($stateParams.formTemplateId);
+      },
+      formTemplate: function($stateParams, FormTemplateFactory) {
         return FormTemplateFactory.fetchOne($stateParams.formTemplateId);
       }
     }

@@ -6,23 +6,23 @@ app.config(function($stateProvider) {
 	});
 })
 
-app.controller('SyncCtrl', function($scope, FormFactory) {
+app.controller('SyncCtrl', function($scope, FormTemplateFactory) {
 	$scope.syncUp = function () {
-		FormFactory.syncUp()
+		FormTemplateFactory.syncUp()
 		.then(function() {
 			console.log('sync up successful');
 		})
 	}
 
 	$scope.syncDown = function() {
-		FormFactory.syncDown()
+		FormTemplateFactory.syncDown()
 		.then(function() {
 			console.log('sync down successful');
 		})
 	}
 
 	$scope.clearLocalDb = function() {
-		FormFactory.clearDb()
+		FormTemplateFactory.clearDb()
 		.then(function() {
 			console.log('cleared local db');
 		})

@@ -33,7 +33,7 @@ db.destroy(function() {
 
             completedForms[0].formTemplateId = res[0].id;
             completedForms[1].formTemplateId = res[0].id;
-            completedForms[1].formTemplateId = res[1].id;
+            completedForms[2].formTemplateId = res[1].id;
 
             db.save(completedForms, function(err, res) {
                 if (err) console.log('Error while seeding database', err);
