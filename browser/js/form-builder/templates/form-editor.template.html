@@ -1,0 +1,29 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3 pull-left">
+			<ul class="nav nav-tabs">
+			  <li role="presentation" class="active"><a href="#">Tab 1</a></li>
+			  <li role="presentation"><a href="#">Tab 2</a></li>
+			  <li role="presentation"><a href="#">Tab 3</a></li>
+			</ul>
+
+			<button class="btn btn-default" ng-click="placeElements('lineText')">Single Line Text</button>	
+			<button class="btn btn-default">Paragraph Text</button>	
+			<button class="btn btn-default">Multiple Choice</button>	
+			<button class="btn btn-default">Checkboxes</button>	
+			<button class="btn btn-default">Dropdown</button>	
+
+		</div>
+		<div class="form-div col-sm-9">
+		<form>
+			<div ng-repeat="element in formElements">
+				<line-text ng-if="element.type === 'lineText'"></line-text>
+				<checkbox ng-if="element.type === 'checkbox'"></checkbox>
+				<dropdown ng-if="element.type === 'dropdown'"></dropdown>
+				<paragraph-text ng-if="element.type === 'paragraphText'"></paragraph-text>
+			</div>
+		</form>
+			
+		</div>
+	</div>
+</div>
