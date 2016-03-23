@@ -23,7 +23,7 @@ app.config(function($stateProvider) {
     }
   })
   .state('completed-forms.individual-form', {
-    url: 'individual/:completedFormId',
+    url: '/individual/:completedFormId',
     templateUrl: '/js/completed-forms/templates/completed-individual-form.view.html',
     controller: 'IndividualFormCtrl',
     resolve: {
