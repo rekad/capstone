@@ -1,7 +1,13 @@
 app.controller('FormBuilder', function($scope){
+	$scope.tabSelected = 'one';
+	console.log($scope.tabSelected);
 	$scope.formElements = [{type: 'checkbox'}, {type: 'multipleChoice'}, {type: 'paragraphText'}, {type: 'dropdown'}, {type: 'lineText'}];
 	
-	$scope.placeElements = function(something) {
-		$scope.formElements.push({type: something});
+	$scope.placeElements = function(type) {
+		$scope.formElements.push({type: type});
+	}
+
+	$scope.addNewForm = function() {
+		$scope.formElements = [];
 	}
 });
