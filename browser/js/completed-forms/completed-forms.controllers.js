@@ -53,6 +53,12 @@ app.controller('CompletedFormsCtrl', function($scope, forms) {
 
 app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFormsFactory) {
 	$scope.completedForm = completedForm;
+	$scope.isEditing = false;
+
+	$scope.toggleEdit = function () {
+		$scope.isEditing = !$scope.isEditing;
+	};
+
 	$scope.updateForm = function () {
 		CompletedFormsFactory.updateOne(completedForm)
 			.then(function() {

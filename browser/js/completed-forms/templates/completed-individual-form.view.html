@@ -1,18 +1,18 @@
 
-<button class="btn btn-flat" ui-sref="completed-forms.forms-list({formTemplateId: completedForm.formTemplateId})"> <i class="fa fa-arrow-left"></i> Return to completed forms listing</button>
+<button class="btn btn-flat" ui-sref="completed-forms.forms-list({formTemplateId: completedForm.formTemplateId})"> <i class="fa fa-arrow-left"></i> Return to completed forms listing</button> <br><br>
 
-<div class="box box-primary ">
+<div class="box box-primary">
 
-    <div class="box-header with-border">
+    <div class="box-header with-border container">
         <h3 class="box-title">{{completedForm.title}}
         	<small>{{completedForm.description}}</small>
         </h3>
-        <div class="container">
+			<br><br>		
         	<!-- NEED TO HOOK THIS UP TO CHANGE FROM VIEW TO EDIT (like new page form directives but with values) -->
-            <button class="btn btn-primary btn-flat"> <i class="fa fa-edit"></i> Edit Form</button>
+            <button class="btn btn-primary btn-flat" ng-click="toggleEdit()" ng-hide="isEditing"> <i class="fa fa-edit"></i> Edit Form</button>
             <!-- NEED TO HOOK THIS UP TO GO TO A NEW FORM PAGE -->
-            <button class="btn btn-danger btn-flat"> <i class="fa fa-plus-circle"></i>Fill Out New Form</button>
-        </div>
+            <button class="btn btn-primary btn-flat"> <i class="fa fa-plus"></i>Fill Out New Form</button>
+
     </div>
 
     <form role="form">
@@ -26,8 +26,9 @@
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
         </div>
-        <div class="box-footer">
+        <div class="box-footer" ng-show="isEditing">
         	<button class="btn btn-flat bg-olive" ng-click="updateForm()"><i class="fa fa-save"></i>Save Changes</button>
+        	<button class="btn btn-flat" ng-click="toggleEdit()"><i class="fa fa-times"></i>Cancel Edits</button>
         </div>
     </form>
 </div>
