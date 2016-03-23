@@ -33,7 +33,7 @@
                     <table id="completed-forms-table" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="completed-forms-table" >
                         <thead>
                             <tr role="row">
-                                <th class="col-xs-3 fa-sort-alpha-asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">{{formTemplate.formElements[0].label}}</th>
+                                <th class="col-xs-3" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"><a href=""><i class="fa fa-sort-alpha-asc"></i></a><label>{{formTemplate.formElements[0].label}}</label></th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 206px;">{{formTemplate.formElements[1].label}}</th>
                                 <th class="sorting" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 192px;">{{formTemplate.formElements[2].label}}</th>
                                 <th class="sorting" tabindex="0" aria-controls="example4" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 137px;">{{formTemplate.formElements[3].label}}</th>
@@ -41,7 +41,7 @@
                         </thead>
                         <tbody>
                             <tr role="row" class="odd" ng-repeat="completedForm in completedFormsForPage" ui-sref="completed-forms.individual-form({completedFormId: completedForm._id})">
-                                <td class="fa-sort-alpha-asc">{{completedForm.formElements[0].value.toString() | shorten}}</td>
+                                <td>{{completedForm.formElements[0].value.toString() | shorten}}</td>
                                 <td>{{completedForm.formElements[1].value.toString() | shorten}}</td>
                                 <td>{{completedForm.formElements[2].value.toString() | shorten}}</td>
                                 <td>{{completedForm.formElements[3].value.toString() | shorten}}</td>
