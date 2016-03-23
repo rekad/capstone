@@ -32,7 +32,6 @@ body {
 .content-wrapper {
 	min-height: 90vh;
 }
-
 // fixing layout for login page
 .login-box {
   margin-top: 0px;
@@ -40,4 +39,8 @@ body {
 }
 .login-page {
   height: 100vh;
+}
+
+.box {
+  max-width: 1200px;
 }
