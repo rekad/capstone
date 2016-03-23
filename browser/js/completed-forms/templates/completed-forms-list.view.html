@@ -1,0 +1,79 @@
+<!-- complete another form button -->
+<!-- search -->
+<!-- list of completed forms -->
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">{{formTemplate.title}}
+            <small>{{formTemplate.description}}</small>
+        </h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <div class="row">
+                <div class="col-sm-6">
+                    <form name="myForm">
+                        <div class="dataTables_length" id="rows-per-page">
+                            <label>Show
+                                <select name="rows-per-page" aria-controls="rows-per-page" class="form-control input-sm" ng-options="option.name for option in data.availableOptions track by option.id" ng-change="updateRowsPerPage()" ng-model="data.selectedOption">
+                                </select> entries</label>
+                        </div>
+                    </form>
+                </div>
+                <!-- <div class="col-sm-6">
+                    <div id="example1_filter" class="dataTables_filter">
+                        <label>Search:
+                            <input type="search" class="form-control input-sm" placeholder="" aria-controls="example1">
+                        </label>
+                    </div>
+                </div> -->
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="completed-forms-table" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="completed-forms-table" >
+                        <thead>
+                            <tr role="row">
+                                <th class="col-xs-3" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"><a href=""><i class="fa fa-sort-alpha-asc"></i></a><label>{{formTemplate.formElements[0].label}}</label></th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 206px;">{{formTemplate.formElements[1].label}}</th>
+                                <th class="sorting" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 192px;">{{formTemplate.formElements[2].label}}</th>
+                                <th class="sorting" tabindex="0" aria-controls="example4" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 137px;">{{formTemplate.formElements[3].label}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd" ng-repeat="completedForm in completedFormsForPage" ui-sref="completed-forms.individual-form({completedFormId: completedForm._id})">
+                                <td>{{completedForm.formElements[0].value.toString() | shorten}}</td>
+                                <td>{{completedForm.formElements[1].value.toString() | shorten}}</td>
+                                <td>{{completedForm.formElements[2].value.toString() | shorten}}</td>
+                                <td>{{completedForm.formElements[3].value.toString() | shorten}}</td>
+                            </tr>                          
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th rowspan="1" colspan="1">{{formTemplate.formElements[0].label}}</th>
+                                <th rowspan="1" colspan="1">{{formTemplate.formElements[1].label}}</th>
+                                <th rowspan="1" colspan="1">{{formTemplate.formElements[2].label}}</th>
+                                <th rowspan="1" colspan="1">{{formTemplate.formElements[3].label}}</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing {{startSlice+1}} to {{endSlice}} of {{completedForms.length}} entries</div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                        <ul class="pagination">
+                            <li class="paginate_button previous" ng-click="prevPage()" ng-class="{disabled: currentPage === 1}" id="forms_previous"><a aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li>
+                            
+                            <li class="paginate_button" ng-click="changePage()" ng-class="{active: currentPage === {{page}}}" ng-repeat="page in getPaginationNumbers()"><a href="#" aria-controls="example1" data-dt-idx="{{page}}" tabindex="0">{{page}}</a></li>
+
+                            <li class="paginate_button next" ng-click="nextPage()" ng-class="{disabled: currentPage === getPaginationNumbers().length}" id="forms_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

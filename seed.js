@@ -30,17 +30,18 @@ db.destroy(function() {
         db.save(formTemplates, function(err, res) {
             if (err) console.log('Error while seeding database', err);
             else console.log('Seeding of form templates successful', res);
-
-            completedForms[0].formTemplateId = res[0].id;
-            completedForms[1].formTemplateId = res[0].id;
-            completedForms[2].formTemplateId = res[1].id;
+            console.log(completedForms.length);
+            completedForms.forEach(function(form) {
+                form.formTemplateId = res[0].id;
+            });
+            completedForms[12].formTemplateId = res[1].id;
 
             db.save(completedForms, function(err, res) {
                 if (err) console.log('Error while seeding database', err);
                 else console.log('Seeding of completed forms successful', res);
-            })
-        })
-    })
+            });
+        });
+    });
 });
 
 var formTemplates = [{
@@ -117,6 +118,276 @@ var completedForms = [{
         label: 'Pets',
         choices: ["cat", "dog", "parrot"],
         value: ["cat", "dog"]
+    }]
+}, {
+    type: "completedForm",
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text',
+        label: 'Name',
+        value: "Kate"
+    }, {
+        type: 'number',
+        label: 'Number of Children',
+        value: 5
+    }, {
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"],
+        value: "female"
+    }, {
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
+    }, {
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"],
+        value: ["cat", "parrot"]
+    }]
+}, {
+    type: "completedForm",
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text',
+        label: 'Name',
+        value: "Kate"
+    }, {
+        type: 'number',
+        label: 'Number of Children',
+        value: 5
+    }, {
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"],
+        value: "female"
+    }, {
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
+    }, {
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"],
+        value: ["cat", "parrot"]
+    }]
+}, {
+    type: "completedForm",
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text',
+        label: 'Name',
+        value: "Kate"
+    }, {
+        type: 'number',
+        label: 'Number of Children',
+        value: 5
+    }, {
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"],
+        value: "female"
+    }, {
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
+    }, {
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"],
+        value: ["cat", "parrot"]
+    }]
+}, {
+    type: "completedForm",
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text',
+        label: 'Name',
+        value: "Kate"
+    }, {
+        type: 'number',
+        label: 'Number of Children',
+        value: 5
+    }, {
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"],
+        value: "female"
+    }, {
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
+    }, {
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"],
+        value: ["cat", "parrot"]
+    }]
+}, {
+    type: "completedForm",
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text',
+        label: 'Name',
+        value: "Kate"
+    }, {
+        type: 'number',
+        label: 'Number of Children',
+        value: 5
+    }, {
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"],
+        value: "female"
+    }, {
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
+    }, {
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"],
+        value: ["cat", "parrot"]
+    }]
+}, {
+    type: "completedForm",
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text',
+        label: 'Name',
+        value: "Kate"
+    }, {
+        type: 'number',
+        label: 'Number of Children',
+        value: 5
+    }, {
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"],
+        value: "female"
+    }, {
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
+    }, {
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"],
+        value: ["cat", "parrot"]
+    }]
+}, {
+    type: "completedForm",
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text',
+        label: 'Name',
+        value: "Kate"
+    }, {
+        type: 'number',
+        label: 'Number of Children',
+        value: 5
+    }, {
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"],
+        value: "female"
+    }, {
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
+    }, {
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"],
+        value: ["cat", "parrot"]
+    }]
+}, {
+    type: "completedForm",
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text',
+        label: 'Name',
+        value: "Kate"
+    }, {
+        type: 'number',
+        label: 'Number of Children',
+        value: 5
+    }, {
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"],
+        value: "female"
+    }, {
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
+    }, {
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"],
+        value: ["cat", "parrot"]
+    }]
+}, {
+    type: "completedForm",
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text',
+        label: 'Name',
+        value: "Kate"
+    }, {
+        type: 'number',
+        label: 'Number of Children',
+        value: 5
+    }, {
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"],
+        value: "female"
+    }, {
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
+    }, {
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"],
+        value: ["cat", "parrot"]
+    }]
+}, {
+    type: "completedForm",
+    title: "A great Form",
+    description: "This is a fantastic form. There might be no better one.",
+    formElements: [{
+        type: 'text',
+        label: 'Name',
+        value: "Kate"
+    }, {
+        type: 'number',
+        label: 'Number of Children',
+        value: 5
+    }, {
+        type: 'multipleChoice',
+        label: 'Gender',
+        choices: ["male", "female", "other"],
+        value: "female"
+    }, {
+        type: 'sectionBreak',
+        title: 'Pet Questions',
+        description: 'These questions are very important!'
+    }, {
+        type: 'checkboxes',
+        label: 'Pets',
+        choices: ["cat", "dog", "parrot"],
+        value: ["cat", "parrot"]
     }]
 }, {
     type: "completedForm",

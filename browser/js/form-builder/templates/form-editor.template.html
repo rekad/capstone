@@ -2,15 +2,24 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<ul class="nav nav-tabs">
-			  <li role="presentation" ng-class="{active: tabSelected === 'one'}" ng-click="tabSelected = 'one'"><a href="#">Add A Field</a></li>
+			  <li role="presentation" ng-class="{active: tabSelected === 'one'}" ng-click="tabSelected = 'one'"><a ng-class="{bg-primary: tabSelected === 'one'}" href="#">Add A Field</a></li>
 			  <li role="presentation" ng-class="{active: tabSelected === 'two'}" ng-click="tabSelected = 'two'"><a href="#">Edit Field</a></li>
 			  <li role="presentation" ng-class="{active: tabSelected === 'three'}" ng-click="tabSelected = 'three'"><a href="#">Form Settings</a></li>
 			</ul>
-			<button class="btn btn-default" ng-click="placeElements('lineText')">Single Line Text</button>	
-			<button class="btn btn-default" ng-click="placeElements('paragraphText')">Paragraph Text</button>	
-			<button class="btn btn-default" ng-click="placeElements('multipleChoice')">Multiple Choice</button>	
-			<button class="btn btn-default" ng-click="placeElements('checkbox')">Checkboxes</button>	
-			<button class="btn btn-default" ng-click="placeElements('dropdown')">Dropdown</button>	
+			<div class="panel">
+				<div class="panel-body">
+					<div ng-show="tabSelected === 'one'">
+						<button class="btn btn-default" ng-click="placeElements('lineText')">Single Line Text</button>	
+						<button class="btn btn-default" ng-click="placeElements('paragraphText')">Paragraph Text</button>	
+						<button class="btn btn-default" ng-click="placeElements('multipleChoice')">Multiple Choice</button>	
+						<button class="btn btn-default" ng-click="placeElements('checkbox')">Checkboxes</button>	
+						<button class="btn btn-default" ng-click="placeElements('dropdown')">Dropdown</button>	
+					</div>
+					<div ng-show="tabSelected === 'two'">
+						
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="col-sm-8">
 			<div class="box box-info">
@@ -24,7 +33,7 @@
 						<checkbox ng-if="element.type === 'checkbox'"></checkbox>
 						<dropdown ng-if="element.type === 'dropdown'"></dropdown>
 						<paragraph-text ng-if="element.type === 'paragraphText'"></paragraph-text>
-						<multiple-choice ng-if="element.type === 'multipleChoice'"></multiple-choice>
+						<multiple-choice-template ng-if="element.type === 'multipleChoice'"></multiple-choice-template>
 					</div>
 					</div>
 				</form>

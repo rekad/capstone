@@ -1,4 +1,4 @@
-app.factory('FormFactory', function(){
+//app.factory('FormFactory', function(){
 	
 	// FormFactory.addNewForm = function() {
 
@@ -8,4 +8,4 @@ app.factory('FormFactory', function(){
 		
 	// }
 	
-})
+//})

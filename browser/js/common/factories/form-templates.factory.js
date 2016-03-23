@@ -6,6 +6,7 @@ app.factory('FormTemplatesFactory', function($window) {
   return {
 
     fetchAll: function() {
+      // fetch all documents that are type formTemplate
       return db.query(function(doc) {
         if (doc.type === 'formTemplate') emit(doc);
       })
@@ -14,7 +15,6 @@ app.factory('FormTemplatesFactory', function($window) {
           return row.key;
         });
       });
-
     },
     
     fetchOne: function(formTemplateId) {

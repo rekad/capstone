@@ -6,8 +6,4 @@ app.controller('FormBuilder', function($scope){
 	$scope.placeElements = function(type) {
 		$scope.formElements.push({type: type});
 	}
-
-	$scope.addNewForm = function() {
-		$scope.formElements = [];
-	}
 });
