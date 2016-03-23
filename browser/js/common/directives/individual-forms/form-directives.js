@@ -27,7 +27,7 @@ app.directive('text', function() {
 				ngModelCtrl.$setViewValue(newValue);
 			});
 		},
-		templateUrl: '/js/add-data/directives/text-directive.html'
+		templateUrl: '/js/common/directives/individual-forms/text-directive.html'
 	}
 });
 
@@ -45,7 +45,7 @@ app.directive('number', function() {
 				ngModelCtrl.$setViewValue(+newValue);
 			});
 		},
-		templateUrl: '/js/add-data/directives/number-directive.html'
+		templateUrl: '/js/common/directives/individual-forms/number-directive.html'
 	}
 });
 
@@ -61,7 +61,7 @@ app.directive('multipleChoice', function() {
 				ngModelCtrl.$setViewValue(newValue);
 			});
 		},
-		templateUrl: '/js/add-data/directives/multiple-choice-directive.html'
+		templateUrl: '/js/common/directives/individual-forms/multiple-choice-directive.html'
 	}
 });
 
@@ -78,7 +78,7 @@ app.directive('checkboxes', function() {
 				ngModelCtrl.$setViewValue(newValue);
 			});
 		},
-		templateUrl: '/js/add-data/directives/checkboxes-directive.html'
+		templateUrl: '/js/common/directives/individual-forms/checkboxes-directive.html'
 	}
 });
 
@@ -88,6 +88,6 @@ app.directive('sectionBreak', function() {
 			element: '=',
 			isEditing: '='
 		},
-		templateUrl: '/js/add-data/directives/section-break-directive.html'
+		templateUrl: '/js/common/directives/individual-forms/section-break-directive.html'
 	}
 });

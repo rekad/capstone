@@ -1,6 +1,7 @@
 app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
   $scope.completedForms = forms;
-  $scope.completedFormsForPage = $scope.completedForms.slice(0,10);
+  $scope.filteredForms = $scope.completedForms;
+  $scope.completedFormsForPage = $scope.filteredForms.slice(0,10);
   $scope.formTemplate = formTemplate;
   $scope.currentPage = 1;
   $scope.formTemplateId = $scope.formTemplate._id;
@@ -10,8 +11,33 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
   $scope.startSlice = 0;
   $scope.endSlice = 10;
 
+  // $scope.searchBar="Type in Search Criteria";
+
+  $scope.$watch('searchBar', function() {
+    $scope.filteredForms = $scope.completedForms
+    if ($scope.searchBar) {
+      var reg = new RegExp($scope.searchBar,'i');
+      $scope.filteredForms = $scope.filteredForms.filter(function(form) {
+        for (let i = 0; i < form.formElements.length; i++) {
+          var val = form.formElements[i].value;
+          if (Array.isArray(val)) {
+            for(let j = 0; j < val.length; j++) {
+              if (reg.test(val[j])) return true;
+            }
+          } else if (reg.test(val)) {
+            // console.log('I am getting here!', val)
+            return true;
+          }
+        }
+        return false;
+      });
+    }
+    $scope.completedFormsForPage = $scope.filteredForms.slice($scope.startSlice, $scope.endSlice);
+    $scope.$evalAsync();
+  });
+
   $scope.getPaginationNumbers = function () {
-  	var paginationAmount = Math.ceil($scope.completedForms.length/$scope.data.selectedOption.name),
+  	var paginationAmount = Math.ceil($scope.filteredForms.length/$scope.data.selectedOption.name),
   		paginationArr = [];
   	for (let i = 1; i <= paginationAmount; i++) {
   		paginationArr.push(i);
@@ -24,13 +50,13 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
   	$scope.currentPage = page || this.page;
   	//change rows showed
   	$scope.updateSlice();
-  	$scope.completedFormsForPage = $scope.completedForms.slice($scope.startSlice, $scope.endSlice);
+  	$scope.completedFormsForPage = $scope.filteredForms.slice($scope.startSlice, $scope.endSlice);
   	$scope.$evalAsync();
   };
 
   $scope.updateSlice = function () {
   	$scope.startSlice = ($scope.currentPage-1)*$scope.data.selectedOption.name;
-  	$scope.endSlice = Math.min($scope.startSlice+$scope.data.selectedOption.name, $scope.completedForms.length);
+  	$scope.endSlice = Math.min($scope.startSlice+$scope.data.selectedOption.name, $scope.filteredForms.length);
   };
 
   $scope.prevPage = function () {
@@ -44,6 +70,7 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
 
   $scope.updateRowsPerPage = function () {
   	$scope.updateSlice();
+    $scope.completedFormsForPage = $scope.filteredForms.slice($scope.startSlice, $scope.endSlice);
   	$scope.$evalAsync();
   };
 });
