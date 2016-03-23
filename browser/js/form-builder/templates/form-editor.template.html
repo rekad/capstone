@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<ul class="nav nav-tabs">
-			  <li role="presentation" ng-class="{active: tabSelected === 'one'}" ng-click="tabSelected = 'one'"><a ng-class="{bg-primary: tabSelected === 'one'}" href="#">Add A Field</a></li>
+			  <li role="presentation" ng-class="{active: tabSelected === 'one'}" ng-click="tabSelected = 'one'"><a href="#">Add A Field</a></li>
 			  <li role="presentation" ng-class="{active: tabSelected === 'two'}" ng-click="tabSelected = 'two'"><a href="#">Edit Field</a></li>
 			  <li role="presentation" ng-class="{active: tabSelected === 'three'}" ng-click="tabSelected = 'three'"><a href="#">Form Settings</a></li>
 			</ul>
@@ -16,25 +16,44 @@
 						<button class="btn btn-default" ng-click="placeElements('dropdown')">Dropdown</button>	
 					</div>
 					<div ng-show="tabSelected === 'two'">
-						
+						<div class="checkbox">
+							<label>
+							    <input type="checkbox" value="">
+							      Required
+							</label>
+						</div>
+						<div ng-if="selected.type === 'multipleChoice'">
+							sdfskadfskljfdslkjfds
+						</div>
+					</div>
+					<div ng-show="tabSelected === 'three'">
+						<div class="form-group">
+							<label>Edit Title</label>
+							<input ng-model="title" type="text" class="form-control" placeholder="Text input">
+
+							<label>Edit Description</label>
+							<input ng-model="description" type="text" class="form-control" placeholder="Text input">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-8">
 			<div class="box box-info">
-			<div class="box-header with-border">
-              <h3 class="box-title">Form Title</h3>
-            </div>
+				<div class="box-header with-border">
+	              <h2>{{title}}</h2>
+	              <h4>{{description}}</h4>
+	            </div>
+
 				<form>
-				<div class="box-body">
-					<div ng-repeat="element in formElements">
-						<line-text ng-if="element.type === 'lineText'"></line-text>
-						<checkbox ng-if="element.type === 'checkbox'"></checkbox>
-						<dropdown ng-if="element.type === 'dropdown'"></dropdown>
-						<paragraph-text ng-if="element.type === 'paragraphText'"></paragraph-text>
-						<multiple-choice-template ng-if="element.type === 'multipleChoice'"></multiple-choice-template>
-					</div>
+					<div class="box-body">
+						<div ng-repeat="element in formElements" ng-mouseover="onHover(element)" ng-class="{'bg-info': hovered.type === element.type, 'bg-success': selected.type === element.type}" ng-click="selectElement(element)">
+							<line-text ng-if="element.type === 'lineText'"></line-text>
+							<checkbox ng-if="element.type === 'checkbox'"></checkbox>
+							<dropdown ng-if="element.type === 'dropdown'"></dropdown>
+							<paragraph-text ng-if="element.type === 'paragraphText'"></paragraph-text>
+							<multiple-choice-template ng-if="element.type === 'multipleChoice'"></multiple-choice-template>
+						</div>
 					</div>
 				</form>
 			</div>
