@@ -18,15 +18,16 @@
     </div>
 
     <form role="form">
-        <div class="box-body">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
+        <div class="box-body" ng-switch="isEditing">
+        	<div ng-repeat="element in completedForm.formElements" ng-switch-when="true">
+	            <form-element element="element" is-editing="isEditing" ng-model="formValues[$index]"></form-element>
+	        	<hr>
+	        </div>
+	        <!-- NEED TO MAKE IT SO THAT NOTHING CAN BE EDITED -->
+        	<div ng-repeat="element in completedForm.formElements" ng-switch-when="false">
+	            <form-element element="element" is-editing="isEditing" ng-model="formValues[$index]"></form-element>
+	        	<hr>
+	        </div>
         </div>
         <div class="box-footer">
             <new-form-button></new-form-button>

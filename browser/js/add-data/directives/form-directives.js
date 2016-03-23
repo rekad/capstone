@@ -1,11 +1,12 @@
 app.directive('formElement', function($compile) {
 	return {
 		scope: {
-			element: '='
+			element: '=',
+			isEditing: '='
 		},
 		require: "ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
-			var generatedFormElement = '<' + _.kebabCase(scope.element.type) + ' element="element" ng-model="value">' + '</' + _.kebabCase(scope.element.type) + '>';
+			var generatedFormElement = '<' + _.kebabCase(scope.element.type) + ' element="element" is-editing="' + scope.isEditing + '" ng-model="value">' + '</' + _.kebabCase(scope.element.type) + '>';
 			element.append($compile(generatedFormElement)(scope));
 			scope.$watch('value', function(newValue, oldValue) {
 				ngModelCtrl.$setViewValue(newValue);
@@ -17,11 +18,12 @@ app.directive('formElement', function($compile) {
 app.directive('text', function() {
 	return {
 		scope: {
-			element: '='
+			element: '=',
+			isEditing: '='
 		},
 		require: "ngModel",
-		link: function(scope, element, attr, ngModelCtrl) {
-			scope.$watch('value', function(newValue, oldValue) {
+		link: function(scope, el, attr, ngModelCtrl) {
+			scope.$watch('element.value', function(newValue, oldValue) {
 				ngModelCtrl.$setViewValue(newValue);
 			});
 		},
@@ -32,11 +34,12 @@ app.directive('text', function() {
 app.directive('number', function() {
 	return {
 		scope: {
-			element: '='
+			element: '=',
+			isEditing: '='
 		},
 		require: "ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
-			scope.$watch('value', function(newValue, oldValue) {
+			scope.$watch('element.value', function(newValue, oldValue) {
 
 
 				ngModelCtrl.$setViewValue(+newValue);
@@ -49,7 +52,8 @@ app.directive('number', function() {
 app.directive('multipleChoice', function() {
 	return {
 		scope: {
-			element: '='
+			element: '=',
+			isEditing: '='
 		},
 		require: "ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
@@ -64,12 +68,13 @@ app.directive('multipleChoice', function() {
 app.directive('checkboxes', function() {
 	return {
 		scope: {
-			element: '='
+			element: '=',
+			isEditing: '='
 		},
 		require: "ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
 			scope.values = [];
-			scope.$watch('values', function(newValue, oldValue) {
+			scope.$watch('element.value', function(newValue, oldValue) {
 				ngModelCtrl.$setViewValue(newValue);
 			});
 		},
@@ -80,7 +85,8 @@ app.directive('checkboxes', function() {
 app.directive('sectionBreak', function() {
 	return {
 		scope: {
-			element: '='
+			element: '=',
+			isEditing: '='
 		},
 		templateUrl: '/js/add-data/directives/section-break-directive.html'
 	}

@@ -2,7 +2,7 @@
 <label>{{element.label}}</label>
 	<div class="checkbox" ng-repeat="choice in element.choices">
 	<label>
-		<input type="checkbox" ng-model="values[$index]"> {{ choice }}
+<input type="checkbox" ng-model="element.value[$index]" ng-true-value="'{{choice}}'" ng-false-value="'null'" ng-readonly="!isEditing" ng-disabled="!isEditing"> {{ choice }}
 		</label>
 	</div>
 </div>

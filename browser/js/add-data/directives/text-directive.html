@@ -1,5 +1,5 @@
 <div class="form-group">
     <label>{{element.label}}</label>
-    <input type="text" class="form-control" ng-model="value">
+    <input type="text" class="form-control" ng-model="element.value" ng-readonly="!isEditing">
     </input>
 </div>
