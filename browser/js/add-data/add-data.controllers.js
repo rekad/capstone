@@ -4,5 +4,4 @@ app.controller('AddDataCtrl', function($scope, forms) {
 
 app.controller('AddDataSubmitCtrl', function($scope, form) {
 	$scope.form = form;
-	console.log(form);
 })
