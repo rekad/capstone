@@ -22,7 +22,7 @@ app.directive('text', function() {
 		require: "ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
 			scope.$watch('value', function(newValue, oldValue) {
-				ngModelCtrl.$setViewValue({'value': newValue});
+				ngModelCtrl.$setViewValue(newValue);
 			});
 		},
 		templateUrl: '/js/add-data/directives/text-directive.html'
@@ -37,7 +37,7 @@ app.directive('number', function() {
 		require: "ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
 			scope.$watch('value', function(newValue, oldValue) {
-				ngModelCtrl.$setViewValue({'value': +newValue});
+				ngModelCtrl.$setViewValue(newValue);
 			});
 		},
 		templateUrl: '/js/add-data/directives/number-directive.html'
@@ -51,9 +51,8 @@ app.directive('multipleChoice', function() {
 		},
 		require: "ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
-			scope.data = {};
-			scope.$watch('data.value', function(newValue, oldValue) {
-				ngModelCtrl.$setViewValue({'value': newValue});
+			scope.$watch('value', function(newValue, oldValue) {
+				ngModelCtrl.$setViewValue(+newValue);
 			});
 		},
 		templateUrl: '/js/add-data/directives/multiple-choice-directive.html'
@@ -69,7 +68,7 @@ app.directive('checkboxes', function() {
 		link: function(scope, element, attr, ngModelCtrl) {
 			scope.data = [];
 			scope.$watch('data', function(newValue, oldValue) {
-				ngModelCtrl.$setViewValue({'value': newValue});
+				ngModelCtrl.$setViewValue(newValue);
 			});
 		},
 		templateUrl: '/js/add-data/directives/checkboxes-directive.html'
