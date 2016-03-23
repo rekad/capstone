@@ -20,6 +20,8 @@ app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory
 		delete completedForm._id;
 		delete completedForm._rev;
 
+		console.log(completedForm);
+
 		CompletedFormsFactory.createOne(completedForm)
 			.then(function(createdForm) {
 			console.log('Form submitted!', createdForm);
