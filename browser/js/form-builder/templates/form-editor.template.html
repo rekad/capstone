@@ -19,11 +19,14 @@
 						<div class="checkbox">
 							<label>
 							    <input type="checkbox" value="">
-							      Required
+							      Require Field
 							</label>
 						</div>
 						<div ng-if="selected.type === 'multipleChoice'">
-							sdfskadfskljfdslkjfds
+							<div class="form-group">
+								<label>label</label>
+								<input type="text" class="form-control" placeholder="Text input">
+							</div>
 						</div>
 					</div>
 					<div ng-show="tabSelected === 'three'">
@@ -33,6 +36,12 @@
 
 							<label>Edit Description</label>
 							<input ng-model="description" type="text" class="form-control" placeholder="Text input">
+
+							<!-- <label>Select Label Placement</label>
+							<select class="form-control">
+								<option>Top</option>
+								<option>Left</option>
+							</select> -->
 						</div>
 					</div>
 				</div>
@@ -47,13 +56,14 @@
 
 				<form>
 					<div class="box-body">
-						<div ng-repeat="element in formElements" ng-mouseover="onHover(element)" ng-class="{'bg-info': hovered.type === element.type, 'bg-success': selected.type === element.type}" ng-click="selectElement(element)">
+						<div ng-repeat="element in formElements" ng-mouseover="onHover(element)" ng-class="{'dotted-border': hovered.type === element.type, 'bg-success': selected.type === element.type}" ng-click="selectElement(element)" >
 							<line-text ng-if="element.type === 'lineText'"></line-text>
 							<checkbox ng-if="element.type === 'checkbox'"></checkbox>
 							<dropdown ng-if="element.type === 'dropdown'"></dropdown>
 							<paragraph-text ng-if="element.type === 'paragraphText'"></paragraph-text>
 							<multiple-choice-template ng-if="element.type === 'multipleChoice'"></multiple-choice-template>
 						</div>
+						<button class="btn btn-primary pull-right">Save</button>
 					</div>
 				</form>
 			</div>
