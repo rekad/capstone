@@ -12,7 +12,7 @@
     <form>
         <div class="box-body">
         <div ng-repeat="element in form.formElements">
-            <form-element element="element" ng-model="formValues[$index]"></form-element>
+            <form-element element="element" ng-model="formValues[$index]" is-editing="true"></form-element>
         	<hr>
         </div>
         </div>
