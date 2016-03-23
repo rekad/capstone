@@ -3,6 +3,7 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
   $scope.completedFormsForPage = $scope.completedForms.slice(0,10);
   $scope.formTemplate = formTemplate;
   $scope.currentPage = 1;
+  $scope.formTemplateId = $scope.formTemplate._id;
 
   $scope.data = {availableOptions: [{name: 10, id:0}, {name: 25, id: 1}, {name: 50, id:2},{name:100, id:3}], selectedOption:{name: 10, id:0}};
 
@@ -54,6 +55,8 @@ app.controller('CompletedFormsCtrl', function($scope, forms) {
 app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFormsFactory) {
 	$scope.completedForm = completedForm;
 	$scope.isEditing = false;
+	$scope.formTemplateId = $scope.completedForm.formTemplateId;
+
 
 	$scope.toggleEdit = function () {
 		$scope.isEditing = !$scope.isEditing;
