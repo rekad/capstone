@@ -16,6 +16,9 @@ app.factory('CompletedFormsFactory', function($window) {
 		},
 		fetchOne: function(completedFormId) {
 			return db.get(completedFormId);
+		},
+		updateOne: function(form) {
+			return db.put(form);
 		}
 	};
 });

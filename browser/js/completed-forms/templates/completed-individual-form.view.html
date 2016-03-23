@@ -1,4 +1,5 @@
 
+<button class="btn btn-flat" ui-sref="completed-forms.forms-list({formTemplateId: completedForm.formTemplateId})"> <i class="fa fa-arrow-left"></i> Return to completed forms listing</button>
 
 <div class="box box-primary ">
 
@@ -7,8 +8,10 @@
         	<small>{{completedForm.description}}</small>
         </h3>
         <div class="container">
-            <button class="btn btn-primary"> <i class="fa fa-edit"></i> Edit Form</button>
-            <button class="btn btn-danger"> <i class="fa fa-plus-circle"></i>Fill Out New Form</button>
+        	<!-- NEED TO HOOK THIS UP TO CHANGE FROM VIEW TO EDIT (like new page form directives but with values) -->
+            <button class="btn btn-primary btn-flat"> <i class="fa fa-edit"></i> Edit Form</button>
+            <!-- NEED TO HOOK THIS UP TO GO TO A NEW FORM PAGE -->
+            <button class="btn btn-danger btn-flat"> <i class="fa fa-plus-circle"></i>Fill Out New Form</button>
         </div>
     </div>
 
@@ -22,6 +25,9 @@
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
+        </div>
+        <div class="box-footer">
+        	<button class="btn btn-flat bg-olive" ng-click="updateForm()"><i class="fa fa-save"></i>Save Changes</button>
         </div>
     </form>
 </div>
