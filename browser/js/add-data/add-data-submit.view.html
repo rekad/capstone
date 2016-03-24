@@ -1,28 +1,40 @@
-<div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title">{{form.title}}</h3>
-        <p>{{form.description}}</p>
-        <div class="box-tools pull-right">
+<section class="content-header">
+    <h1>
+        New Form Data
+        <small>This page allows you to fill out a new form</small>
+    </h1>
+    <br>
+    <button class="btn btn-flat btn-primary" ui-sref="completed-forms.forms-list({formTemplateId: form._id})">View All Completed Forms</button>
+</section>
+
+<section class="content">
+    <!-- Your Page Content Here -->
+    <div class="box">
+
+        <div class="box-header with-border">
+            <h3 class="box-title">{{form.title}}</h3>
+            <p>{{form.description}}</p>
+            <div class="box-tools pull-right">
             <!-- Buttons, labels, and many other things can be placed here! -->
             <!-- Here is a label for example -->
-        </div>
-        <!-- /.box-tools -->
-    </div>
-    <!-- /.box-header -->
-    <form>
-        <div class="box-body">
-        <div ng-repeat="element in form.formElements">
-            <form-element element="element" ng-model="formValues[$index]"></form-element>
-        	<hr>
-        </div>
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-            <div class="col-xs-2 pull-right">
-                <button type="submit" class="btn btn-primary btn-block btn-flat" ng-click="submitForm()">Save</button>
             </div>
+            <!-- /.box-tools -->
         </div>
-        <!-- box-footer -->
-    </form>
-</div>
-<!-- /.box
+
+        <form>
+            <div class="box-body">
+                <div ng-repeat="element in form.formElements">
+                    <form-element element="element" ng-model="formValues[$index]" is-editing="true"></form-element>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <div class="col-xs-2 pull-right">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat" ng-click="submitForm()">Save</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</section>

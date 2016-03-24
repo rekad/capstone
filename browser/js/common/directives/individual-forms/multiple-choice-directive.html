@@ -2,7 +2,7 @@
     <label>{{element.label}}</label>
     <div class="radio" ng-repeat="choice in element.choices">
         <label>
-            <input type="radio" name="optionsRadio" ng-model="value"> {{ choice }}
+            <input type="radio" name="optionsRadio" ng-model="value" ng-readonly="!isEditing" ng-disabled="!isEditing"> {{ choice }}
         </label>
     </div>
 </div>
