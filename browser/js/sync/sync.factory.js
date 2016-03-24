@@ -2,7 +2,7 @@ app.factory("SyncFactory", function($window) {
 
 	var PouchDB = $window.PouchDB;
     var db = PouchDB('thekraken-test');
-    var remoteDb = 'http://127.0.0.1:5984/thekraken-test';
+    var remoteDb = 'http://104.131.103.208:5984/thekraken-test';
 
     return {
 
@@ -25,7 +25,6 @@ app.factory("SyncFactory", function($window) {
             // This has to be optimized using design docs and views
             return db.allDocs({include_docs:true})
                 .then(function(docs) {
-
                     var groupedCompleted = _.groupBy(docs.rows.filter(function(row) {
                         return row.doc.type === "completedForm";
                     }).map(function(row) {return row.doc}), function(doc) {
