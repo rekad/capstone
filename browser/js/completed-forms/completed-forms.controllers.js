@@ -80,7 +80,7 @@ app.controller('CompletedFormsCtrl', function($scope, forms) {
 });
 
 app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFormsFactory) {
-	$scope.completedForm = completedForm;
+	$scope.completedForm = angular.copy(completedForm);
 	$scope.isEditing = false;
 	$scope.formTemplateId = $scope.completedForm.formTemplateId;
 
@@ -89,14 +89,19 @@ app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFo
 		$scope.isEditing = !$scope.isEditing;
 	};
 
-	$scope.updateForm = function () {
+  $scope.cancelEdit = function () {
+    $scope.toggleEdit();
+    $scope.completedForm = angular.copy(completedForm);
+  };
 
-		if ($scope.formValues) {
-			completedForm.formElements = completedForm.formElements.map(function(el, i) {
-				el.value = $scope.formValues[i] ? $scope.formValues[i] : el.value;
-				return el;
-			});
-		}
+	$scope.updateForm = function () {
+		// if ($scope.formValues) {
+
+		// 	completedForm.formElements = completedForm.formElements.map(function(el, i) {
+		// 		el.value = $scope.formValues[i] ? $scope.formValues[i] : el.value;
+		// 		return el;
+		// 	});
+		// }
 
 		console.log(completedForm);
 
