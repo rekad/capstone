@@ -1,21 +1,22 @@
 app.controller('FormBuilder', function($scope){
 	$scope.tabSelected = 'one';
 	$scope.formElements = [
-	{type: 'checkbox', options:[{value: "option 1"}, {value: "option 2"}, {value: "option 3"}], id: 0}, 
-	{type: 'multipleChoice', options:[{value: "option 1"}, {value: "option 2"}, {value: "option 3"}], id: 1}, 
-	{type: 'paragraphText', id: 2}, 
-	{type: 'dropdown', options:[{value: "opt1"}, {value: "opt2"}, {value: "opt3"}], id: 3}, 
-	{type: 'lineText', id: 4}];
+	{type: 'checkbox', options:[{value: "option 1"}, {value: "option 2"}, {value: "option 3"}], id: 0, required: false}, 
+	{type: 'multipleChoice', options:[{value: "option 1"}, {value: "option 2"}, {value: "option 3"}], id: 1, required: false}, 
+	{type: 'paragraphText', id: 2, required: false}, 
+	{type: 'dropdown', options:[{value: "option 1"}, {value: "option 2"}, {value: "option 3"}], id: 3, required: false}, 
+	{type: 'lineText', id: 4, required: false}];
 
 	
 	$scope.placeElements = function(type) {
 		$scope.elementToAdd = {type: type};
 		$scope.formElements.push($scope.elementToAdd);
 		if(type === 'checkbox' || type === 'dropdown' || type === 'multipleChoice') {
-			$scope.elementToAdd.options = ["option 1", "option 2", "option 3"];
+			$scope.elementToAdd.options = [{value: "option 1"}, {value: "option 2"}, {value: "option 3"}];
 		}
 		$scope.elementToAdd.id = nextId;
 		nextId++;
+		$scope.elementToAdd.required = false;
 	}
 
 	$scope.title = $scope.title || 'Form Title';
@@ -44,7 +45,11 @@ app.controller('FormBuilder', function($scope){
 
 	var nextId = $scope.formElements.length; 
 
-	// $scope.removeChoice = function(element, choice){
-	// 	element.options.splice(element.options.indexOf(choice));
-	// }
+	$scope.addChoice = function(element){
+		element.options.push({value: "New Option"});
+	}
+
+	$scope.removeChoice = function(element, choice){
+		element.options.splice(element.options.indexOf(choice));
+	}
 });

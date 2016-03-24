@@ -27,17 +27,19 @@
 							<div class="form-group">
 								<label>Choices</label>
 								<div class="input-group" ng-repeat="option in selected.options" >
-								<input type="text" class="form-control" ng-model="option.value"><span class="input-group-btn">
-								<button class="btn btn-danger btn-flat">Remove</button>
-								</span>
-							</div>
-								
+									<input type="text" class="form-control" ng-model="option.value">
+									<span class="input-group-btn">
+										<button class="btn btn-danger" ng-click="removeChoice(selected)">Remove</button>
+									</span>
+								</div>
+								<button class="btn btn-success" ng-click="addChoice(selected)">Add Choice</button>
 							</div>
 						</div>
 					</div>
 					<div ng-show="tabSelected === 'three'">
 						<div class="form-group">
 							<label>Edit Title</label>
+
 							<input ng-model="title" type="text" class="form-control" placeholder="Text input">
 
 							<label>Edit Description</label>
@@ -45,7 +47,7 @@
 
 							<!-- <label>Select Title Placement</label>
 							<select class="form-control">
-								<option ng-click>Left</option>
+								<option>Left</option>
 								<option>Center</option>
 								<option>Right</option>
 							</select> -->
@@ -61,7 +63,7 @@
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<div class="box box-info form-box">
+			<div class="box box-primary form-box">
 				<div class="box-header with-border">
 	              <h2>{{title}}</h2>
 	              <h4>{{description}}</h4>
@@ -76,6 +78,7 @@
 							<dropdown ng-if="element.type === 'dropdown'"></dropdown>
 							<paragraph-text ng-if="element.type === 'paragraphText'"></paragraph-text>
 							<multiple-choice-template ng-if="element.type === 'multipleChoice'"></multiple-choice-template>
+							<number-template ng-if="element.type === 'number'"></number-template>
 						</div>
 						<hr>
 					</div>
