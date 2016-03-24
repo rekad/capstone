@@ -1,39 +1,44 @@
-
-<button class="btn btn-flat" ui-sref="completed-forms.forms-list({formTemplateId: completedForm.formTemplateId})"> <i class="fa fa-arrow-left"></i> Return to completed forms listing</button> <br><br>
-
-<div class="box box-primary">
-
-    <div class="box-header with-border container">
-        <h3 class="box-title">{{completedForm.title}}
-        	<small>{{completedForm.description}}</small>
+<section class="content-header">
+    <h1>
+        Form Detail View
+    </h1>
+    <br>
+    <button class="btn btn-flat" ui-sref="completed-forms.forms-list({formTemplateId: completedForm.formTemplateId})"> <i class="fa fa-arrow-left"></i> Return to completed forms listing</button>
+</section>
+<section class="content">
+    <div class="box box-primary">
+        <div class="box-header with-border container">
+            <h3 class="box-title">{{completedForm.title}}
+            <small>{{completedForm.description}}</small>
         </h3>
-			<br><br>		
+            <br>
+            <br>
             <!-- NEED TO HOOK THIS UP TO GO TO A NEW FORM PAGE -->
             <new-form-button></new-form-button>
-        	<!-- NEED TO HOOK THIS UP TO CHANGE FROM VIEW TO EDIT (like new page form directives but with values) -->
-			<edit-button></edit-button>
-			<!-- NEED TO HOOK THIS UP TO UPDATE POUCHDB -->
-			<save-changes-button></save-changes-button>
-        	<cancel-edit-button></cancel-edit-button>
+            <!-- NEED TO HOOK THIS UP TO CHANGE FROM VIEW TO EDIT (like new page form directives but with values) -->
+            <edit-button></edit-button>
+            <!-- NEED TO HOOK THIS UP TO UPDATE POUCHDB -->
+            <save-changes-button></save-changes-button>
+            <cancel-edit-button></cancel-edit-button>
+        </div>
+        <form role="form">
+            <div class="box-body" ng-switch="isEditing">
+                <div ng-repeat="element in completedForm.formElements" ng-switch-when="true">
+                    <form-element element="element" is-editing="isEditing" ng-model="formValues[$index]"></form-element>
+                    <hr>
+                </div>
+                <!-- NEED TO MAKE IT SO THAT NOTHING CAN BE EDITED -->
+                <div ng-repeat="element in completedForm.formElements" ng-switch-when="false">
+                    <form-element element="element" is-editing="isEditing" ng-model="formValues[$index]"></form-element>
+                    <hr>
+                </div>
+            </div>
+            <div class="box-footer">
+                <new-form-button></new-form-button>
+                <edit-button></edit-button>
+                <save-changes-button></save-changes-button>
+                <cancel-edit-button></cancel-edit-button>
+            </div>
+        </form>
     </div>
-
-    <form role="form">
-        <div class="box-body" ng-switch="isEditing">
-        	<div ng-repeat="element in completedForm.formElements" ng-switch-when="true">
-	            <form-element element="element" is-editing="isEditing" ng-model="formValues[$index]"></form-element>
-	        	<hr>
-	        </div>
-	        <!-- NEED TO MAKE IT SO THAT NOTHING CAN BE EDITED -->
-        	<div ng-repeat="element in completedForm.formElements" ng-switch-when="false">
-	            <form-element element="element" is-editing="isEditing" ng-model="formValues[$index]"></form-element>
-	        	<hr>
-	        </div>
-        </div>
-        <div class="box-footer">
-            <new-form-button></new-form-button>
-			<edit-button></edit-button>
-			<save-changes-button></save-changes-button>
-        	<cancel-edit-button></cancel-edit-button>
-        </div>
-    </form>
-</div>
+</section>
