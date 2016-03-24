@@ -11,35 +11,52 @@ app.config(function($stateProvider) {
 	});
 })
 
-app.controller('SyncCtrl', function($scope, SyncFactory, stats) {
+app.controller('SyncCtrl', function($scope, SyncFactory, stats, $uibModal) {
 	$scope.stats = stats;
 	$scope.syncResult = '';
 
 	$scope.syncUp = function () {
 		SyncFactory.syncUp()
-		.then(function(res) {
-			$scope.syncResult = res;
-			console.log('sync up successful');
-			$scope.$apply();
+		.then(function(result) {
+			$uibModal.open({
+				templateUrl: '/js/sync/syncUp-success.html',
+				controller: function($scope, $uibModalInstance) {
+					$scope.close = function() {
+						$uibModalInstance.close();
+					}
+					$scope.result = result;
+				}
+			});
 		})
 	}
 
 	$scope.syncDown = function() {
 		SyncFactory.syncDown()
-		.then(function(res) {
-			$scope.syncResult = res;
-			console.log('sync down successful');
-			$scope.$apply();
-
+		.then(function(result) {
+			$uibModal.open({
+				templateUrl: '/js/sync/syncDown-success.html',
+				controller: function($scope, $uibModalInstance) {
+					$scope.close = function() {
+						$uibModalInstance.close();
+					}
+					$scope.result = result;
+				}
+			});
 		})
 	}
 
 	$scope.clearLocalDb = function() {
 		SyncFactory.clearDb()
-		.then(function(res) {
-			console.log(res)
-			$scope.syncResult = res;
-			console.log('cleared local db');
+		.then(function(result) {
+			$uibModal.open({
+				templateUrl: '/js/sync/clearDb-success.html',
+				controller: function($scope, $uibModalInstance) {
+					$scope.close = function() {
+						$uibModalInstance.close();
+					}
+					$scope.result = result;
+				}
+			});
 		})
 	}
 })
