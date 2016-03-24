@@ -13,7 +13,7 @@ app.directive('newFormButton', function() {
 app.directive('cancelEditButton', function() {
 	return {
 		restrict: 'E',
-		template: '<button class="btn btn-flat" ng-click="toggleEdit()" ng-show="isEditing"><i class="fa fa-times"></i>Cancel Edits</button>'
+		template: '<button class="btn btn-flat" ng-click="cancelEdit()" ng-show="isEditing"><i class="fa fa-times"></i>Cancel Edits</button>'
 	};
 });
 app.directive('saveChangesButton', function() {
