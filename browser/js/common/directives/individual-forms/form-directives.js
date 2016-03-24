@@ -15,6 +15,9 @@ app.directive('formElement', function($compile) {
 	}
 });
 
+
+///////////////////
+
 app.directive('text', function() {
 	return {
 		scope: {
@@ -40,8 +43,6 @@ app.directive('number', function() {
 		require: "ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
 			scope.$watch('element.value', function(newValue, oldValue) {
-
-
 				ngModelCtrl.$setViewValue(+newValue);
 			});
 		},
@@ -55,11 +56,12 @@ app.directive('multipleChoice', function() {
 			element: '=',
 			isEditing: '='
 		},
-		require: "ngModel",
+		require: "?ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
-			scope.$watch('value', function(newValue, oldValue) {
+			scope.onChange = function(newValue) {
+				console.log('mc changed');
 				ngModelCtrl.$setViewValue(newValue);
-			});
+			};
 		},
 		templateUrl: '/js/common/directives/individual-forms/multiple-choice-directive.html'
 	}
