@@ -24,12 +24,12 @@
         <form role="form">
             <div class="box-body" ng-switch="isEditing">
                 <div ng-repeat="element in completedForm.formElements" ng-switch-when="true">
-                    <form-element element="element" is-editing="isEditing" ng-model="formValues[$index]"></form-element>
+                    <form-element element="element" is-editing="isEditing" ng-model="formElements[$index]"></form-element>
                     <hr>
                 </div>
                 <!-- NEED TO MAKE IT SO THAT NOTHING CAN BE EDITED -->
                 <div ng-repeat="element in completedForm.formElements" ng-switch-when="false">
-                    <form-element element="element" is-editing="isEditing" ng-model="formValues[$index]"></form-element>
+                    <form-element element="element" is-editing="isEditing" ng-model="formElements[$index]"></form-element>
                     <hr>
                 </div>
             </div>
