@@ -50,8 +50,39 @@ body {
   box-sizing: content-box;
 }
 
+.form-element {
+  position: relative;
+  .fa-times {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .btn-box-tool {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.select-group {
+  margin-top: 20px;
+}
+
+.form-box {
+  .box-body{
+    min-height: 70vh;
+  }
+  button {
+    margin-right: 10px;
+  }
+
+  .fa {
+    font-size: 150%;
+
+  }
+}
 
 
-/*.bg-info {
-  border: ;
-}*/
+
+
+

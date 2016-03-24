@@ -1,9 +1,9 @@
-<div class="form-group">
+<div class="form-group select-group">
 <label>Select One</label>
   <div class="radio" ng-repeat="option in element.options">
     <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-     {{option}}
+      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+     {{option.value}}
     </label>
   </div>
 </div>

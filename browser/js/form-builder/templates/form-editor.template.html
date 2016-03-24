@@ -13,7 +13,8 @@
 						<button class="btn btn-default" ng-click="placeElements('paragraphText')">Paragraph Text</button>	
 						<button class="btn btn-default" ng-click="placeElements('multipleChoice')">Multiple Choice</button>	
 						<button class="btn btn-default" ng-click="placeElements('checkbox')">Checkboxes</button>	
-						<button class="btn btn-default" ng-click="placeElements('dropdown')">Dropdown</button>	
+						<button class="btn btn-default" ng-click="placeElements('dropdown')">Dropdown</button>
+						<button class="btn btn-default" ng-click="placeElements('number')">Number</button>		
 					</div>
 					<div ng-show="tabSelected === 'two'">
 						<div class="checkbox">
@@ -22,10 +23,15 @@
 							      Require Field
 							</label>
 						</div>
-						<div ng-if="selected.type === 'multipleChoice'">
+						<div ng-if="selected.type === 'multipleChoice' || selected.type === 'checkbox' || selected.type === 'dropdown' ">
 							<div class="form-group">
-								<label>label</label>
-								<input type="text" class="form-control" placeholder="Text input">
+								<label>Choices</label>
+								<div class="input-group" ng-repeat="option in selected.options" >
+								<input type="text" class="form-control" ng-model="option.value"><span class="input-group-btn">
+								<button class="btn btn-danger btn-flat">Remove</button>
+								</span>
+							</div>
+								
 							</div>
 						</div>
 					</div>
@@ -36,6 +42,13 @@
 
 							<label>Edit Description</label>
 							<input ng-model="description" type="text" class="form-control" placeholder="Text input">
+
+							<!-- <label>Select Title Placement</label>
+							<select class="form-control">
+								<option ng-click>Left</option>
+								<option>Center</option>
+								<option>Right</option>
+							</select> -->
 
 							<!-- <label>Select Label Placement</label>
 							<select class="form-control">
@@ -48,24 +61,29 @@
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<div class="box box-info">
+			<div class="box box-info form-box">
 				<div class="box-header with-border">
 	              <h2>{{title}}</h2>
 	              <h4>{{description}}</h4>
 	            </div>
-
 				<form>
 					<div class="box-body">
-						<div ng-repeat="element in formElements" ng-mouseover="onHover(element)" ng-class="{'dotted-border': hovered.type === element.type, 'bg-success': selected.type === element.type}" ng-click="selectElement(element)" >
+						<div class="form-element" ng-repeat="element in formElements" ng-mouseover="onHover(element)" ng-class="{'dotted-border': hovered.id === element.id, 'bg-light-blue': element.id === selected.id}" ng-click="selectElement(element)">
+							<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
+              				<i ng-click="removeElement(element)" ng-class="{'fa': selected.type === element.type, 'fa-times': selected.type === element.type}"></i></button>
 							<line-text ng-if="element.type === 'lineText'"></line-text>
 							<checkbox ng-if="element.type === 'checkbox'"></checkbox>
 							<dropdown ng-if="element.type === 'dropdown'"></dropdown>
 							<paragraph-text ng-if="element.type === 'paragraphText'"></paragraph-text>
 							<multiple-choice-template ng-if="element.type === 'multipleChoice'"></multiple-choice-template>
 						</div>
-						<button class="btn btn-primary pull-right">Save</button>
+						<hr>
 					</div>
 				</form>
+				<div class="box-footer">
+							<button class="btn btn-primary pull-right">Save</button>
+							<button class="btn btn-danger pull-right" ng-click="clearForm()">Clear Form</button>
+						</div>
 			</div>
 		</div>
 	</div>
