@@ -80,7 +80,7 @@ app.controller('CompletedFormsCtrl', function($scope, forms) {
 });
 
 app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFormsFactory) {
-	$scope.completedForm = completedForm;
+	$scope.completedForm = angular.copy(completedForm);
 	$scope.isEditing = false;
 	$scope.formTemplateId = $scope.completedForm.formTemplateId;
 
@@ -91,20 +91,14 @@ app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFo
 
   $scope.cancelEdit = function () {
     $scope.toggleEdit();
-
-    //there might be a better way to do this, but I'm not seeing it. I tried to use angular.copy initially (when pulling in completed forms) and then here; however, the initial angular.copy busts the save for some reason
-    CompletedFormsFactory.fetchOne(completedForm._id)
-    .then(function (originalForm) {
-      $scope.completedForm = originalForm;
-      $scope.$evalAsync();
-    })
+    $scope.completedForm = angular.copy(completedForm);
   };
 
 	$scope.updateForm = function () {
 
-		console.log(completedForm);
+		console.log($scope.completedForm);
 
-		CompletedFormsFactory.updateOne(completedForm)
+		CompletedFormsFactory.updateOne($scope.completedForm)
 			.then(function(updatedForm) {
 				console.log('Form submitted!', updatedForm);
 				$scope.completedForm._rev = updatedForm.rev;
