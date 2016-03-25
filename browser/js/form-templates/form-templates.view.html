@@ -15,8 +15,8 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="header">FORM DATA</li>
-
-            <li ui-sref-active="active" ui-sref="completed-forms.forms-list({formTemplateId: form._id})" ng-repeat="form in forms"><a ><i class="fa fa-file-text-o"></i> <span>{{form.title}}</span></a></li>
+            <button ng-click="createNewForm()">Add New</button>
+            <li ui-sref-active="active" ui-sref="form-templates.form-builder({id: form._id})" ng-repeat="form in forms"><a ><i class="fa fa-file-text-o"></i> <span>{{form.title}}</span></a></li>
 
             <!-- Optionally, you can add icons to the links -->
 <!--             <li class="active"><a href="#"><i class="fa fa-file-text-o"></i> </a></li>

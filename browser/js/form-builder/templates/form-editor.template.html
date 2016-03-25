@@ -26,7 +26,7 @@
                             </label>
                         </div class="form-group">
                         <label>Edit Label</label>
-                         <input type="text" class="form-control" ng-model="textLabel">
+                        <input type="text" class="form-control" ng-model="selected.label">
                         <div>
                         </div>
                         <div ng-if="selected.type === 'multipleChoice' || selected.type === 'checkbox' || selected.type === 'dropdown' ">
@@ -56,7 +56,7 @@
                         <div class="form-group">
                             <label>Edit Title</label>
                             <div class="input-group">
-                                <input ng-model="title" type="text" class="form-control" placeholder="Text input">
+                                <input ng-model="formTemplate.title" type="text" class="form-control" placeholder="Text input">
                                 <span class="input-group-btn">
 
                       <button ng-click="setAlignment('left', 'title')" type="button" class="btn btn-primary btn-flat"><i class="fa fa-align-left"></i></button>
@@ -66,7 +66,7 @@
                             </div>
                             <label>Edit Description</label>
                             <div class="input-group">
-                                <input ng-model="description" type="text" class="form-control" placeholder="Text input">
+                                <input ng-model="formTemplate.description" type="text" class="form-control" placeholder="Text input">
                                 <span class="input-group-btn">
                       <button ng-click="setAlignment('left', 'description')" type="button" class="btn btn-primary btn-flat"><i class="fa fa-align-left"></i></button>
                       <button ng-click="setAlignment('center', 'description')" type="button" class="btn btn-primary btn-flat"><i class="fa fa-align-center"></i></button>
@@ -92,8 +92,8 @@
         <div class="col-sm-8">
             <div class="box box-primary form-box">
                 <div class="box-header with-border">
-                    <h2 ng-class="{'text-right': titleAlign === 'right', 'text-left': titleAlign === 'left', 'text-center': titleAlign === 'center'}">{{title}}</h2>
-                    <h4 ng-class="{'text-right': descAlign === 'right', 'text-left': descAlign === 'left', 'text-center': descAlign === 'center'}">{{description}}</h4>
+                    <h2 ng-class="{'text-right': titleAlign === 'right', 'text-left': titleAlign === 'left', 'text-center': titleAlign === 'center'}">{{formTemplate.title}}</h2>
+                    <h4 ng-class="{'text-right': descAlign === 'right', 'text-left': descAlign === 'left', 'text-center': descAlign === 'center'}">{{formTemplate.description}}</h4>
                 </div>
                 <form>
                     <div class="box-body">
@@ -110,11 +110,10 @@
                             <email-template ng-if="element.type === 'email'"></email-template>
                             <address-template ng-if="element.type === 'address'"></address-template>
                         </div>
-                        <hr>
                     </div>
                 </form>
                 <div class="box-footer">
-                    <button class="btn btn-primary pull-right">Save</button>
+                    <button class="btn btn-primary pull-right" ng-click="save()">Save</button>
                     <button class="btn btn-danger pull-right" ng-click="clearForm()">Clear Form</button>
                 </div>
             </div>

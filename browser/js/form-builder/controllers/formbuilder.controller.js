@@ -1,116 +1,74 @@
-app.controller('FormBuilder', function($scope, FormTemplatesFactory){
+app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplate) {
 
-	var formTemplate = {
-		title: $scope.title,
-		description: $scope.description,
-		type: "formTemplate",
-		formElements: $scope.formElements
-	};
+    $scope.formTemplate = formTemplate;
+    $scope.title = $scope.formTemplate.title;
+    $scope.description = $scope.formTemplate.description;
 
-	$scope.submitForm = FormTemplatesFactory.submitForm(formTemplate);
+    $scope.save = function() {
+            FormTemplatesFactory.updateForm($scope.formTemplate)
+                .then(function(savedForm) {
+                    console.log(savedForm);
+                })
+        }
 
-	$scope.titleAlign = "left";
-	$scope.descAlign = "left";
-	$scope.tabSelected = 'one';
-	$scope.formElements = [
-	{type: 'checkbox', options:[{value: "option 1"}, {value: "option 2"}, {value: "option 3"}], id: 0, required: false}, 
-	{type: 'multipleChoice', options:[{value: "option 1"}, {value: "option 2"}, {value: "option 3"}], id: 1, required: false}, 
-	{type: 'paragraphText', id: 2, required: false}, 
-	{type: 'dropdown', options:[{value: "option 1"}, {value: "option 2"}, {value: "option 3"}], id: 3, required: false}, 
-	{type: 'lineText', id: 4, required: false},
-	{type: 'number', id: 5, required: false}];
+    $scope.titleAlign = "left";
+    $scope.descAlign = "left";
+    $scope.tabSelected = 'one';
+    $scope.formElements = formTemplate.formElements;
 
-	
-	$scope.placeElements = function(type) {
-		$scope.elementToAdd = {type: type};
-		$scope.formElements.push($scope.elementToAdd);
-		if(type === 'checkbox' || type === 'dropdown' || type === 'multipleChoice') {
-			$scope.elementToAdd.options = [{value: "option 1"}, {value: "option 2"}, {value: "option 3"}];
-		}
-		$scope.elementToAdd.id = nextId;
-		nextId++;
-		$scope.elementToAdd.required = false;
-	}
+    $scope.placeElements = function(type) {
+        $scope.elementToAdd = { type: type };
+        $scope.formElements.push($scope.elementToAdd);
+        if (type === 'checkbox' || type === 'dropdown' || type === 'multipleChoice') {
+            $scope.elementToAdd.options = [{ value: "option 1" }, { value: "option 2" }, { value: "option 3" }];
+            $scope.elementToAdd.label = "Select";
+        } else if (type === 'number') $scope.elementToAdd.label = "Enter Value";
+        else if (type === 'lineText' || type === 'paragraphText') $scope.elementToAdd.label = "Enter Text";
+        else if (type === 'phone') $scope.elementToAdd.label = "Phone Number";
+        else if (type === 'email') $scope.elementToAdd.label = "Email";
+        else if (type === 'address') $scope.elementToAdd.label = "Address";
 
-	$scope.required = false;
+        $scope.elementToAdd.id = nextId;
+        nextId++;
+        $scope.elementToAdd.required = false;
+    }
 
-	$scope.title = $scope.title || 'Form Title';
-	$scope.description = $scope.description || 'This describes my form!';
+    $scope.required = false;
+    $scope.selectElement = function(e) {
+        console.log("selected");
+        $scope.selected = e;
+        $scope.tabSelected = 'two';
+    }
 
-	// $scope.minVal = $scope.minVal || null;
-	// $scope.maxVal = $scope.maxVal || null;
+    $scope.onHover = function(e) {
+        $scope.hovered = e;
+    }
 
-	$scope.selectElement = function(e) {
-		console.log("selected");
-		$scope.selected = e;
-		$scope.tabSelected = 'two';
-	}
+    $scope.removeElement = function(el) {
+        var indexToRemove = $scope.formElements.indexOf(el);
+        $scope.formElements.splice(indexToRemove, 1);
+        $scope.selected = {};
+    }
 
-	$scope.onHover = function(e) {
-		$scope.hovered = e;
-	}
+    $scope.clearForm = function() {
+        $scope.formElements = [];
+        $scope.selected = {};
+    }
 
-	$scope.removeElement = function(el){
-		var indexToRemove = $scope.formElements.indexOf(el);
-		$scope.formElements.splice(indexToRemove, 1);
-		$scope.selected = {};
-	}
+    var nextId = $scope.formElements.length;
 
-	$scope.clearForm = function(){
-		$scope.formElements = [];
-	}
+    $scope.addChoice = function(element) {
+        element.options.push({ value: "New Option" });
+    }
 
-	var nextId = $scope.formElements.length; 
+    $scope.removeChoice = function(element, choice) {
+        if (element.options.length > 1) {
+            element.options.splice(element.options.indexOf(choice), 1);
+        }
+    }
 
-	$scope.addChoice = function(element){
-		element.options.push({value: "New Option"});
-	}
-
-	$scope.removeChoice = function(element, choice){
-		if(element.options.length > 1) {
-			element.options.splice(element.options.indexOf(choice), 1);
-		}
-	}
-
-	$scope.setAlignment = function(alignment, type){
-		if(type === "description") $scope.descAlign = alignment; 
-		if(type === "title") $scope.titleAlign = alignment; 
-	}
-
-	$scope.textLable = $scope.textLable || "Enter Text";
-	$scope.addressLable = $scope.addressLable || "Address";
-	$scope.radioLable = $scope.radioLable || "Select One";
-	$scope.checkboxLable = $scope.checkboxLable || "Select";
-	$scope.paragraphLable = $scope.paragraphtLable || "Enter Text";
-	$scope.dropdownLabel = $scope.dropdownLabel || "Select";
-	$scope.numberLabel = $scope.numberLabel || "Enter A Number";
-	$scope.emailLabel = $scope.emailLabel || "Email";
-	$scope.phoneLabel = $scope.phoneLabel || "Phone";
-
-
-
-
-
-
-	// $scope.getLabel = function(type){
-	// 	if(type === "address") $scope.lable = $scope.lable || "Address";
-	// 	if(type === "address") $scope.lable = $scope.lable || "Enter Text";
-	// 	if(type === "address") $scope.lable = $scope.lable || "Select One";
-	// 	if(type === "address") $scope.lable = $scope.lable || "Select";
-	// 	if(type === "address") $scope.lable = $scope.lable || "Enter Text";
-	// 	if(type === "address") $scope.label = $scope.label || "Select";
-	// 	if(type === "address") $scope.label = $scope.label || "Enter A Number";
-	// 	if(type === "address") $scope.label = $scope.label || "Email";
-	// 	if(type === "address") $scope.label = $scope.label || "Phone Number";
-	// }
-
-
-
-
-
-
-
-
-
-
+    $scope.setAlignment = function(alignment, type) {
+        if (type === "description") $scope.descAlign = alignment;
+        if (type === "title") $scope.titleAlign = alignment;
+    }
 });
