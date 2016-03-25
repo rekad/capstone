@@ -57,7 +57,8 @@ app.directive('multipleChoice', function() {
 		},
 		require: "ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
-			scope.$watch('value', function(newValue, oldValue) {
+			scope.$watch('element.value', function(newValue, oldValue) {
+				console.log('there is a change in the radio button');
 				ngModelCtrl.$setViewValue(newValue);
 			});
 		},

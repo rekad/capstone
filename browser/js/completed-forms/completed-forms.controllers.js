@@ -91,6 +91,8 @@ app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFo
 
   $scope.cancelEdit = function () {
     $scope.toggleEdit();
+
+    //there might be a better way to do this, but I'm not seeing it. I tried to use angular.copy initially (when pulling in completed forms) and then here; however, the initial angular.copy busts the save for some reason
     CompletedFormsFactory.fetchOne(completedForm._id)
     .then(function (originalForm) {
       $scope.completedForm = originalForm;
@@ -99,12 +101,6 @@ app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFo
   };
 
 	$scope.updateForm = function () {
-		// if ($scope.formValues) {
-		// 	completedForm.formElements = completedForm.formElements.map(function(el, i) {
-		// 		el.value = $scope.formValues[i] ? $scope.formValues[i] : el.value;
-		// 		return el;
-		// 	});
-		// }
 
 		console.log(completedForm);
 
