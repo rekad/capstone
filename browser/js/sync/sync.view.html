@@ -1,4 +1,92 @@
-<button ng-click="syncUp()">Sync Up</button>
-<button ng-click="syncDown()">Sync Down</button>
-<button ng-click="clearLocalDb()">Clear local database</button>
-
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper no-sidebar">
+    <div class="container">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+            Data Synchronization
+        <small>
+        	Syncronize your data with the data from other users from your organization.
+        </small>
+        </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <!-- Your Page Content Here -->
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Your Data Overview</h3>
+                        </div>
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            Nr.
+                                        </th>
+                                        <th>
+                                            Form Name
+                                        </th>
+                                        <th>
+                                            Count
+                                        </th>
+                                    </tr>
+                                    <tr ng-repeat="formTemplate in stats.completedFormsPerTemplate">
+                                        <td>{{$index}}</td>
+                                        <td>{{formTemplate.title}}</td>
+                                        <td>{{formTemplate.count}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total: </td>
+                                        <td>
+                                            {{stats.formTemplatesCount}}
+                                        </td>
+                                        <td>
+                                            {{stats.completedFormsCount}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Synchronize your data</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="callout callout-success">
+                                <h4>
+                        		Status: Online
+                        	</h4>
+                                <p>
+                                    You are connected to the central server.
+                                </p>
+                            </div>
+                            <button ng-click="syncDown()" class="btn btn-primary btn-flat">Sync Down</button>
+                            <button ng-click="syncUp()" class="btn btn-warning btn-flat">Sync Up</button>
+                            <button ng-click="clearLocalDb()" class="btn btn-danger btn-flat">Clear local data</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="alert alert-info alert-dismissible">
+            		<button type="button" class="close" data-dismiss="alert">x</button>
+            		<h4>
+            			<i class="icon fa fa-check"></i>
+            			Syncing Successful!
+            		</h4>
+            		<p>
+            			{{syncResult}}
+            		</p>
+            	</div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+</div>
