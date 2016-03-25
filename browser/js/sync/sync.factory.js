@@ -1,8 +1,6 @@
-app.factory("SyncFactory", function($window) {
-
-	var PouchDB = $window.PouchDB;
-    var db = PouchDB('thekraken-test');
-    var remoteDb = 'http://127.0.0.1:5984/thekraken-test';
+app.factory("SyncFactory", function(DatabaseFactory) {
+    var db = DatabaseFactory.getLocalDb();
+    var remoteDb = DatabaseFactory.getRemoteDb();
 
     return {
 

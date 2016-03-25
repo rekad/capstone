@@ -1,7 +1,6 @@
-app.factory('AuthFactory', function($window) {
-	var PouchDB = $window.PouchDB;
-	var remoteDb = new PouchDB('http://104.131.103.208:5984/thekraken-test', {skipSetup: true});
-	var db = new PouchDB('users');
+app.factory('AuthFactory', function(DatabaseFactory) {
+	var remoteDb = DatabaseFactory.getRemoteDb();
+	var usersDb = DatabaseFactory.getUsersDb();
 
 	return {
 		login: function(loginInfo) {
@@ -10,9 +9,9 @@ app.factory('AuthFactory', function($window) {
 
 			// Logging in has multiple steps
 			// 1. Login the user
-			// 2. get user info from the master db
-			// 3. save/update user info in local db
-			// 4. store reference to current user in local db
+			// 2. get user info from the master usersDb
+			// 3. save/update user info in local usersDb
+			// 4. store reference to current user in local usersDb
 
 			// Todo: Add offline login
 			return remoteDb.login(loginInfo.username, loginInfo.password)
@@ -23,7 +22,7 @@ app.factory('AuthFactory', function($window) {
 	            .then(function(user) {
 	            	masterUser = user;
 
-	            	return db.get('org.couchdb.user:' + masterUser.name)
+	            	return usersDb.get('org.couchdb.user:' + masterUser.name)
 	            })
 	            .then(function(user) {
 	            	localUser = user;
@@ -31,17 +30,17 @@ app.factory('AuthFactory', function($window) {
 	            	var localUserRev = localUser._rev;
 	            	localUser = masterUser;
 	            	localUser._rev = localUserRev;
-	            	return db.put(localUser);
+	            	return usersDb.put(localUser);
 	            })
 	            .then(function() {
-	            	return db.get('currentUser')
+	            	return usersDb.get('currentUser')
 	            })
 	            .then(function(currentUser) {
 	            	currentUser.name = localUser.name;
-	            	return db.put(currentUser);
+	            	return usersDb.put(currentUser);
 	            }, function(error) {
 	            	var currentUser = {_id: 'currentUser', name: localUser.name};
-	            	return db.put(currentUser);
+	            	return usersDb.put(currentUser);
 	            })
                 .catch(function(error) {
 	                console.log("error: ", error);
@@ -49,17 +48,17 @@ app.factory('AuthFactory', function($window) {
 		},
 		logout: function() {
 			// logging out means deleting the current user
-			return db.get('currentUser').then(function(currentUser) {
-				return db.remove(currentUser);
+			return usersDb.get('currentUser').then(function(currentUser) {
+				return usersDb.remove(currentUser);
 			})
 			.catch(function(err) {
-				console.long(err);
+				console.log(err);
 			})
 		},
 		getUser: function() {
-			return db.get('currentUser')
+			return usersDb.get('currentUser')
 				.then(function(currentUser) {
-					return db.get('org.couchdb.user:' + currentUser.name)
+					return usersDb.get('org.couchdb.user:' + currentUser.name)
 				})
 				.catch(function(err) {
 					return null;
