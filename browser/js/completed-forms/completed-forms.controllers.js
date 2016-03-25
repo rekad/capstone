@@ -101,7 +101,7 @@ app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFo
 		CompletedFormsFactory.updateOne($scope.completedForm)
 			.then(function(updatedForm) {
 				console.log('Form submitted!', updatedForm);
-				$scope.completedForm._rev = updatedForm.rev;
+				$scope.completedForm = updatedForm;
 				$scope.toggleEdit();
 				$scope.$evalAsync();
 			})
