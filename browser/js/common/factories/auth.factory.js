@@ -13,6 +13,8 @@ app.factory('AuthFactory', function($window) {
 			// 2. get user info from the master db
 			// 3. save/update user info in local db
 			// 4. store reference to current user in local db
+
+			// Todo: Add offline login
 			return remoteDb.login(loginInfo.username, loginInfo.password)
 	            .then(function(res) {
 	                if (res.error) throw res;
