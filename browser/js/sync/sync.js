@@ -11,7 +11,7 @@ app.config(function($stateProvider) {
 	});
 })
 
-app.controller('SyncCtrl', function($scope, SyncFactory, stats, $uibModal) {
+app.controller('SyncCtrl', function($scope, $rootScope, SyncFactory, stats, $uibModal) {
 	$scope.stats = stats;
 
 	function updateStats() {
@@ -66,6 +66,9 @@ app.controller('SyncCtrl', function($scope, SyncFactory, stats, $uibModal) {
 					$scope.result = result;
 				}
 			});
+		})
+		.catch(function(error) {
+			console.log('error clearing the db', error);
 		})
 	}
 })
