@@ -1,4 +1,4 @@
-app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) {
+app.directive('navbar', function ($rootScope, AuthFactory, $state) {
 
     return {
         restrict: 'E',
@@ -10,9 +10,11 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                 return $state.is('login');
             }
 
-            scope.signup = function() {
-                
-            }
+            AuthFactory.getUser()
+                .then(function(user) {
+                    console.log(user);
+                    if (user) scope.user = user;
+                });
 
             // scope.items = [
             //     { label: 'Home', state: 'home' },

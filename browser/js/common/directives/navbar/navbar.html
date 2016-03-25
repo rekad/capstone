@@ -28,7 +28,7 @@
                         <!-- The user image in the navbar-->
                         <img src="admin-lte/dist/img/avatar3.png" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Maria Bolivar</span>
+                        <span class="hidden-xs">{{user.first_name + " " + user.last_name}}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
@@ -37,6 +37,7 @@
                             <p>
                                 Specialized Nurse
                                 <small>Public Health Center, Tecuguigalpa, Honduras</small>
+                                <small>{{ user.organization }}</small>
                             </p>
                         </li>
                         <!-- Menu Footer-->
