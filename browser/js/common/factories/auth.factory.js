@@ -8,6 +8,11 @@ app.factory('AuthFactory', function($window) {
 			var masterUser;
 			var localUser;
 
+			// Logging in has multiple steps
+			// 1. Login the user
+			// 2. get user info from the master db
+			// 3. save/update user info in local db
+			// 4. store reference to current user in local db
 			return remoteDb.login(loginInfo.username, loginInfo.password)
 	            .then(function(res) {
 	                if (res.error) throw res;
@@ -41,7 +46,13 @@ app.factory('AuthFactory', function($window) {
             	})
 		},
 		logout: function() {
-			
+			// logging out means deleting the current user
+			return db.get('currentUser').then(function(currentUser) {
+				return db.remove(currentUser);
+			})
+			.catch(function(err) {
+				console.long(err);
+			})
 		},
 		getUser: function() {
 			return db.get('currentUser')

@@ -16,6 +16,13 @@ app.directive('navbar', function ($rootScope, AuthFactory, $state) {
                     if (user) scope.user = user;
                 });
 
+            scope.logout = function() {
+                AuthFactory.logout()
+                .then(function() {
+                    $state.go('login');
+                })
+            }
+
             // scope.items = [
             //     { label: 'Home', state: 'home' },
             //     { label: 'About', state: 'about' },
