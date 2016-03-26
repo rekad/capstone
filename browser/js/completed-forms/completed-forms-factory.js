@@ -17,7 +17,11 @@ app.factory('CompletedFormsFactory', function(DatabaseFactory) {
 			return db.get(completedFormId);
 		},
 		updateOne: function(form) {
-			return db.put(form);
+			return db.put(form)
+					.then(function (updateResponse) {
+						form._rev = updateResponse.rev;
+						return form;
+					});
 		},
 		createOne: function(completedForm) {
 			return db.post(completedForm);

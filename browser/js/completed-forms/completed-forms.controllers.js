@@ -95,20 +95,13 @@ app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFo
   };
 
 	$scope.updateForm = function () {
-		// if ($scope.formValues) {
 
-		// 	completedForm.formElements = completedForm.formElements.map(function(el, i) {
-		// 		el.value = $scope.formValues[i] ? $scope.formValues[i] : el.value;
-		// 		return el;
-		// 	});
-		// }
+		console.log($scope.completedForm);
 
-		console.log(completedForm);
-
-		CompletedFormsFactory.updateOne(completedForm)
+		CompletedFormsFactory.updateOne($scope.completedForm)
 			.then(function(updatedForm) {
 				console.log('Form submitted!', updatedForm);
-				$scope.completedForm._rev = updatedForm.rev;
+				$scope.completedForm = updatedForm;
 				$scope.toggleEdit();
 				$scope.$evalAsync();
 			})

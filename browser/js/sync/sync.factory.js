@@ -21,12 +21,13 @@ app.factory("SyncFactory", function(DatabaseFactory) {
 
         getStats: function() {
             // This has to be optimized using design docs and views
-            return db.allDocs({include_docs:true})
+            return db.allDocs({ include_docs: true })
                 .then(function(docs) {
 
                     var groupedCompleted = _.groupBy(docs.rows.filter(function(row) {
                         return row.doc.type === "completedForm";
-                    }).map(function(row) {return row.doc}), function(doc) {
+                    }).map(function(row) {
+                        return row.doc }), function(doc) {
                         return doc.formTemplateId;
                     })
 
@@ -44,14 +45,29 @@ app.factory("SyncFactory", function(DatabaseFactory) {
                             return row.doc.type === "formTemplate";
                         }).length,
                         completedFormsPerTemplate: formTemplates.map(function(formTemplate) {
-                        return {
-                            title: formTemplate.title,
-                            count: groupedCompleted[formTemplate._id].length
-                        }
-                    })
-                    } 
+                            return {
+                                title: formTemplate.title,
+                                count: groupedCompleted[formTemplate._id].length
+                            }
+                        })
+                    }
                 })
         }
 
     }
 })
+
+app.run(function($window, $rootScope) {
+    $rootScope.online = navigator.onLine;
+    $window.addEventListener("offline", function() {
+        $rootScope.$apply(function() {
+            $rootScope.online = false;
+        });
+    }, false);
+
+    $window.addEventListener("online", function() {
+        $rootScope.$apply(function() {
+            $rootScope.online = true;
+        });
+    }, false);
+});
