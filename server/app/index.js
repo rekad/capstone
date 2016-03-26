@@ -33,6 +33,10 @@ app.get('/start', function(req, res, next) {
 	res.sendFile(__dirname + '/views/splash.html');
 })
 
+app.get('/sw.js', function(req, res) {
+    res.sendFile(__dirname + '/../../sw.js');
+})
+
 app.get('/*', function (req, res) {
     res.sendFile(app.get('indexHTMLPath'));
 });
