@@ -6,9 +6,9 @@ app.directive('formElement', function($compile) {
 		},
 		require: "ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
-			var generatedFormElement = '<' + _.kebabCase(scope.element.type) + ' element="element" is-editing="' + scope.isEditing + '" ng-model="value">' + '</' + _.kebabCase(scope.element.type) + '>';
+			var generatedFormElement = '<' + _.kebabCase(scope.element.type) + ' element="element" is-editing="' + scope.isEditing + '" ng-model="element.value">' + '</' + _.kebabCase(scope.element.type) + '>';
 			element.append($compile(generatedFormElement)(scope));
-			scope.$watch('value', function(newValue, oldValue) {
+			scope.$watch('element.value', function(newValue, oldValue) {
 				ngModelCtrl.$setViewValue(newValue);
 			})
 		}
@@ -58,8 +58,8 @@ app.directive('multipleChoice', function() {
 		},
 		require: "?ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
-			scope.onChange = function(newValue) {
-				console.log('mc changed');
+			scope.$watch('element.value', function(newValue, oldValue) {
+				// console.log('there is a change in the radio button');
 				ngModelCtrl.$setViewValue(newValue);
 			};
 		},
