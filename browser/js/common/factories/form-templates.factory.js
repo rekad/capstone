@@ -2,10 +2,6 @@ app.factory('FormTemplatesFactory', function($window) {
   var PouchDB = $window.PouchDB;
   var db = PouchDB('thekraken-test');
   var remoteDb = 'http://127.0.0.1:5984/thekraken-test';
-  var connection = new(cradle.Connection)('https://couch.io', 443, {
-     auth: { username: 'john', password: 'fha82l' }
- });
-
 
   return {
 

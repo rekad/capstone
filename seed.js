@@ -23,6 +23,9 @@ name in the environment files.
 var cradle = require('cradle');
 var dbName = "thekraken-test";
 
+var connection = new(cradle.Connection)('https://couch.io', 443, {
+     auth: { username: 'john', password: 'fha82l' }
+ });
 var db = new(cradle.Connection)().database(dbName);
 
 db.destroy(function() {
