@@ -61,7 +61,7 @@ app.directive('multipleChoice', function() {
 			scope.$watch('element.value', function(newValue, oldValue) {
 				// console.log('there is a change in the radio button');
 				ngModelCtrl.$setViewValue(newValue);
-			};
+			});
 		},
 		templateUrl: '/js/common/directives/individual-forms/multiple-choice-directive.html'
 	}
