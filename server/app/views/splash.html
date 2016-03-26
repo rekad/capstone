@@ -5,6 +5,7 @@
     <title>Welcome to the Kraken.</title>
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="admin-lte/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <style type="text/css">
     .jumbotron {
         background-image: url(img/bg-img-patients.jpg);
@@ -15,14 +16,30 @@
     #hero {
     	text-align: center;
     }
+    body {
+        text-align:center;
+    }
     .btn {
     	margin-top: 30px;
     	margin-right:9px;
     	opacity: 0.85;
     }
     img {
-    	margin-top: 80px;
-    	width: 40vw;
+    	margin-top: 50px;
+        height: 260px;
+    }
+    i {
+        color:rgb(75,140, 190);
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    .background {
+        background-color: rgb(236,240,245)
+    }
+
+    .row {
+        padding-top:30px;
+        padding-bottom: 50px;
     }
 
     </style>
@@ -33,7 +50,7 @@
         <div class="container">
             <div id="hero">
                 <h1>The Kraken</h1>
-                <p>Simple data collection and analysis in rural areas without internet.</p>
+                <p class="lead">Simple data collection and analysis in rural areas without internet</p>
                 <p>
                     <a class="btn btn-primary btn-flat btn-lg" href="/login">Log In</a>
                     <a class="btn btn-default btn-flat btn-lg" href="">Learn More</a>
@@ -42,17 +59,41 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <h3>Short pitch</h3>
-        </div>
-        <div class="row">
-            <h3>features</h3>
-        </div>
-        <div class="row">
-            <h3>technology stack</h3>
+    <div class="row">
+        <div class="container">
+            <div class="col-sm-4">
+                <h3>Model your Data</h3>
+                <i class="fa fa-database fa-3x"></i>
+                <p>
+                    Design customized forms for data collection according to your needs. Share these forms with the members of your organization.
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <h3>Collect data offline</h3>
+                <i class="fa fa-laptop fa-3x"></i>
+                <p>
+                    Use a laptop, tablet or smartphone to fill out forms and collect data. Once loaded in the browser, theKraken runs without any internet connection.
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <h3>Synchronize and Analyze</h3>
+                <i class="fa fa-cloud-upload fa-3x"></i>
+                <p>
+                    If internet access is available, synchronize your data among the members of your organization. Run analysis in the app or export to use your own tool.
+                </p>
+            </div>
         </div>
     </div>
+    <div class="row background">
+        <div class="container">
+            <div class="col-sm-12">
+                <h3>Crafted with <i class="glyphicon glyphicon-heart"></i></h4>
+                <p>The Kraken was built by Kate, Khadija, John and Patrick at Fullstack Academy. </p> 
+                <p>We used Angular and Node for the App, PouchDB and CouchDB for offline storage and synchronization and Service Workers for full offline capabilities.</p>
+            </div>
+        </div>
+    </div>
+    
 </body>
 
 </html>
