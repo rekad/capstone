@@ -28,21 +28,34 @@
 </aside>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-Select a chart type and which form data to visualize here. <br>
+<div id="chart-decisions" class="col-lg-12">
+<h3>Select a chart type and which form data to visualize here.</h3>
 <span>Chart Type:</span>
-<select ng-model="chartOptions" ng-options="chartType as chartType for chartType in chartTypes"></select>
+<select ng-model="chartOptions" ng-change="graphChange()" ng-options="chartType as chartType for chartType in chartTypes"></select>
 <span>Form Template:</span>
 <select ng-change="seedLabels(formOptions)" ng-model="formOptions" ng-options="form as form.title for form in forms"></select>
 <span>X-Axis Label:</span>
 <select ng-model="dataOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]"></select>
 <span ng-show="chartOptions==='bar graph'">Y-Axis Label:</span>
 <select ng-change="graphChange()" ng-show="chartOptions==='bar graph'" ng-model="dataOptions2" ng-options="label as label for label in formLabels[currentForm]"></select>
+</div>
 
 <div class="chart-container">
-<canvas id="bar" class="chart chart-bar"
-  chart-data="data" chart-labels="labels" chart-series="series" width="400" height="200" style="width: 400px; height: 200px">
+<canvas ng-show="chartOptions==='bar graph'" id="bar" class="chart chart-bar"
+  chart-data="data" chart-labels="labels" chart-series="series" width="400" height="200" style="margin-top:10px">
 </canvas>
 </div>
+
+<div class="chart-container">
+<canvas ng-show="chartOptions==='pie chart'" id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" style="margin-top:20px">
+</canvas>
+</div>
+
+<div class="chart-container">
+<canvas ng-show="chartOptions==='donut chart'" id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels" style="margin-top:20px">
+</canvas>
+</div>
+
 </div>
 
 <!-- /.content-wrapper

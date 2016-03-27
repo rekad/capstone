@@ -5,7 +5,8 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
   $scope.currentForm = null;
   $scope.labels = [];
   $scope.data = [[]];
-
+  $scope.chartTypes = ['map', 'bar graph', 'pie chart', 'donut chart'];
+  
   $scope.scourForms = function(forms, soughtItem) {
     var result = {};
     forms.forEach(function(form) {
@@ -40,7 +41,8 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
   }).then(function(result) {
       var labelsDataObject = {};
       $scope.labels = [];
-      $scope.data = [[]];
+      if ($scope.chartOptions==='bar graph') $scope.data = [[]];
+      else $scope.data = [];
       result.forEach(function(value) {
         if (labelsDataObject[value]) {
           labelsDataObject[value] ++;
@@ -50,7 +52,8 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
       });
       for (var key in labelsDataObject) {
         $scope.labels.push(key);
-        $scope.data[0].push(labelsDataObject[key]);
+        if ($scope.chartOptions==='bar graph') $scope.data[0].push(labelsDataObject[key]);
+        else $scope.data.push(labelsDataObject[key]);
       }
     }).then(function(result) {
       $scope.$digest();
@@ -66,8 +69,6 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
     //possibly include dataOptions2 at some point?
   };
 
-  $scope.chartTypes = ['map', 'bar graph', 'pie chart', 'donut chart'];
-  
   // $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
   // $scope.series = ['Series A'];
   // $scope.data = [
