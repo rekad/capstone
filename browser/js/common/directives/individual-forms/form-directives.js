@@ -15,6 +15,9 @@ app.directive('formElement', function($compile) {
 	}
 });
 
+
+///////////////////
+
 app.directive('text', function() {
 	return {
 		scope: {
@@ -40,8 +43,6 @@ app.directive('number', function() {
 		require: "ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
 			scope.$watch('element.value', function(newValue, oldValue) {
-
-
 				ngModelCtrl.$setViewValue(+newValue);
 			});
 		},
@@ -55,7 +56,7 @@ app.directive('multipleChoice', function() {
 			element: '=',
 			isEditing: '='
 		},
-		require: "ngModel",
+		require: "?ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
 			scope.$watch('element.value', function(newValue, oldValue) {
 				// console.log('there is a change in the radio button');
