@@ -9,15 +9,28 @@
             <div class="panel">
                 <div class="panel-body">
                     <div ng-show="tabSelected === 'one'">
-                        <button class="btn btn-default" ng-click="placeElements('lineText')">Single Line Text</button>
-                        <button class="btn btn-default" ng-click="placeElements('paragraphText')">Paragraph Text</button>
-                        <button class="btn btn-default" ng-click="placeElements('multipleChoice')">Multiple Choice</button>
-                        <button class="btn btn-default" ng-click="placeElements('checkbox')">Checkboxes</button>
-                        <button class="btn btn-default" ng-click="placeElements('dropdown')">Dropdown</button>
-                        <button class="btn btn-default" ng-click="placeElements('number')">Number</button>
-                        <button class="btn btn-default" ng-click="placeElements('phone')">Phone Number</button>
-                        <button class="btn btn-default" ng-click="placeElements('address')">Address</button>
-                        <button class="btn btn-default" ng-click="placeElements('email')">Email</button>
+                        <div class="row">
+                            <button class="btn btn-default col-sm-5 field-btn" ng-click="placeElements('lineText')"><i class="fa fa-pencil"></i>Single Line Text</button>
+                            <button class="btn btn-default col-sm-5 field-btn" ng-click="placeElements('paragraphText')"><i class="fa fa-paragraph"></i>Paragraph Text</button>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-default col-sm-5 field-btn" ng-click="placeElements('multipleChoice')"><i class="fa fa-dot-circle-o"></i>Multiple Choice</button>
+                            <button class="btn btn-default col-sm-5 field-btn" ng-click="placeElements('checkbox')"><i class="fa fa-check-square-o"></i>Checkboxes</button>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-default col-sm-5 field-btn" ng-click="placeElements('dropdown')"><i class="glyphicon glyphicon-chevron-down"></i>Dropdown</button>
+                            <button class="btn btn-default col-sm-5 field-btn" ng-click="placeElements('number')">
+                                <i><strong>123</strong></i> Number
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-default col-sm-5 field-btn" ng-click="placeElements('phone')"><i class="glyphicon glyphicon-phone-alt"></i>Phone Number</button>
+                            <button class="btn btn-default col-sm-5 field-btn" ng-click="placeElements('address')"><i class="glyphicon glyphicon-map-marker"></i>Address</button>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-default col-sm-5 field-btn" ng-click="placeElements('email')"><i class="fa fa-envelope"></i>Email</button>
+                            <button class="btn btn-default col-sm-5 field-btn" ng-click="placeElements('section')">Section Break</button>
+                        </div>
                     </div>
                     <div ng-show="tabSelected === 'two'">
                         <div class="checkbox">
@@ -35,8 +48,8 @@
                                 <div class="input-group" ng-repeat="option in selected.options">
                                     <input type="text" class="form-control" ng-model="option.value">
                                     <span class="input-group-btn">
-										<button class="btn btn-danger" ng-click="removeChoice(selected, option)">Remove</button>
-									</span>
+                                        <button class="btn btn-danger" ng-click="removeChoice(selected, option)">Remove</button>
+                                    </span>
                                 </div>
                                 <button class="btn btn-success" ng-click="addChoice(selected)">Add Choice</button>
                             </div>
@@ -74,16 +87,16 @@
                     </span>
                             </div>
                             <!-- <label>Select Title Placement</label>
-							<select class="form-control">
-								<option>Left</option>
-								<option>Center</option>
-								<option>Right</option>
-							</select> -->
+                            <select class="form-control">
+                                <option>Left</option>
+                                <option>Center</option>
+                                <option>Right</option>
+                            </select> -->
                             <!-- <label>Select Label Placement</label>
-							<select class="form-control">
-								<option>Top</option>
-								<option>Left</option>
-							</select> -->
+                            <select class="form-control">
+                                <option>Top</option>
+                                <option>Left</option>
+                            </select> -->
                         </div>
                     </div>
                 </div>
@@ -97,24 +110,47 @@
                 </div>
                 <form>
                     <div class="box-body">
-                        <div class="form-element" ng-repeat="element in formElements" ng-required="required" ng-mouseover="onHover(element)" ng-class="{'dotted-border': hovered.id === element.id, 'bg-light-blue': element.id === selected.id}" ng-click="selectElement(element)">
-                            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
-                                <i ng-click="removeElement(element)" ng-class="{'fa': selected.type === element.type, 'fa-times': selected.type === element.type}"></i></button>
-                            <line-text ng-if="element.type === 'lineText'"></line-text>
-                            <checkbox ng-if="element.type === 'checkbox'"></checkbox>
-                            <dropdown ng-if="element.type === 'dropdown'"></dropdown>
-                            <paragraph-text ng-if="element.type === 'paragraphText'"></paragraph-text>
-                            <multiple-choice-template ng-if="element.type === 'multipleChoice'"></multiple-choice-template>
-                            <number-template ng-if="element.type === 'number'"></number-template>
-                            <phone-template ng-if="element.type === 'phone'"></phone-template>
-                            <email-template ng-if="element.type === 'email'"></email-template>
-                            <address-template ng-if="element.type === 'address'"></address-template>
+                        <div class="row">
+                            <div class="form-element col-sm-11" ng-repeat="element in formElements" ng-required="required" ng-mouseover="onHover(element)" ng-class="{'dotted-border': hovered.id === element.id, 'bg-light-blue': element.id === selected.id}" ng-click="selectElement(element)">
+                                <button ng-hide="element.id !== selected.id" type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
+                                    <i ng-click="removeElement(element)" ng-class="{'fa': selected.type === element.type, 'fa-times': selected.type === element.type}"></i></button>
+                                <line-text ng-if="element.type === 'lineText'"></line-text>
+                                <checkbox ng-if="element.type === 'checkbox'"></checkbox>
+                                <dropdown ng-if="element.type === 'dropdown'"></dropdown>
+                                <paragraph-text ng-if="element.type === 'paragraphText'"></paragraph-text>
+                                <multiple-choice-template ng-if="element.type === 'multipleChoice'"></multiple-choice-template>
+                                <number-template ng-if="element.type === 'number'"></number-template>
+                                <phone-template ng-if="element.type === 'phone'"></phone-template>
+                                <email-template ng-if="element.type === 'email'"></email-template>
+                                <address-template ng-if="element.type === 'address'"></address-template>
+                                <section-template ng-if="element.type === 'section'"></section-template>
+                            </div>
                         </div>
                     </div>
                 </form>
                 <div class="box-footer">
-                    <button class="btn btn-primary pull-right" ng-click="save()">Save</button>
-                    <button class="btn btn-danger pull-right" ng-click="clearForm()">Clear Form</button>
+                    <button class="btn btn-primary pull-right" ng-click="save()">Save Form</button>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#clearFormModal">Clear Form</button>
+                    <div class="modal modal-danger" id="clearFormModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span></button>
+                                    <h4 class="modal-title">Are you sure you would like to clear this form?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>This action can not be undone!</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                                    <button type="button" data-dismiss="modal" class="btn btn-outline" ng-click="clearForm()">Clear Form</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
                 </div>
             </div>
         </div>

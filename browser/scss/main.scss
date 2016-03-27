@@ -47,10 +47,15 @@ body {
 
 .dotted-border {
   border: dashed 1px black;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .form-element {
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
   position: relative;
   .fa-times {
     position: absolute;
@@ -78,9 +83,39 @@ body {
   .fa {
     font-size: 150%;
   }
+   label{
+    max-width:90%;
+    overflow: hidden;
+  }
+
+  h4 {
+    max-width:95%;
+    overflow: hidden;
+  }
+
+   h2 {
+    max-width:95%;
+    overflow: hidden;
+  }
+}
+
+button {
+  i {
+    margin-right: 5px;
+  }
+}
+
+.field-btn {
+    margin: 5px; 
+}
+
+.add-form-btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .no-sidebar {
   margin-left: 0px;
 }
+
 
