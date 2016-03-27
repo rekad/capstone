@@ -33,10 +33,10 @@ Select a chart type and which form data to visualize here. <br>
 <select ng-model="chartOptions" ng-options="chartType as chartType for chartType in chartTypes"></select>
 <span>Form Template:</span>
 <select ng-change="seedLabels(formOptions)" ng-model="formOptions" ng-options="form as form.title for form in forms"></select>
-<span ng-show>X-Axis Label:</span>
-<select ng-model="dataOptions" ng-options="label as label for label in formLabels[currentForm]"></select>
+<span>X-Axis Label:</span>
+<select ng-model="dataOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]"></select>
 <span ng-show="chartOptions==='bar graph'">Y-Axis Label:</span>
-<select ng-show="chartOptions==='bar graph'" ng-model="dataOptions2" ng-options="label as label for label in formLabels[currentForm]"></select>
+<select ng-change="graphChange()" ng-show="chartOptions==='bar graph'" ng-model="dataOptions2" ng-options="label as label for label in formLabels[currentForm]"></select>
 
 <div class="chart-container">
 <canvas id="bar" class="chart chart-bar"
