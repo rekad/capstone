@@ -1,4 +1,6 @@
 this.addEventListener('install', function(event) {
+
+	console.log('installing')
 	event.waitUntil(
 		caches.open('v1').then(function(cache) {
 			return cache.addAll([
@@ -10,6 +12,14 @@ this.addEventListener('install', function(event) {
 				'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
 				'/admin-lte/dist/css/AdminLTE.min.css',
 				'/admin-lte/dist/css/skins/skin-blue.min.css',
+				'/admin-lte/bootstrap/js/bootstrap.min/js',
+				'/admin-lte/plugins/jQuery/jQuery-2.1.4.min.js',
+				'/admin-lte/dist/js/app.min.js',
+				'/admin-lte/dist/img/avatar3.png',
+				'admin-lte/bootstrap/js/bootstrap.min.js',
+
+				'/font-awesome/fonts/fontawesome-webfont.woff2?v=4.5.0',
+
 				'/style.css',
 				'/lodash/index.js',
 				'/pouchdb/dist/pouchdb.js',
@@ -55,6 +65,20 @@ this.addEventListener('install', function(event) {
 
 this.addEventListener('fetch', function(event) {
 	event.respondWith(
-		fetch(event.request).catch(function() {caches.match(event.request)})
+		// caches.open('v1').then(function(cache){
+		// 	console.log('request', event.request)
+		// 	return cache.match(event.request)
+		// })
+		// .then(function(match) {
+		// 	console.log('match!', match)
+		// 	return match;
+		// })
+		caches.match(event.request)
+		// .then(function(match) {
+		// 	console.log('found a match', event.request,match)
+		// })
+		// .catch(function(err) {
+		// 	console.log('couldnt find it in the cache', err)
+		// })
 	);
 });
