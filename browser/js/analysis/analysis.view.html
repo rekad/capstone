@@ -28,8 +28,16 @@
 </aside>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-Select a chart type and which form data to visualize here.
+Select a chart type and which form data to visualize here. <br>
+<span>Chart Type:</span>
 <select ng-model="chartOptions" ng-options="chartType as chartType for chartType in chartTypes"></select>
+<span>Form Template:</span>
+<select ng-change="seedLabels(formOptions)" ng-model="formOptions" ng-options="form as form.title for form in forms"></select>
+<span ng-show>X-Axis Label:</span>
+<select ng-model="dataOptions" ng-options="label as label for label in formLabels[currentForm]"></select>
+<span ng-show="chartOptions==='bar graph'">Y-Axis Label:</span>
+<select ng-show="chartOptions==='bar graph'" ng-model="dataOptions2" ng-options="label as label for label in formLabels[currentForm]"></select>
+
 <div class="chart-container">
 <canvas id="bar" class="chart chart-bar"
   chart-data="data" chart-labels="labels" chart-series="series" width="400" height="200" style="width: 400px; height: 200px">
