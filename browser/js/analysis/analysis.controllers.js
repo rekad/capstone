@@ -38,7 +38,6 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
     });
       return result;
   }).then(function(result) {
-      console.log("values from labels", result);
       var labelsDataObject = {};
       $scope.labels = [];
       $scope.data = [[]];
@@ -60,12 +59,11 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
 
   $scope.seedLabels = function(form) {
     $scope.currentForm = form._id;
-    // $scope.graphChange();
   }; 
 
   $scope.graphChange = function() {
     $scope.valuesFromLabels($scope.dataOptions);
-    // if (data2) $scope.valuesFromLabels(data2);
+    //possibly include dataOptions2 at some point?
   };
 
   $scope.chartTypes = ['map', 'bar graph', 'pie chart', 'donut chart'];
@@ -75,29 +73,5 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
   // $scope.data = [
   //   [28, 48, 40, 19, 86, 27, 90]
   // ];
-
-  //   $scope.valuesFromLabels = function(soughtLabel) {
-  //   CompletedFormsFactory.fetchAll($scope.currentForm)
-  //   .then(function(forms) {
-  //     console.log(forms);
-  //     var result = {};
-  //     forms.forEach(function(form) {
-  //       form.formElements.forEach(function(element) {
-  //         if (element.label && element.label === soughtLabel) {
-  //           if (result[form._id]) {
-  //             result[form._id].push(element.value);
-  //             //need to add something to deal with arrays here, multiple values
-  //           } else {
-  //             result[form._id] = [element.value];
-  //           }
-  //         }
-  //     });
-  //   });
-  //     return result;
-  // }).then(function(result) {
-  //   $scope.values = result;
-  //   console.log("values from labels", result);
-  // });
-  // };
   
 });
