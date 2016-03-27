@@ -1,72 +1,29 @@
-<!-- Left side column. contains the logo and sidebar -->
-<aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-        <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-        </form>
-        <!-- /.search form -->
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-            <li class="header">FORM TEMPLATES</li>
-
-            <li ui-sref-active="active" ui-sref="add-data.submit({formTemplateId: form._id})" ng-repeat="form in forms"><a ><i class="fa fa-file-text-o"></i> <span>{{form.title}}</span></a></li>
-
-            <!-- Optionally, you can add icons to the links -->
-<!--             <li class="active"><a href="#"><i class="fa fa-file-text-o"></i> </a></li>
-            <li><a href="#"><i class="fa fa-file-text-o"></i> <span>Another great form</span></a></li> -->
-        </ul>
-        <!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
-</aside>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-<div id="chart-decisions" class="col-lg-12">
-<h3>Select a chart type and which form data to visualize here.</h3>
-<span>Chart Type:</span>
-<select ng-model="chartOptions" ng-change="graphChange()" ng-options="chartType as chartType for chartType in chartTypes"></select>
-<span>Form Template:</span>
-<select ng-change="seedLabels(formOptions)" ng-model="formOptions" ng-options="form as form.title for form in forms"></select>
-<span>X-Axis Label:</span>
-<select ng-model="dataOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]"></select>
-<span ng-show="chartOptions==='bar graph'">Y-Axis Label:</span>
-<select ng-change="graphChange()" ng-show="chartOptions==='bar graph'" ng-model="dataOptions2" ng-options="label as label for label in formLabels[currentForm]"></select>
+<div class="content-wrapper no-sidebar">
+    <section class="content-header">
+        <h3>Select a chart type and which form data to visualize here.</h3>
+    </section>
+    <section class="content">
+        <span>Chart Type:</span>
+        <select ng-model="chartOptions" ng-change="graphChange()" ng-options="chartType as chartType for chartType in chartTypes"></select>
+        <span>Form Template:</span>
+        <select ng-change="seedLabels(formOptions)" ng-model="formOptions" ng-options="form as form.title for form in forms"></select>
+        <span>X-Axis Label:</span>
+        <select ng-model="dataOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]"></select>
+        <span ng-show="chartOptions==='bar graph'">Y-Axis Label:</span>
+        <select ng-change="graphChange()" ng-show="chartOptions==='bar graph'" ng-model="dataOptions2" ng-options="label as label for label in formLabels[currentForm]"></select>
+        <div class="chart-container">
+            <canvas ng-show="chartOptions==='bar graph'" id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" width="400" height="200" style="margin-top:10px">
+            </canvas>
+        </div>
+        <div class="chart-container">
+            <canvas ng-show="chartOptions==='pie chart'" id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" style="margin-top:20px">
+            </canvas>
+        </div>
+        <div class="chart-container">
+            <canvas ng-show="chartOptions==='donut chart'" id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels" style="margin-top:20px">
+            </canvas>
+        </div>
+    </section>
 </div>
-
-<div class="chart-container">
-<canvas ng-show="chartOptions==='bar graph'" id="bar" class="chart chart-bar"
-  chart-data="data" chart-labels="labels" chart-series="series" width="400" height="200" style="margin-top:10px">
-</canvas>
-</div>
-
-<div class="chart-container">
-<canvas ng-show="chartOptions==='pie chart'" id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" style="margin-top:20px">
-</canvas>
-</div>
-
-<div class="chart-container">
-<canvas ng-show="chartOptions==='donut chart'" id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels" style="margin-top:20px">
-</canvas>
-</div>
-
-</div>
-
 <!-- /.content-wrapper
-<!-- Main Footer -->
-<footer class="main-footer">
-    <
-    <!-- To the right -->
-    <!--         <div class="pull-right hidden-xs">
-          Anything you want
-        </div> -->
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="#">KKJP @ Fullstack Academy</a>.</strong> All rights reserved.
-</footer>
-

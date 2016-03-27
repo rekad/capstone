@@ -27,7 +27,6 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
     $scope.valuesFromLabels = function(soughtLabel) {
         CompletedFormsFactory.fetchAll($scope.currentForm)
             .then(function(forms) {
-              console.log(forms);
                 var result = [];
                 forms.forEach(function(form) {
                     form.formElements.forEach(function(element) {
