@@ -65,20 +65,19 @@ this.addEventListener('install', function(event) {
 
 this.addEventListener('fetch', function(event) {
 	event.respondWith(
-		// caches.open('v1').then(function(cache){
-		// 	console.log('request', event.request)
-		// 	return cache.match(event.request)
-		// })
-		// .then(function(match) {
-		// 	console.log('match!', match)
-		// 	return match;
-		// })
 		caches.match(event.request)
-		// .then(function(match) {
-		// 	console.log('found a match', event.request,match)
-		// })
-		// .catch(function(err) {
-		// 	console.log('couldnt find it in the cache', err)
-		// })
+		.then(function(match) {
+			if (match) return match;
+			else return fetch(event.request);
+		})
+		.catch(function(error) {
+			return new Response('not available in offline mode');
+		})
+		// ISSUES: 
+		// 1. going directly to a url in the browser fails 
+		// -> If the cache match fails we want to return index.html?
+
+		// 2. pouchDB requests are being intercepted too
+
 	);
 });
