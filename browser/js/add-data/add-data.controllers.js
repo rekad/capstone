@@ -1,7 +1,5 @@
 app.controller('AddDataCtrl', function($scope, forms, $state) {
 	$scope.forms = forms;
-	if ($scope.forms.length > 0) $state.go('add-data.submit',{formTemplateId: null});
-
 });
 
 app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory) {

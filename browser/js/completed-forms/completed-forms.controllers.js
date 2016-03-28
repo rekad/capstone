@@ -77,7 +77,6 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
 
 app.controller('CompletedFormsCtrl', function($scope, forms, $state) {
 	$scope.forms = forms;
-  if ($scope.forms.length > 0) $state.go('completed-forms.forms-list',{formTemplateId: null});
 });
 
 app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFormsFactory) {
