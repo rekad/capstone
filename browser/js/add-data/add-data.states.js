@@ -17,8 +17,11 @@ app.config(function($stateProvider) {
                 allFormTemplates: function(FormTemplatesFactory) {
                     return FormTemplatesFactory.fetchAll();
                 },
-                form: function($stateParams, FormTemplatesFactory, allFormTemplates) {
-        	        if (!$stateParams.formTemplateId) $stateParams.formTemplateId = allFormTemplates[0]._id;
+                form: function($stateParams, FormTemplatesFactory, allFormTemplates) {    
+                    if (!$stateParams.formTemplateId) {
+                        if (!allFormTemplates[0]) return null;
+                        $stateParams.formTemplateId = allFormTemplates[0]._id;
+                    }
                     return FormTemplatesFactory.fetchOne($stateParams.formTemplateId);
                 }
             }
