@@ -66,6 +66,54 @@ app.directive('number', function() {
 	}
 });
 
+app.directive('email', function() {
+	return {
+		scope: {
+			element: '=',
+			isEditing: '='
+		},
+		require: "ngModel",
+		link: function(scope, el, attr, ngModelCtrl) {
+			scope.$watch('element.value', function(newValue, oldValue) {
+				ngModelCtrl.$setViewValue(newValue);
+			});
+		},
+		templateUrl: '/js/common/directives/individual-forms/email-directive.html'
+	}
+});
+
+app.directive('phone', function() {
+	return {
+		scope: {
+			element: '=',
+			isEditing: '='
+		},
+		require: "ngModel",
+		link: function(scope, el, attr, ngModelCtrl) {
+			scope.$watch('element.value', function(newValue, oldValue) {
+				ngModelCtrl.$setViewValue(newValue);
+			});
+		},
+		templateUrl: '/js/common/directives/individual-forms/phone-directive.html'
+	}
+});
+
+app.directive('address', function() {
+	return {
+		scope: {
+			element: '=',
+			isEditing: '='
+		},
+		require: "ngModel",
+		link: function(scope, el, attr, ngModelCtrl) {
+			scope.$watch('element.value', function(newValue, oldValue) {
+				ngModelCtrl.$setViewValue(newValue);
+			});
+		},
+		templateUrl: '/js/common/directives/individual-forms/address-directive.html'
+	}
+});
+
 app.directive('multipleChoice', function() {
 	return {
 		scope: {

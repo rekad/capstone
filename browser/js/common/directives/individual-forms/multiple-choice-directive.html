@@ -1,8 +1,8 @@
 <div class="form-group">
     <label>{{element.label}}</label>
-    <div class="radio" ng-repeat="choice in element.choices">
+    <div class="radio" ng-repeat="option in element.options">
         <label>
-            <input type="radio" name="optionsRadio" ng-model="element.value[$index]" ng-readonly="!isEditing" ng-true-value="'{{choice}}'" ng-false-value="'null'" ng-disabled="!isEditing"> {{ choice }}
+            <input type="radio" name="optionsRadio" ng-model="element.value[$index]" ng-readonly="!isEditing" ng-true-value="'{{option.value}}'" ng-false-value="'null'" ng-disabled="!isEditing"> {{ option.value }}
         </label>
     </div>
 </div>
