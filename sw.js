@@ -71,7 +71,7 @@ this.addEventListener('fetch', function(event) {
 			else return fetch(event.request);
 		})
 		.catch(function(error) {
-			return new Response('not available in offline mode');
+			return Response.redirect('/index.html');
 		})
 		// ISSUES: 
 		// 1. going directly to a url in the browser fails 
