@@ -1,5 +1,5 @@
 'use strict';
-window.app = angular.module('TheKraken', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'completedFormsFilters']);
+window.app = angular.module('TheKraken', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'completedFormsFilters', 'chart.js']);
 
 app.config(function ($urlRouterProvider, $locationProvider) {
     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
