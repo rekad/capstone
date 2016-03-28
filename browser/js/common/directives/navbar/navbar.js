@@ -1,3 +1,4 @@
+
 app.directive('navbar', function ($rootScope, AuthFactory, $state) {
 
     return {

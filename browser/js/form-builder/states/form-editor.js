@@ -1,7 +1,12 @@
-app.config(function ($stateProvider) {
+app.config(function($stateProvider) {
     $stateProvider.state('form-templates.form-builder', {
-        url: '/editor',
+        url: '/editor/:id',
         templateUrl: '/js/form-builder/templates/form-editor.template.html',
-        controller: 'FormBuilder'        
+        controller: 'FormBuilder',
+        resolve: {
+            formTemplate: function($stateParams, FormTemplatesFactory) {
+                return FormTemplatesFactory.fetchOne($stateParams.id);
+            }
+        }
     });
 });

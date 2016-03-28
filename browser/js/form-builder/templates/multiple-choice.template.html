@@ -1,22 +1,10 @@
 <div class="form-group">
-<label>Select One</label>
-<div class="radio">
-  <label>
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-    Option one
-  </label>
-</div>
-<div class="radio">
-  <label>
-    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-    Option two 
-  </label>
-</div>
-<div class="radio">
-  <label>
-    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-    Option three
-  </label>
-</div>
+<label>{{element.label}}</label>
+  <div class="radio" ng-repeat="option in element.options">
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+     {{option.value}}
+    </label>
+  </div>
 </div>
 
