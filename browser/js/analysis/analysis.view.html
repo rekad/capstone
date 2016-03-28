@@ -5,27 +5,28 @@
     </section>
     <section class="content">
 
+    <div class="container">
         <div class="col-lg-2">
         Chart Type
         <select class="form-control" ng-model="chartOptions" ng-change="graphChange()" ng-options="chartType as chartType for chartType in chartTypes">
         </select>
         </div>
 
-
-        <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" ng-model="formOptions" ng-select="seedLabels(formOptions)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <div class="col-lg-2">
         Form Template
-        <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li ng-repeat="form in forms">{{form.title}}</li>
-        </ul>
+        <select class="form-control" ng-model="formOptions" ng-change="seedLabels(formOptions)" ng-options="form as form.title for form in forms">
+        </select>
         </div>
 
-        <!-- < --><!-- span>Form Template:</span>
-        <select ng-change="seedLabels(formOptions)" ng-model="formOptions" ng-options="form as form.title for form in forms"></select> -->
+        <div class="col-lg-2">
+        X-Axis Data
+        <select class="form-control" ng-model="chartOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]">
+        </select>
+        </div>
+    </div>
+    <br>
 
-        <div class="dropdown">
+<!--         <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" ng-model="dataOptions" ng-select="graphChange()" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         X-Axis Data
         <span class="caret"></span>
@@ -33,10 +34,10 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <li ng-repeat="label in formLabels[currentForm]">{{label}}</li>
         </ul>
-        </div>
+        </div> -->
 
-        <span>X-Axis Label:</span>
-        <select ng-model="dataOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]"></select>
+        <!-- <span>X-Axis Label:</span>
+        <select ng-model="dataOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]"></select> -->
         <!-- <span ng-show="chartOptions==='bar graph'">Y-Axis Label:</span>
         <select ng-change="graphChange()" ng-show="chartOptions==='bar graph'" ng-model="dataOptions2" ng-options="label as label for label in formLabels[currentForm]"></select> -->
         <div class="chart-container">
