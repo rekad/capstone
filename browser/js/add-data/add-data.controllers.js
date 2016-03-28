@@ -1,6 +1,8 @@
-app.controller('AddDataCtrl', function($scope, forms) {
+app.controller('AddDataCtrl', function($scope, forms, $state) {
 	$scope.forms = forms;
-})
+	if ($scope.forms.length > 0) $state.go('add-data.submit',{formTemplateId: null});
+
+});
 
 app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory) {
 	$scope.form = form;
@@ -10,7 +12,7 @@ app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory
 	$scope.submitForm = function() {
 		// merge values with the formTemplate data and save as completed form
 		var completedForm = angular.copy(form);
-		console.log($scope.formValues)
+		// console.log($scope.formValues)
 		completedForm.formElements = completedForm.formElements.map(function(el, i) {
 			el.value = $scope.formValues[i];
 			return el;
