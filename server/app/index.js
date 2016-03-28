@@ -29,6 +29,10 @@ app.use(function (req, res, next) {
 
 });
 
+app.get('/start', function(req, res, next) {
+	res.sendFile(__dirname + '/views/splash.html');
+})
+
 app.get('/*', function (req, res) {
     res.sendFile(app.get('indexHTMLPath'));
 });
