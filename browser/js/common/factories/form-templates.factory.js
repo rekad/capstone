@@ -33,5 +33,4 @@ app.factory('FormTemplatesFactory', function(DatabaseFactory) {
         // add error handling
     }
     }
-  }
 })
