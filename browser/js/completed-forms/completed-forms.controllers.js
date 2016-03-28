@@ -75,7 +75,7 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
   };
 });
 
-app.controller('CompletedFormsCtrl', function($scope, forms, $state) {
+app.controller('CompletedFormsCtrl', function($scope, forms) {
 	$scope.forms = forms;
 });
 

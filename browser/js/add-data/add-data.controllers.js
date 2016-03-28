@@ -1,4 +1,4 @@
-app.controller('AddDataCtrl', function($scope, forms, $state) {
+app.controller('AddDataCtrl', function($scope, forms) {
 	$scope.forms = forms;
 });
 
