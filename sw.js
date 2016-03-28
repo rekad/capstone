@@ -20,6 +20,9 @@ this.addEventListener('install', function(event) {
 
 				'/font-awesome/fonts/fontawesome-webfont.woff2?v=4.5.0',
 
+				'chart.js/Chart.min.js',
+			    'angular-chart.js/dist/angular-chart.min.js',
+
 				'/style.css',
 				'/lodash/index.js',
 				'/pouchdb/dist/pouchdb.js',

@@ -10,7 +10,8 @@ if ('serviceWorker' in navigator) {
     })
 }
 
-window.app = angular.module('TheKraken', ['ui.router', 'ui.bootstrap', 'completedFormsFilters']);
+window.app = angular.module('TheKraken', ['ui.router', 'ui.bootstrap', 'completedFormsFilters', 'chart.js']);
+
 
 
 app.config(function ($urlRouterProvider, $locationProvider) {
