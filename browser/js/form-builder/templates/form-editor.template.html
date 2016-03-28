@@ -1,4 +1,8 @@
 <div class="container-fluid">
+    <div ng-show="savedForm" class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-check"></i>Your Form Has Been Saved!</h4>
+    </div>
     <div class="row">
         <div class="col-sm-4">
             <ul class="nav nav-tabs">
@@ -33,14 +37,16 @@
                         </div>
                     </div>
                     <div ng-show="tabSelected === 'two'">
-                        <div class="checkbox">
+                        <div ng-if="selected.type === undefined">
+                            <h3 class="text-center">Select a field to edit</h3></div>
+                        <div class="checkbox" ng-if="selected.type !== undefined">
                             <label>
                                 <input ng-model="required" type="checkbox" value=""> Require Field
                             </label>
-                        </div class="form-group">
-                        <label>Edit Label</label>
-                        <input type="text" class="form-control" ng-model="selected.label">
-                        <div>
+                        </div>
+                        <div class="form-group" ng-if="selected.type !== undefined">
+                            <label>Edit Label</label>
+                            <input type="text" class="form-control" ng-model="selected.label">
                         </div>
                         <div ng-if="selected.type === 'multipleChoice' || selected.type === 'checkbox' || selected.type === 'dropdown' ">
                             <div class="form-group">
@@ -54,15 +60,15 @@
                                 <button class="btn btn-success" ng-click="addChoice(selected)">Add Choice</button>
                             </div>
                         </div>
-                        <!--   <div ng-if="selected.type === 'number'">
-                            <div class="form-group">
-                                <div>
-                                    <label>Maximum Value</label>
-                                    <input ng-model="maxVal" type="text" class="form-control" placeholder="Max Value">
-                                    <label>Minimum Value</label>
-                                    <input ng-model="minVal" type="text" class="form-control" placeholder="Min Value">
-                                </div>
-                            </div>
+                        <!--   <div ng-if="selected.type === 'multipleChoice' || selected.type === 'checkbox' ">
+                        <div class="form-group">
+                            <div class="checkbox" ng-if="selected.type !== undefined">
+                            <label>
+                                <input ng-model="horizontal" type="checkbox" value=""> Horizontal Options
+                            </label>
+                        </div>
+                        </div>
+                            
                         </div> -->
                     </div>
                     <div ng-show="tabSelected === 'three'">
@@ -86,17 +92,6 @@
                       <button ng-click="setAlignment('right', 'description')" type="button" class="btn btn-primary btn-flat"><i class="fa fa-align-right"></i></button>
                     </span>
                             </div>
-                            <!-- <label>Select Title Placement</label>
-                            <select class="form-control">
-                                <option>Left</option>
-                                <option>Center</option>
-                                <option>Right</option>
-                            </select> -->
-                            <!-- <label>Select Label Placement</label>
-                            <select class="form-control">
-                                <option>Top</option>
-                                <option>Left</option>
-                            </select> -->
                         </div>
                     </div>
                 </div>
@@ -105,8 +100,8 @@
         <div class="col-sm-8">
             <div class="box box-primary form-box">
                 <div class="box-header with-border">
-                    <h2 ng-class="{'text-right': titleAlign === 'right', 'text-left': titleAlign === 'left', 'text-center': titleAlign === 'center'}">{{formTemplate.title}}</h2>
-                    <h4 ng-class="{'text-right': descAlign === 'right', 'text-left': descAlign === 'left', 'text-center': descAlign === 'center'}">{{formTemplate.description}}</h4>
+                    <h2 ng-class="{'text-right': formTemplate.titleAlign === 'right', 'text-left': formTemplate.titleAlign === 'left', 'text-center': formTemplate.titleAlign === 'center'}">{{formTemplate.title}}</h2>
+                    <h4 ng-class="{'text-right': formTemplate.descAlign === 'right', 'text-left': formTemplate.descAlign === 'left', 'text-center': formTemplate.descAlign === 'center'}">{{formTemplate.description}}</h4>
                 </div>
                 <form>
                     <div class="box-body">
@@ -140,7 +135,7 @@
                                     <h4 class="modal-title">Are you sure you would like to clear this form?</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <p>This action can not be undone!</p>
+                                    <p>This action cannot be undone!</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>

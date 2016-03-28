@@ -1,18 +1,17 @@
 app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplate) {
 
+    $scope.savedForm = false;
     $scope.formTemplate = formTemplate;
     $scope.title = $scope.formTemplate.title;
     $scope.description = $scope.formTemplate.description;
 
     $scope.save = function() {
-            FormTemplatesFactory.updateForm($scope.formTemplate)
-                .then(function(savedForm) {
-                    console.log(savedForm);
-                })
-        }
+        FormTemplatesFactory.updateForm($scope.formTemplate)
+            .then(function(savedForm) {
+                $scope.savedForm = true;
+            })
+    }
 
-    $scope.titleAlign = "left";
-    $scope.descAlign = "left";
     $scope.tabSelected = 'one';
     $scope.formElements = formTemplate.formElements;
 
@@ -44,18 +43,19 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
         $scope.hovered = e;
     }
 
-    $scope.removeElement = function(el) {
-        var indexToRemove = $scope.formElements.indexOf(el);
+    $scope.removeElement = function(e) {
+        var indexToRemove = $scope.formElements.indexOf(e);
         $scope.formElements.splice(indexToRemove, 1);
         $scope.selected = {};
     }
 
     $scope.clearForm = function() {
         $scope.formElements = [];
+        $scope.formTemplate.formElements = [];
         $scope.selected = {};
     }
 
-    var nextId = $scope.formElements.length;
+    var nextId = $scope.formElements.length + 1;
 
     $scope.addChoice = function(element) {
         element.options.push({ value: "New Option" });
@@ -68,7 +68,7 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
     }
 
     $scope.setAlignment = function(alignment, type) {
-        if (type === "description") $scope.descAlign = alignment;
-        if (type === "title") $scope.titleAlign = alignment;
+        if (type === "description") $scope.formTemplate.descAlign = alignment;
+        if (type === "title") $scope.formTemplate.titleAlign = alignment;
     }
 });
