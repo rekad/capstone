@@ -18,7 +18,7 @@ app.directive('formElement', function($compile) {
 
 ///////////////////
 
-app.directive('text', function() {
+app.directive('lineText', function() {
 	return {
 		scope: {
 			element: '=',
@@ -30,7 +30,23 @@ app.directive('text', function() {
 				ngModelCtrl.$setViewValue(newValue);
 			});
 		},
-		templateUrl: '/js/common/directives/individual-forms/text-directive.html'
+		templateUrl: '/js/common/directives/individual-forms/line-text-directive.html'
+	}
+});
+
+app.directive('paragraphText', function() {
+	return {
+		scope: {
+			element: '=',
+			isEditing: '='
+		},
+		require: "ngModel",
+		link: function(scope, el, attr, ngModelCtrl) {
+			scope.$watch('element.value', function(newValue, oldValue) {
+				ngModelCtrl.$setViewValue(newValue);
+			});
+		},
+		templateUrl: '/js/common/directives/individual-forms/paragraph-text-directive.html'
 	}
 });
 
@@ -67,7 +83,7 @@ app.directive('multipleChoice', function() {
 	}
 });
 
-app.directive('checkboxes', function() {
+app.directive('checkbox', function() {
 	return {
 		scope: {
 			element: '=',
