@@ -93,6 +93,32 @@ var formTemplates = [{
         label: 'Amenities',
         choices: ["kitchen", "pool", "pirate flag"]
     }]
+}, {
+    type: "formTemplate",
+    title: "A form with location and date",
+    description: "In case we want to do location/date analysis.",
+    formElements: [{
+        type: 'text',
+        label: 'Name of Collection Location'
+    }, {
+        type: 'number',
+        label: 'Latitude/Longitude of Collection Location'
+    }, {
+        type: 'number',
+        label: 'Date of Collection'
+    }, {
+        type: 'sectionBreak',
+        title: 'Form Questions',
+        description: 'These questions are excellent.'
+    }, {
+        type: 'multipleChoice',
+        label: 'Virus Sickness Level',
+        choices: ["critical", "medium", "minor"]
+    }, {
+        type: 'checkboxes',
+        label: 'Symptoms',
+        choices: ["nausea", "spots", "sudden love of cats"]
+    }]
 }];
 
 var completedForms = [{
@@ -175,6 +201,37 @@ var completedForms = [{
         label: 'Pets',
         choices: ["cat", "dog", "parrot"],
         value: ["cat", "parrot"]
+    }]
+}, {
+    type: "completedForm",
+    title: "A form with location and date",
+    description: "In case we want to do location/date analysis.",
+    formElements: [{
+        type: 'text',
+        label: 'Name of Collection Location',
+        value: 'Medellin, Colombia'
+    }, {
+        type: 'number',
+        label: 'Latitude/Longitude of Collection Location',
+        value: ['6.15N', '75.35W']
+    }, {
+        type: 'number',
+        label: 'Date of Collection',
+        value: '4/8/17'
+    }, {
+        type: 'sectionBreak',
+        title: 'Form Questions',
+        description: 'These questions are excellent.'
+    }, {
+        type: 'multipleChoice',
+        label: 'Virus Sickness Level',
+        choices: ["critical", "medium", "minor"],
+        value: 'critical'
+    }, {
+        type: 'checkboxes',
+        label: 'Symptoms',
+        choices: ["nausea", "spots", "sudden love of cats"],
+        value: 'nausea'
     }]
 }, {
     type: "completedForm",
