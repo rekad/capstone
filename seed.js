@@ -424,24 +424,24 @@ var completedForms = [{
     }]
 }, {
     type: "completedForm",
-    title: "A great Form",
-    description: "This is a fantastic form. There might be no better one.",
+    title: "Family Health Information",
+    description: "A form for recording basic family health information in rural areas.",
     formElements: [{
         type: 'text',
         label: 'Name',
         value: "Kate"
     }, {
-        type: 'number',
-        label: 'Number of Children',
-        value: 5
+        type: 'address',
+        label: 'Address',
+        value: 'x'
     }, {
-        type: 'multipleChoice',
-        label: 'Gender',
+        type: 'text',
+        label: 'Toilet Condition',
         choices: ["male", "female", "other"],
         value: "female"
     }, {
-        type: 'sectionBreak',
-        title: 'Pet Questions',
+        type: 'text',
+        title: 'Water Condition',
         description: 'These questions are very important!'
     }, {
         type: 'checkboxes',

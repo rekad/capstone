@@ -1,7 +1,7 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper no-sidebar">
     <section class="content-header">
-        <h3>Select a chart type and which form data to visualize here.</h3>
+        <h3>Data Visualization <small>Select a chart type and which form data to visualize here.</small></h3>
     </section>
     <section class="content">
 
@@ -20,7 +20,7 @@
 
         <div class="col-lg-2">
         X-Axis Data
-        <select class="form-control" ng-model="chartOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]">
+        <select class="form-control" ng-model="dataOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]">
         </select>
         </div>
     </div>
