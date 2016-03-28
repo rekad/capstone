@@ -2,7 +2,8 @@
     <label>{{element.label}}</label>
     <div class="radio" ng-repeat="option in element.options">
         <label>
-            <input type="radio" name="optionsRadio" ng-model="element.value[$index]" ng-readonly="!isEditing" ng-true-value="'{{option.value}}'" ng-false-value="'null'" ng-disabled="!isEditing"> {{ option.value }}
+        	<!--   -->
+            <input type="radio" name="optionsRadio" ng-readonly="!isEditing" ng-model="element.value" ng-disabled="!isEditing" value="{{option.value}}"> {{ option.value }}
         </label>
     </div>
 </div>
