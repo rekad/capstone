@@ -1,5 +1,17 @@
 'use strict';
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js', {
+        scope: '/'
+    }).then(function(reg) {
+        console.log('Registration succeeded. Scope is ' + reg.scope);
+    }).catch(function(error) {
+        console.log('Registration failed with ' + error);
+    })
+}
+
 window.app = angular.module('TheKraken', ['ui.router', 'ui.bootstrap', 'completedFormsFilters']);
+
 
 app.config(function ($urlRouterProvider, $locationProvider) {
     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
