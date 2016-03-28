@@ -51,7 +51,7 @@
                         <div ng-if="selected.type === 'multipleChoice' || selected.type === 'checkbox' || selected.type === 'dropdown' ">
                             <div class="form-group">
                                 <label>Choices</label>
-                                <div class="input-group" ng-repeat="option in selected.options">
+                                <div class="input-group field-choices" ng-repeat="option in selected.options">
                                     <input type="text" class="form-control" ng-model="option.value">
                                     <span class="input-group-btn">
                                         <button class="btn btn-danger" ng-click="removeChoice(selected, option)">Remove</button>
