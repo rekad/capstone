@@ -13,7 +13,7 @@ app.controller('LoginCtrl', function ($scope, AuthFactory, $state) {
     $scope.login = function() {
         AuthFactory.login($scope.loginInfo)
             .then(function(user) {
-                $state.go('completed-forms.forms-list', {formTemplateId: null});
+                $state.go('completed-forms');
             })
             .catch(function(error) {
                 console.log("error: ", error);
