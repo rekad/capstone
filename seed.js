@@ -30,7 +30,7 @@ db.destroy(function() {
         db.save(formTemplates, function(err, res) {
             if (err) console.log('Error while seeding database', err);
             else console.log('Seeding of form templates successful', res);
-            console.log(completedForms.length);
+            console.log(res);
             completedForms.forEach(function(form) {
                 form.formTemplateId = res[0].id;
             });
