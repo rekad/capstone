@@ -107,6 +107,7 @@ app.directive('address', function() {
 		require: "ngModel",
 		link: function(scope, el, attr, ngModelCtrl) {
 			scope.$watch('element.value', function(newValue, oldValue) {
+
 				ngModelCtrl.$setViewValue(newValue);
 			});
 		},
@@ -157,7 +158,7 @@ app.directive('dropdown', function() {
 		require: "ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
 			scope.values = [];
-			scope.$watch('selected', function(newValue, oldValue) {
+			scope.$watch('element.value', function(newValue, oldValue) {
 				ngModelCtrl.$setViewValue(newValue);
 			});
 		},

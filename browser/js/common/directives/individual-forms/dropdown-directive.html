@@ -1,5 +1,6 @@
 <div class="form-group select-group">
 <label>{{element.label}}</label>
-	<select class="form-control" ng-model="selected" ng-options="option as option.value for option in element.options track by option.value" ng-readonly="!isEditing" ng-disabled="!isEditing">
+	<select class="form-control" ng-model="element.value" ng-readonly="!isEditing" ng-disabled="!isEditing">
+		 <option ng-repeat="option in element.options" value="option.value">{{ option.value }}</option>
 	</select>
 </div>
