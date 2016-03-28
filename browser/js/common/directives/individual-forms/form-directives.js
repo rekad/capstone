@@ -100,6 +100,23 @@ app.directive('checkbox', function() {
 	}
 });
 
+app.directive('dropdown', function() {
+	return {
+		scope: {
+			element: '=',
+			isEditing: '='
+		},
+		require: "ngModel",
+		link: function(scope, element, attr, ngModelCtrl) {
+			scope.values = [];
+			scope.$watch('selected', function(newValue, oldValue) {
+				ngModelCtrl.$setViewValue(newValue);
+			});
+		},
+		templateUrl: '/js/common/directives/individual-forms/dropdown-directive.html'
+	}
+});
+
 app.directive('sectionBreak', function() {
 	return {
 		scope: {

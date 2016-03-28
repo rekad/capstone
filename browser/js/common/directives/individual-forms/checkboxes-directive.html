@@ -1,9 +1,8 @@
 <div class="form-group">
 <label>{{element.label}}</label>
-{{element}}
-	<div class="checkbox" ng-repeat="choice in element.choices">
+	<div class="checkbox" ng-repeat="option in element.options">
 		<label>
-			<input type="checkbox" ng-model="element.value[$index]" ng-true-value="'{{choice}}'" ng-false-value="'null'" ng-readonly="!isEditing" ng-disabled="!isEditing"> {{ choice.value }}
+			<input type="checkbox" ng-model="element.value[$index]" ng-true-value="'{{option.value}}'" ng-false-value="'null'" ng-readonly="!isEditing" ng-disabled="!isEditing"> {{ option.value }}
 		</label>
 	</div>
 </div>
