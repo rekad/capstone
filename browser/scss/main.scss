@@ -20,11 +20,7 @@ body {
 }
 
 @import 'directives/main';
-@import 'home/main';
-@import 'about/main';
-@import 'tutorial/main';
 @import 'login/main';
-
 
 // Fixing content height issue with the AdminLTE CSS template used.
 // Height fixing javascript is executed on page load.
@@ -32,19 +28,84 @@ body {
 .content-wrapper {
 	min-height: 90vh;
 }
-// fixing layout for login page
-.login-box {
-  margin-top: 0px;
-  padding-top: 58px;
-}
-.login-page {
-  height: 100vh;
-}
 
 .box {
   max-width: 1200px;
 }
 
+.dotted-border {
+  border: dashed 1px black;
+  box-sizing: border-box;
+}
+
+.form-element {
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  position: relative;
+  .fa-times {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .btn-box-tool {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.select-group {
+  margin-top: 20px;
+}
+
+.form-box {
+  .box-body{
+    min-height: 70vh;
+  }
+  button {
+    margin-right: 10px;
+  }
+  .fa {
+    font-size: 150%;
+  }
+   label{
+    max-width:90%;
+    overflow: hidden;
+  }
+
+  h4 {
+    max-width:95%;
+    overflow: hidden;
+  }
+
+   h2 {
+    max-width:95%;
+    overflow: hidden;
+  }
+}
+
+button {
+  i {
+    margin-right: 5px;
+  }
+}
+
+.field-btn {
+    margin: 5px; 
+}
+
+.add-form-btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .no-sidebar {
   margin-left: 0px;
+}
+
+.field-choices {
+  margin-bottom: 5px;
 }

@@ -47,7 +47,7 @@ app.factory("SyncFactory", function(DatabaseFactory) {
                         completedFormsPerTemplate: formTemplates.map(function(formTemplate) {
                             return {
                                 title: formTemplate.title,
-                                count: groupedCompleted[formTemplate._id].length
+                                count: groupedCompleted[formTemplate._id] ? groupedCompleted[formTemplate._id].length : 0
                             }
                         })
                     }
