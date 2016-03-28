@@ -21,9 +21,19 @@ app.factory('FormTemplatesFactory', function($window) {
       return db.get(formTemplateId);
     },
 
-    submitForm: function(form) {
-      return db.post(form);
-      // add error handling
+    updateForm: function(form) {
+      return db.put(form);
+    },
+
+    createForm: function() {
+        var form = {
+            title: "Example Title",
+            description: "Example description",
+            type: "formTemplate",
+            formElements: []
+        }
+        return db.post(form);
+        // add error handling
     },
 
     syncUp: function() {
@@ -40,6 +50,5 @@ app.factory('FormTemplatesFactory', function($window) {
         db = PouchDB('thekraken-test');
       });
     }
-
   }
 })
