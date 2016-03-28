@@ -12,6 +12,7 @@ app.config(function($stateProvider) {
 })
 
 app.controller('SyncCtrl', function($scope, $rootScope, SyncFactory, stats, $uibModal) {
+
 	$scope.stats = stats;
 
 	function updateStats() {
@@ -32,7 +33,8 @@ app.controller('SyncCtrl', function($scope, $rootScope, SyncFactory, stats, $uib
 						$uibModalInstance.close();
 					}
 					$scope.result = result;
-				}
+				},
+				size: 'sm'
 			});
 		})
 	}
@@ -48,7 +50,8 @@ app.controller('SyncCtrl', function($scope, $rootScope, SyncFactory, stats, $uib
 						$uibModalInstance.close();
 					}
 					$scope.result = result;
-				}
+				},
+				size: 'sm'
 			});
 		})
 	}
@@ -64,7 +67,8 @@ app.controller('SyncCtrl', function($scope, $rootScope, SyncFactory, stats, $uib
 						$uibModalInstance.close();
 					}
 					$scope.result = result;
-				}
+				},
+				size: 'sm'
 			});
 		})
 		.catch(function(error) {
