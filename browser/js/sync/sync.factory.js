@@ -1,7 +1,11 @@
 app.factory("SyncFactory", function($window) {
 
     var PouchDB = $window.PouchDB;
-    var db = PouchDB('thekraken-test');
+    var db = PouchDB('thekraken-test', {ajax: {
+        rejectUnauthorized: false,
+        requestCert: true,
+        agent: false
+    }});
     var remoteDb = 'https://104.131.103.208:6984/thekraken-test';
 
     return {
@@ -29,7 +33,8 @@ app.factory("SyncFactory", function($window) {
                     var groupedCompleted = _.groupBy(docs.rows.filter(function(row) {
                         return row.doc.type === "completedForm";
                     }).map(function(row) {
-                        return row.doc }), function(doc) {
+                        return row.doc
+                    }), function(doc) {
                         return doc.formTemplateId;
                     })
 
