@@ -119,26 +119,21 @@ var formTemplates = [{
 var cradle = require('cradle');
 var dbName = "thekraken-test";
 
-var connection = new(cradle.Connection)('https://couch.io', 443, {
-     auth: { username: 'john', password: 'fha82l' }
- });
+var connection = new(cradle.Connection)('https://still-garden-49949.herokuapp.com', 443);
 var db = new(cradle.Connection)().database(dbName);
 
-db.destroy(function() {
-db.create(function(err) {
-        db.save(formTemplates, function(err, res) {
-            if (err) console.log('Error while seeding database', err);
-            else console.log('Seeding of form templates successful', res);
-            completedForms.forEach(function(form) {
-                form.formTemplateId = res[0].id;
-            });
+db.save(formTemplates, function(err, res) {
+    if (err) console.log('Error while seeding database', err);
+    else console.log('Seeding of form templates successful', res);
+    completedForms.forEach(function(form) {
+        form.formTemplateId = res[0].id;
+    });
 
-            db.save(completedForms, function(err, res) {
-                if (err) console.log('Error while seeding database', err);
-                else console.log('Seeding of completed forms successful', res);
-            });
-        });
+    db.save(completedForms, function(err, res) {
+        if (err) console.log('Error while seeding database', err);
+        else console.log('Seeding of completed forms successful', res);
+    });
 });
-});
+
 
 
