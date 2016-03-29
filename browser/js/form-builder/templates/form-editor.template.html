@@ -44,9 +44,14 @@
                                 <input ng-model="required" type="checkbox" value=""> Require Field
                             </label>
                         </div>
+
                         <div class="form-group" ng-if="selected.type !== undefined">
                             <label>Edit Label</label>
                             <input type="text" class="form-control" ng-model="selected.label">
+                        </div>
+                        <div class="form-group" ng-if="selected.type === 'section'">
+                            <label>Edit Description</label>
+                            <input type="text" class="form-control" ng-model="selected.sectionDescription">
                         </div>
                         <div ng-if="selected.type === 'multipleChoice' || selected.type === 'checkbox' || selected.type === 'dropdown' ">
                             <div class="form-group">
