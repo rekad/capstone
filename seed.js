@@ -41,11 +41,15 @@ var randomCompletedFormGenerator = function() {
             formElements: [{
                 type: 'lineText',
                 label: 'Family Name',
-                value: "Hermida"
+                value: "Hermida",
+                id: 1,
+                required: false
             }, {
                 type: 'number',
                 label: 'Family Size',
-                value: 5
+                value: 5,
+                id: 2,
+                required: false
             }, {
                 type: 'address',
                 label: 'Address',
@@ -55,22 +59,30 @@ var randomCompletedFormGenerator = function() {
                     city: 'San Pedro Sula',
                     state: 'Cortes',
                     country: 'Honduras'
-                }
+                },
+                id: 3,
+                required: false
             }, {
                 type: 'multipleChoice',
                 label: 'Latrine Type',
                 options: [{ value: "simple pit" }, { value: "indoor" }, { value: "open air" }],
-                value: "simple pit"
+                value: "simple pit",
+                id: 4,
+                required: false
             }, {
                 type: 'checkbox',
                 label: 'Drinking Water Conditions',
                 options: [{ value: "non-treated" }, { value: "bottled" }, { value: "filtered" }, { value: "chlorinated" }, { value: "boiled" }],
-                value: {}
+                value: {},
+                id: 5,
+                required: false
             }, {
                 type: 'checkbox',
                 label: 'Observed Virus Instances',
                 options: [{ value: "Zika" }, { value: "Ebola" }, { value: "malaria" }, { value: "tuberculosis" }, { value: "HIV/AIDS" }, { value: "hepatitis" }],
-                value: {}
+                value: {},
+                id: 6,
+                required: false
             }]
         };
         sampleForm.formElements[0].value = lastNames[Math.floor(Math.random() * lastNames.length)];
@@ -95,11 +107,15 @@ var randomCompletedFormGenerator = function() {
             formElements: [{
                 type: 'lineText',
                 label: 'Family Name',
-                value: "Hermida"
+                value: "Hermida",
+                id: 1,
+                required: false
             }, {
                 type: 'number',
                 label: 'Family Size',
-                value: 5
+                value: 5,
+                id: 2,
+                required: false
             }, {
                 type: 'address',
                 label: 'Address',
@@ -109,22 +125,30 @@ var randomCompletedFormGenerator = function() {
                     city: 'San Pedro Sula',
                     state: 'Cortes',
                     country: 'Honduras'
-                }
+                },
+                id: 3,
+                required: false
             }, {
                 type: 'multipleChoice',
                 label: 'Latrine Type',
                 options: [{ value: "simple pit" }, { value: "indoor" }, { value: "open air" }],
-                value: "simple pit"
+                value: "simple pit",
+                id: 4,
+                required: false
             }, {
                 type: 'checkbox',
                 label: 'Drinking Water Conditions',
                 options: [{ value: "non-treated" }, { value: "bottled" }, { value: "filtered" }, { value: "chlorinated" }, { value: "boiled" }],
-                value: {}
+                value: {},
+                id: 5,
+                required: false
             }, {
                 type: 'checkbox',
                 label: 'Observed Virus Instances',
                 options: [{ value: "Zika" }, { value: "Ebola" }, { value: "malaria" }, { value: "tuberculosis" }, { value: "HIV/AIDS" }, { value: "hepatitis" }],
-                value: {}
+                value: {},
+                id: 6,
+                required: false
             }]
         };
         otherSampleForm.formElements[0].value = lastNames[Math.floor(Math.random() * lastNames.length)];
@@ -149,25 +173,37 @@ var formTemplates = [{
     description: "A form for recording basic family health information in rural areas.",
     formElements: [{
         type: 'lineText',
-        label: 'Family Name'
+        label: 'Family Name',
+        id: 1,
+        required: false
     }, {
         type: 'number',
-        label: 'Family Size'
+        label: 'Family Size',
+        id: 2,
+        required: false
     }, {
         type: 'address',
-        label: 'Address'
+        label: 'Address',
+        id: 3,
+        required: false
     }, {
         type: 'multipleChoice',
         label: 'Latrine Type',
-        options: [{value: "simple pit"}, {value: "indoor"}, {value: "open air"}]
+        options: [{value: "simple pit"}, {value: "indoor"}, {value: "open air"}],
+        id: 4,
+        required: false
     }, {
         type: 'checkbox',
         label: 'Drinking Water Conditions',
-        options: [{value: "non-treated"}, {value: "bottled"}, {value: "filtered"}, {value: "chlorinated"}, {value: "boiled"}]
+        options: [{value: "non-treated"}, {value: "bottled"}, {value: "filtered"}, {value: "chlorinated"}, {value: "boiled"}],
+        id: 5,
+        required: false
     }, {
         type: 'checkbox',
         label: 'Observed Virus Instances',
-        options: [{value: "Zika"}, {value: "Ebola"}, {value: "malaria"}, {value: "tuberculosis"}, {value: "HIV/AIDS"}, {value: "hepatitis"}]
+        options: [{value: "Zika"}, {value: "Ebola"}, {value: "malaria"}, {value: "tuberculosis"}, {value: "HIV/AIDS"}, {value: "hepatitis"}],
+        id: 6,
+        required: false
 }]}];
 
 var cradle = require('cradle');

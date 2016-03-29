@@ -1,9 +1,11 @@
 app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplate) {
-
+$scope.selected = undefined;
+console.log($scope.selected);
     $scope.savedForm = false;
     $scope.formTemplate = formTemplate;
     $scope.title = $scope.formTemplate.title;
     $scope.description = $scope.formTemplate.description;
+    $scope.formElements = angular.copy($scope.formTemplate.formElements);
 
     $scope.save = function() {
         FormTemplatesFactory.updateForm($scope.formTemplate)
@@ -13,7 +15,6 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
     }
 
     $scope.tabSelected = 'one';
-    $scope.formElements = formTemplate.formElements;
 
     $scope.placeElements = function(type) {
         $scope.elementToAdd = { type: type };
@@ -38,8 +39,9 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
 
     $scope.required = false;
     $scope.selectElement = function(e) {
-        console.log("selected");
+        
         $scope.selected = e;
+        console.log($scope.selected);
         $scope.tabSelected = 'two';
     }
 
