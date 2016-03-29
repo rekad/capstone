@@ -1,5 +1,5 @@
 
-app.directive('navbar', function ($rootScope, $state) {
+app.directive('navbar', function ($rootScope, AuthFactory, $state) {
 
 
     return {
