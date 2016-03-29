@@ -109,10 +109,10 @@
                             <div class="form-element col-sm-11" ng-repeat="element in formElements" ng-required="required" ng-mouseover="onHover(element)" ng-class="{'dotted-border': hovered.id === element.id, 'bg-light-blue': element.id === selected.id}" ng-click="selectElement(element)">
                                 <button ng-hide="element.id !== selected.id" type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
                                     <i ng-click="removeElement(element)" ng-class="{'fa': selected.type === element.type, 'fa-times': selected.type === element.type}"></i></button>
-                                <line-text ng-if="element.type === 'lineText'"></line-text>
-                                <checkbox ng-if="element.type === 'checkbox'"></checkbox>
-                                <dropdown ng-if="element.type === 'dropdown'"></dropdown>
-                                <paragraph-text ng-if="element.type === 'paragraphText'"></paragraph-text>
+                                <line-text-template ng-if="element.type === 'lineText'"></line-text-template>
+                                <checkbox-template ng-if="element.type === 'checkbox'"></checkbox-template>
+                                <dropdown-template ng-if="element.type === 'dropdown'"></dropdown-template>
+                                <paragraph-text-template ng-if="element.type === 'paragraphText'"></paragraph-text-template>
                                 <multiple-choice-template ng-if="element.type === 'multipleChoice'"></multiple-choice-template>
                                 <number-template ng-if="element.type === 'number'"></number-template>
                                 <phone-template ng-if="element.type === 'phone'"></phone-template>
