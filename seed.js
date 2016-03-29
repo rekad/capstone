@@ -47,6 +47,19 @@ db.destroy(function() {
     });
 });
 
+var streets = ['Ave La Paz', 'Blvd Morazan', 'Blvd Norte', 'Carretera Lepaterique', 'Calle La Alameda', 'Ave Balboa', 'Ave Espana'];
+var cities = ['Tegucigalpa', 'San Pedro Sula', 'Choloma', 'La Ceiba', 'El Progreso', 'Choluteca', 'Comayagua', 'Puerto Cortes', 'La Lima', 'Danli', 'Siquatepeque', 'Catacamas', 'Juticalpa', 'Tocoa', 'Villanueva', 'Tela', 'Olanchito', 'Santa Rosa de Copan', 'San Lorenzo', 'Cofradia', 'El Paraiso', 'La Paz', 'Yoro', 'La Entrada', 'Potrerillos', 'Santa Barbara', 'Talanga', 'Nacaome', 'Santa Rita', 'Intibuca'];
+var states = ['Atlántida', 'Choluteca', 'Colón', 'Comayagua', 'Copán', 'Cortés', 'El Paraíso', 'Francisco Morazán', 'Gracias a Dios', 'Intibucá', 'Islas de la Bahía', 'La Paz', 'Lempira', 'Ocotepeque', 'Olancho', 'Santa Bárbara', 'Valle', 'Yoro'];
+var lastNames = ['Garcia', 'Rodriguez', 'Martinez', 'Lopez', 'Gonzalez', 'Perez', 'Sanchez', 'Ramirez', 'Torres', 'Flores', 'Rivera', 'Gomez', 'Diaz', 'Morales', 'Cruz', 'Ortiz', 'Chavez'];
+
+var randomCompletedFormGenerator = function() {
+  for (var i=0; i<200; i++) {
+    var newForm = 
+    //generate random form
+    completedForms.push(newForm);
+  }
+};
+
 var formTemplates = [{
     type: "formTemplate",
     title: "A great Form",
@@ -428,26 +441,37 @@ var completedForms = [{
     description: "A form for recording basic family health information in rural areas.",
     formElements: [{
         type: 'text',
-        label: 'Name',
-        value: "Kate"
+        label: 'Family Name',
+        value: "Hermida"
+    }, {
+        type: 'number',
+        label: 'Family Size',
+        value: 5
     }, {
         type: 'address',
         label: 'Address',
-        value: 'x'
+        value: {
+            streetAddress: '34 Ave La Paz',
+            streetAddress2: 'Apartment 7',
+            city: 'San Pedro Sula',
+            state: 'Cortes',
+            country: 'Honduras'
+        }
     }, {
-        type: 'text',
-        label: 'Toilet Condition',
-        choices: ["male", "female", "other"],
-        value: "female"
-    }, {
-        type: 'text',
-        title: 'Water Condition',
-        description: 'These questions are very important!'
+        type: 'multipleChoice',
+        label: 'Latrine Type',
+        choices: ["simple pit", "indoor", "open air"],
+        value: "simple pit"
     }, {
         type: 'checkboxes',
-        label: 'Pets',
-        choices: ["cat", "dog", "parrot"],
-        value: ["cat", "parrot"]
+        title: 'Drinking Water Conditions',
+        choices: ["non-treated", "bottled", "filtered", "chlorinated", "boiled"],
+        value: "non-treated"
+    }, {
+        type: 'checkboxes',
+        title: 'Observed Virus Instances',
+        choices: ["Zika", "Ebola", "malaria", "tuberculosis", "HIV/AIDS", "hepatitis"],
+        value: "Zika"
     }]
 }, {
     type: "completedForm",
