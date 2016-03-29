@@ -5,7 +5,10 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
     $scope.title = $scope.formTemplate.title;
     $scope.description = $scope.formTemplate.description;
 
+    //Do we need to make sure with this put to update the ._rev of the form in case they don't leave the page, update again, and save again?
+    //Also a model for the save success might be nicer (something near the bottom where the save button is?)
     $scope.save = function() {
+        console.log('template', $scope.formTemplate);
         FormTemplatesFactory.updateForm($scope.formTemplate)
             .then(function(savedForm) {
                 $scope.savedForm = true;
