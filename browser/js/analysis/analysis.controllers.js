@@ -4,7 +4,7 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
     $scope.currentForm = null;
     $scope.labels = [];
     $scope.data = [[]];
-    $scope.chartTypes = ['map', 'bar graph', 'pie chart', 'donut chart'];
+    $scope.chartTypes = ['bar graph', 'pie chart', 'donut chart'];
 
     $scope.scourForms = function(forms, soughtItem) {
         var result = {};
