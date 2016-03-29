@@ -1,8 +1,4 @@
 <div class="container-fluid">
-    <div ng-show="savedForm" class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-check"></i>Your Form Has Been Saved!</h4>
-    </div>
     <div class="row">
         <div class="col-sm-4">
             <ul class="nav nav-tabs">
@@ -44,9 +40,14 @@
                                 <input ng-model="required" type="checkbox" value=""> Require Field
                             </label>
                         </div>
+
                         <div class="form-group" ng-if="selected.type !== undefined">
                             <label>Edit Label</label>
                             <input type="text" class="form-control" ng-model="selected.label">
+                        </div>
+                        <div class="form-group" ng-if="selected.type === 'section'">
+                            <label>Edit Description</label>
+                            <input type="text" class="form-control" ng-model="selected.sectionDescription">
                         </div>
                         <div ng-if="selected.type === 'multipleChoice' || selected.type === 'checkbox' || selected.type === 'dropdown' ">
                             <div class="form-group">
@@ -109,10 +110,10 @@
                             <div class="form-element col-sm-11" ng-repeat="element in formElements" ng-required="required" ng-mouseover="onHover(element)" ng-class="{'dotted-border': hovered.id === element.id, 'bg-light-blue': element.id === selected.id}" ng-click="selectElement(element)">
                                 <button ng-hide="element.id !== selected.id" type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
                                     <i ng-click="removeElement(element)" ng-class="{'fa': selected.type === element.type, 'fa-times': selected.type === element.type}"></i></button>
-                                <line-text-template ng-if="element.type === 'lineText'"></line-text-template>
-                                <checkbox-template ng-if="element.type === 'checkbox'"></checkbox-template>
-                                <dropdown-template ng-if="element.type === 'dropdown'"></dropdown-template>
-                                <paragraph-text-template ng-if="element.type === 'paragraphText'"></paragraph-text-template>
+                                <line-text ng-if="element.type === 'lineText'"></line-text>
+                                <checkbox ng-if="element.type === 'checkbox'"></checkbox>
+                                <dropdown ng-if="element.type === 'dropdown'"></dropdown>
+                                <paragraph-text ng-if="element.type === 'paragraphText'"></paragraph-text>
                                 <multiple-choice-template ng-if="element.type === 'multipleChoice'"></multiple-choice-template>
                                 <number-template ng-if="element.type === 'number'"></number-template>
                                 <phone-template ng-if="element.type === 'phone'"></phone-template>
@@ -146,8 +147,12 @@
                         </div>
                         <!-- /.modal-dialog -->
                     </div>
-                </div>
+                </div>  
             </div>
         </div>
+    </div>
+     <div ng-show="savedForm" class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-check"></i>Your Form Has Been Saved!</h4>
     </div>
 </div>
