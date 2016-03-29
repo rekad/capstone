@@ -26,10 +26,6 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
         else if (type === 'phone') $scope.elementToAdd.label = "Phone Number";
         else if (type === 'email') $scope.elementToAdd.label = "Email";
         else if (type === 'address') $scope.elementToAdd.label = "Address";
-        else if (type === 'section') {
-            $scope.elementToAdd.label = "Section";
-            $scope.elementToAdd.sectionDescription = "Section Description";
-        };
 
         $scope.elementToAdd.id = nextId;
         nextId++;
