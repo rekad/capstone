@@ -26,20 +26,6 @@
     </div>
     <br>
 
-<!--         <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" ng-model="dataOptions" ng-select="graphChange()" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        X-Axis Data
-        <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li ng-repeat="label in formLabels[currentForm]">{{label}}</li>
-        </ul>
-        </div> -->
-
-        <!-- <span>X-Axis Label:</span>
-        <select ng-model="dataOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]"></select> -->
-        <!-- <span ng-show="chartOptions==='bar graph'">Y-Axis Label:</span>
-        <select ng-change="graphChange()" ng-show="chartOptions==='bar graph'" ng-model="dataOptions2" ng-options="label as label for label in formLabels[currentForm]"></select> -->
         <div class="chart-container">
             <canvas ng-show="chartOptions==='bar graph'" id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" width="400" height="200" style="margin-top:10px">
             </canvas>
