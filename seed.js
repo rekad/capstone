@@ -62,12 +62,12 @@ var randomCompletedFormGenerator = function() {
                 value: "simple pit"
             }, {
                 type: 'checkbox',
-                title: 'Drinking Water Conditions',
+                label: 'Drinking Water Conditions',
                 options: [{ value: "non-treated" }, { value: "bottled" }, { value: "filtered" }, { value: "chlorinated" }, { value: "boiled" }],
                 value: { "1": "non-treated" }
             }, {
                 type: 'checkbox',
-                title: 'Observed Virus Instances',
+                label: 'Observed Virus Instances',
                 options: [{ value: "Zika" }, { value: "Ebola" }, { value: "malaria" }, { value: "tuberculosis" }, { value: "HIV/AIDS" }, { value: "hepatitis" }],
                 value: { "1": "Zika" }
             }]
@@ -79,8 +79,10 @@ var randomCompletedFormGenerator = function() {
         sampleForm.formElements[2].value.city = cities[Math.floor(Math.random() * cities.length)];
         sampleForm.formElements[2].value.state = states[Math.floor(Math.random() * states.length)];
         sampleForm.formElements[3].value = latrines[Math.floor(Math.random() * latrines.length)];
-        sampleForm.formElements[4].value[1] = waterConditions[Math.floor(Math.random() * waterConditions.length)];
-        sampleForm.formElements[5].value[1] = virusInstances[Math.floor(Math.random() * virusInstances.length)];
+        var x = Math.floor(Math.random() * waterConditions.length);
+        sampleForm.formElements[4].value[x] = waterConditions[x];
+        var y = Math.floor(Math.random() * virusInstances.length);
+        sampleForm.formElements[5].value[y] = virusInstances[y];
         completedForms.push(sampleForm);
     }
 };
