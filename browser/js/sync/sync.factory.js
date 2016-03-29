@@ -1,12 +1,7 @@
-app.factory("SyncFactory", function($window) {
 
-    var PouchDB = $window.PouchDB;
-    var db = PouchDB('thekraken-test', {ajax: {
-        rejectUnauthorized: false,
-        requestCert: true,
-        agent: false
-    }});
-    var remoteDb = 'http://104.131.103.208:5984/thekraken-test';
+app.factory("SyncFactory", function(DatabaseFactory) {
+    var db = DatabaseFactory.getLocalDb();
+    var remoteDb = DatabaseFactory.getRemoteDb();
 
     return {
 

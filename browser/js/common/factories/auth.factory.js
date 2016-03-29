@@ -1,7 +1,7 @@
-app.factory('AuthFactory', function($window, $rootScope) {
-	var PouchDB = $window.PouchDB;
-	var remoteDb = new PouchDB('http://104.131.103.208:5984/thekraken-test', {skipSetup: true});
-	var db = new PouchDB('users');
+
+app.factory('AuthFactory', function(DatabaseFactory) {
+	var remoteDb = DatabaseFactory.getRemoteDb();
+	var usersDb = DatabaseFactory.getUsersDb();
 
 	return {
 		login: function(loginInfo) {
@@ -10,9 +10,9 @@ app.factory('AuthFactory', function($window, $rootScope) {
 
 			// Logging in has multiple steps
 			// 1. Login the user
-			// 2. get user info from the master db
-			// 3. save/update user info in local db
-			// 4. store reference to current user in local db
+			// 2. get user info from the master usersDb
+			// 3. save/update user info in local usersDb
+			// 4. store reference to current user in local usersDb
 
 			// Todo: Add offline login
 			return remoteDb.login(loginInfo.username, loginInfo.password)
@@ -24,7 +24,7 @@ app.factory('AuthFactory', function($window, $rootScope) {
 	            	masterUser = user;
 	            	console.log('masterUser: ', masterUser)
 
-	            	return db.get('org.couchdb.user:' + masterUser.name)
+	            	return usersDb.get('org.couchdb.user:' + masterUser.name)
 	            })
 	            .then(function(user) {
 	            	localUser = user;
@@ -34,27 +34,20 @@ app.factory('AuthFactory', function($window, $rootScope) {
 	            	var localUserRev = localUser._rev;
 	            	localUser = masterUser;
 	            	localUser._rev = localUserRev;
-	            	return db.put(localUser);
-	            }, function(error) {
-	            	delete masterUser._rev;
-	            	localUser = masterUser;
-	            	console.log('localUser in case it doesnt exist yet: ', localUser)
+	            	
+	            	return usersDb.put(localUser);
 
-	            	return db.put(masterUser);
 	            })
 	            .then(function() {
-	            	return db.get('currentUser')
+	            	return usersDb.get('currentUser')
 	            })
 	            .then(function(currentUser) {
 	            	currentUser.name = localUser.name;
-	            	console.log('currentUser: ', currentUser)
 
-	            	return db.put(currentUser);
+	            	return usersDb.put(currentUser);
 	            }, function(error) {
 	            	var currentUser = {_id: 'currentUser', name: localUser.name};
-	            	console.log('currentUser in ca d e y: ', currentUser)
-
-	            	return db.put(currentUser);
+	            	return usersDb.put(currentUser);
 	            })
 	            .then(function() {
 	            	$rootScope.$broadcast('login-success');
@@ -65,18 +58,18 @@ app.factory('AuthFactory', function($window, $rootScope) {
 		},
 		logout: function() {
 			// logging out means deleting the current user
-			return db.get('currentUser').then(function(currentUser) {
-				return db.remove(currentUser);
+			return usersDb.get('currentUser').then(function(currentUser) {
+				return usersDb.remove(currentUser);
 			})
 			.catch(function(err) {
 				console.log(err);
 			})
 		},
 		getUser: function() {
-			return db.get('currentUser')
+			return usersDb.get('currentUser')
 				.then(function(currentUser) {
-					console.log('found current user ', currentUser);
-					return db.get('org.couchdb.user:' + currentUser.name)
+
+					return usersDb.get('org.couchdb.user:' + currentUser.name)
 				})
 				.catch(function(err) {
 					console.log('could not find current user')
