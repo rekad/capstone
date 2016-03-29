@@ -64,12 +64,12 @@ var randomCompletedFormGenerator = function() {
                 type: 'checkbox',
                 label: 'Drinking Water Conditions',
                 options: [{ value: "non-treated" }, { value: "bottled" }, { value: "filtered" }, { value: "chlorinated" }, { value: "boiled" }],
-                value: { "1": "non-treated" }
+                value: {}
             }, {
                 type: 'checkbox',
                 label: 'Observed Virus Instances',
                 options: [{ value: "Zika" }, { value: "Ebola" }, { value: "malaria" }, { value: "tuberculosis" }, { value: "HIV/AIDS" }, { value: "hepatitis" }],
-                value: { "1": "Zika" }
+                value: {}
             }]
         };
         sampleForm.formElements[0].value = lastNames[Math.floor(Math.random() * lastNames.length)];
