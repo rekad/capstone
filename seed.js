@@ -32,7 +32,8 @@ var states = ['Atlántida', 'Choluteca', 'Colón', 'Comayagua', 'Copán', 'Cort�
 var lastNames = ['Garcia', 'Rodriguez', 'Martinez', 'Lopez', 'Gonzalez', 'Perez', 'Sanchez', 'Ramirez', 'Torres', 'Flores', 'Rivera', 'Gomez', 'Diaz', 'Morales', 'Cruz', 'Ortiz', 'Chavez'];
 
 var randomCompletedFormGenerator = function() {
-    for (var i = 0; i < 200; i++) {
+    //seeding normal random data first
+    for (var i = 0; i < 130; i++) {
         var sampleForm = {
             type: "completedForm",
             title: "Family Health Information",
@@ -84,6 +85,59 @@ var randomCompletedFormGenerator = function() {
         var y = Math.floor(Math.random() * virusInstances.length);
         sampleForm.formElements[5].value[y] = virusInstances[y];
         completedForms.push(sampleForm);
+    }
+    //seeding our zika virus outbreak data next to skew overall data
+    for (var j = 0; j < 70; j++) {
+        var otherSampleForm = {
+            type: "completedForm",
+            title: "Family Health Information",
+            description: "A form for recording basic family health information in rural areas.",
+            formElements: [{
+                type: 'lineText',
+                label: 'Family Name',
+                value: "Hermida"
+            }, {
+                type: 'number',
+                label: 'Family Size',
+                value: 5
+            }, {
+                type: 'address',
+                label: 'Address',
+                value: {
+                    streetAddress: '34 Ave La Paz',
+                    streetAddress2: 'Apartment 7',
+                    city: 'San Pedro Sula',
+                    state: 'Cortes',
+                    country: 'Honduras'
+                }
+            }, {
+                type: 'multipleChoice',
+                label: 'Latrine Type',
+                options: [{ value: "simple pit" }, { value: "indoor" }, { value: "open air" }],
+                value: "simple pit"
+            }, {
+                type: 'checkbox',
+                label: 'Drinking Water Conditions',
+                options: [{ value: "non-treated" }, { value: "bottled" }, { value: "filtered" }, { value: "chlorinated" }, { value: "boiled" }],
+                value: {}
+            }, {
+                type: 'checkbox',
+                label: 'Observed Virus Instances',
+                options: [{ value: "Zika" }, { value: "Ebola" }, { value: "malaria" }, { value: "tuberculosis" }, { value: "HIV/AIDS" }, { value: "hepatitis" }],
+                value: {}
+            }]
+        };
+        otherSampleForm.formElements[0].value = lastNames[Math.floor(Math.random() * lastNames.length)];
+        otherSampleForm.formElements[1].value = Math.floor((Math.random() * 10) + 1);
+        otherSampleForm.formElements[2].value.streetAddress = String(Math.floor(Math.random() * 100)) + " " + streets[Math.floor(Math.random() * streets.length)];
+        otherSampleForm.formElements[2].value.streetAddress2 = "Apartment " + Math.floor(Math.random() * 30);
+        otherSampleForm.formElements[2].value.city = cities[Math.floor(Math.random() * cities.length)];
+        otherSampleForm.formElements[2].value.state = states[Math.floor(Math.random() * states.length)];
+        otherSampleForm.formElements[3].value = latrines[2];
+        var a = Math.floor(Math.random() * waterConditions.length);
+        otherSampleForm.formElements[4].value[a] = waterConditions[a];
+        otherSampleForm.formElements[5].value[0] = virusInstances[0];
+        completedForms.push(otherSampleForm);
     }
 };
 
