@@ -1,3 +1,4 @@
+
 app.factory('AuthFactory', function(DatabaseFactory) {
 	var remoteDb = DatabaseFactory.getRemoteDb();
 	var usersDb = DatabaseFactory.getUsersDb();
@@ -21,26 +22,45 @@ app.factory('AuthFactory', function(DatabaseFactory) {
 	            })
 	            .then(function(user) {
 	            	masterUser = user;
+	            	console.log('masterUser: ', masterUser)
 
 	            	return usersDb.get('org.couchdb.user:' + masterUser.name)
 	            })
 	            .then(function(user) {
 	            	localUser = user;
 
+	            	console.log('localUser: ', localUser)
+
 	            	var localUserRev = localUser._rev;
 	            	localUser = masterUser;
 	            	localUser._rev = localUserRev;
-	            	return usersDb.put(localUser);
+
+	            	return db.put(localUser);
+	            }, function(error) {
+	            	delete masterUser._rev;
+	            	localUser = masterUser;
+	            	console.log('localUser in case it doesnt exist yet: ', localUser)
+
+	            	return db.put(masterUser);
 	            })
 	            .then(function() {
 	            	return usersDb.get('currentUser')
 	            })
 	            .then(function(currentUser) {
 	            	currentUser.name = localUser.name;
-	            	return usersDb.put(currentUser);
+
+	            	console.log('currentUser: ', currentUser)
+
+	            	return db.put(currentUser);
 	            }, function(error) {
 	            	var currentUser = {_id: 'currentUser', name: localUser.name};
-	            	return usersDb.put(currentUser);
+	            	console.log('currentUser in ca d e y: ', currentUser)
+
+	            	return db.put(currentUser);
+
+	            })
+	            .then(function() {
+	            	$rootScope.$broadcast('login-success');
 	            })
                 .catch(function(error) {
 	                console.log("error: ", error);
@@ -58,9 +78,12 @@ app.factory('AuthFactory', function(DatabaseFactory) {
 		getUser: function() {
 			return usersDb.get('currentUser')
 				.then(function(currentUser) {
-					return usersDb.get('org.couchdb.user:' + currentUser.name)
+
+					console.log('found current user ', currentUser);
+					return db.get('org.couchdb.user:' + currentUser.name)
 				})
 				.catch(function(err) {
+					console.log('could not find current user')
 					return null;
 				})
 		}

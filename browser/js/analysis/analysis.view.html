@@ -25,24 +25,36 @@
         </div>
     </div>
     <br>
-
-        <div class="chart-container">
-            <canvas ng-show="chartOptions==='bar graph'" id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" width="400" height="200" style="margin-top:10px">
-            </canvas>
-        </div>
-        <div class="box box-primary">
+        <div class="box box-primary" ng-show="chartOptions==='bar graph'">
         <div class="box-header with-border">
         <h3 class="box-title">{{dataOptions}}</h3>
         <div class="chart-container">
-            <canvas ng-show="chartOptions==='pie chart'" id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" style="margin-top:20px">
+            <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" width="400" height="200" style="margin-top:10px">
             </canvas>
         </div>
         </div>
         </div>
+
+        <div class="box box-primary" ng-show='chartOptions==="pie chart"'>
+        <div class="box-header with-border">
+        <h3 class="box-title">{{dataOptions}}</h3>
         <div class="chart-container">
-            <canvas ng-show="chartOptions==='donut chart'" id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels" style="margin-top:20px">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-legend="true" style="margin-top:20px">
             </canvas>
         </div>
+        </div>
+        </div>
+
+        <div class="box box-primary" ng-show="chartOptions==='donut chart'">
+        <div class="box-header with-border">
+        <h3 class="box-title">{{dataOptions}}</h3>
+        <div class="chart-container">
+            <canvas id="doughnut" class="chart chart-doughnut" chart-legend="true" chart-data="data" chart-labels="labels" style="margin-top:20px">
+            </canvas>
+        </div>
+        </div>
+        </div>
+
     </section>
 </div>
 <!-- /.content-wrapper
