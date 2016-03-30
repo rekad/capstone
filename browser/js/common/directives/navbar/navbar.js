@@ -2,7 +2,6 @@ app.directive('navbar', function ($rootScope, AuthFactory, $state) {
 
     return {
         restrict: 'E',
-        scope: {},
         templateUrl: 'js/common/directives/navbar/navbar.html',
         link: function (scope) {
             scope.online = $rootScope.online;

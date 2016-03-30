@@ -8,6 +8,12 @@ body {
   padding-top: 60px;
   margin: 0 auto; }
 
+#onlineNav {
+  background-color: #00a65a; }
+
+#offlineNav {
+  background-color: #f39c12; }
+
 .login-box {
   margin-top: 0px;
   padding-top: 58px; }
