@@ -22,7 +22,11 @@ app.factory('FormTemplatesFactory', function($window) {
     },
 
     updateForm: function(form) {
-      return db.put(form);
+      return db.put(form)
+          .then(function (updateResponse) {
+            form._rev = updateResponse.rev;
+            return form;
+          });
     },
 
     createForm: function() {
