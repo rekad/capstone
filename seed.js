@@ -1,26 +1,3 @@
-/*
-
-This seed file is only a placeholder. It should be expanded and altered
-to fit the development of your application.
-
-It uses the same file the server uses to establish
-the database connection:
---- server/db/index.js
-
-The name of the database used is set in your environment files:
---- server/env/*
-
-This seed file has a safety check to see if you already have users
-in the database. If you are developing multiple applications with the
-fsg scaffolding, keep in mind that fsg always uses the same database
-name in the environment files.
-
-*/
-
-// Rewrite promisified?
-// var bluebird = require('bluebird');
-// var cradle = bluebird.promisifyAll(require('cradle'));
-
 var completedForms = [];
 
 var latrines = ['simple pit', 'indoor', 'open air'];
@@ -203,6 +180,38 @@ var formTemplates = [{
         label: 'Observed Virus Instances',
         options: [{value: "Zika"}, {value: "Ebola"}, {value: "malaria"}, {value: "tuberculosis"}, {value: "HIV/AIDS"}, {value: "hepatitis"}],
         id: 6,
+        required: false
+}]}, {
+    type: "formTemplate",
+    title: "Village Health Information",
+    description: "A form for recording basic community health information in rural areas.",
+    formElements: [{
+        type: 'lineText',
+        label: 'Community Name',
+        id: 1,
+        required: false
+    }, {
+        type: 'number',
+        label: 'Community Size',
+        id: 2,
+        required: false
+    }, {
+        type: 'multipleChoice',
+        label: 'Water Treatment System',
+        options: [{value: "no water treatment system"}, {value: "partial purification system"}, {value: "full purification system"}],
+        id: 3,
+        required: false
+    }, {
+        type: 'checkbox',
+        label: 'Sewage System',
+        options: [{value: "no sewage system"}, {value: "on-site sewage systems"}, {value: "wastewater disposal system"}],
+        id: 4,
+        required: false
+    }, {
+        type: 'checkbox',
+        label: 'Observed Virus Instances',
+        options: [{value: "Zika"}, {value: "Ebola"}, {value: "malaria"}, {value: "tuberculosis"}, {value: "HIV/AIDS"}, {value: "hepatitis"}],
+        id: 5,
         required: false
 }]}];
 
