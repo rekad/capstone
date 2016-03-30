@@ -1,14 +1,13 @@
 app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplate) {
-
+$scope.selected = undefined;
+console.log($scope.selected);
     $scope.savedForm = false;
     $scope.formTemplate = formTemplate;
     $scope.title = $scope.formTemplate.title;
     $scope.description = $scope.formTemplate.description;
+    $scope.formElements = angular.copy($scope.formTemplate.formElements);
 
-    //Do we need to make sure with this put to update the ._rev of the form in case they don't leave the page, update again, and save again?
-    //Also a model for the save success might be nicer (something near the bottom where the save button is?)
     $scope.save = function() {
-        console.log('template', $scope.formTemplate);
         FormTemplatesFactory.updateForm($scope.formTemplate)
             .then(function(savedForm) {
                 $scope.savedForm = true;
@@ -16,7 +15,6 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
     }
 
     $scope.tabSelected = 'one';
-    $scope.formElements = formTemplate.formElements;
 
     $scope.placeElements = function(type) {
         $scope.elementToAdd = { type: type };
@@ -29,6 +27,10 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
         else if (type === 'phone') $scope.elementToAdd.label = "Phone Number";
         else if (type === 'email') $scope.elementToAdd.label = "Email";
         else if (type === 'address') $scope.elementToAdd.label = "Address";
+        else if (type === 'section') {
+            $scope.elementToAdd.label = "Section";
+            $scope.elementToAdd.sectionDescription = "Section Description";
+        };
 
         $scope.elementToAdd.id = nextId;
         nextId++;
@@ -37,8 +39,9 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
 
     $scope.required = false;
     $scope.selectElement = function(e) {
-        console.log("selected");
+        
         $scope.selected = e;
+        console.log($scope.selected);
         $scope.tabSelected = 'two';
     }
 
