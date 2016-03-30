@@ -29,7 +29,7 @@ var virusInstances = ['Zika', 'Ebola', 'malaria', 'tuberculosis', 'HIV/AIDS', 'h
 var streets = ['Ave La Paz', 'Blvd Morazan', 'Blvd Norte', 'Carretera Lepaterique', 'Calle La Alameda', 'Ave Balboa', 'Ave Espana'];
 var cities = ['Tegucigalpa', 'San Pedro Sula', 'Choloma', 'La Ceiba', 'El Progreso', 'Choluteca', 'Comayagua', 'Puerto Cortes', 'La Lima', 'Danli', 'Siquatepeque', 'Catacamas', 'Juticalpa', 'Tocoa', 'Villanueva', 'Tela', 'Olanchito', 'Santa Rosa de Copan', 'San Lorenzo', 'Cofradia', 'El Paraiso', 'La Paz', 'Yoro', 'La Entrada', 'Potrerillos', 'Santa Barbara', 'Talanga', 'Nacaome', 'Santa Rita', 'Intibuca'];
 var states = ['Atlántida', 'Choluteca', 'Colón', 'Comayagua', 'Copán', 'Cortés', 'El Paraíso', 'Francisco Morazán', 'Gracias a Dios', 'Intibucá', 'Islas de la Bahía', 'La Paz', 'Lempira', 'Ocotepeque', 'Olancho', 'Santa Bárbara', 'Valle', 'Yoro'];
-var lastNames = ['Garcia', 'Rodriguez', 'Martinez', 'Lopez', 'Gonzalez', 'Perez', 'Sanchez', 'Ramirez', 'Torres', 'Flores', 'Rivera', 'Gomez', 'Diaz', 'Morales', 'Cruz', 'Ortiz', 'Chavez'];
+var lastNames = ['Garcia', 'Rodriguez', 'Martinez', 'Lopez', 'Gonzalez', 'Perez', 'Sanchez', 'Ramirez', 'Torres', 'Flores', 'Rivera', 'Gomez', 'Diaz', 'Morales', 'Cruz', 'Ortiz', 'Chavez', 'Rosario', 'Davila', 'Villegas', 'Huerta', 'Mata', 'Beltran', 'Barajas', 'Benitez', 'Esparza', 'Cordova', 'Murillo', 'Salgado', 'Rosas', 'Cuevas', 'Palacios', 'Guevara', 'Quintero', 'Lucero', 'Medrano', 'Bautista', 'Cortes', 'Magana', 'Trejo', 'Bernal', 'Nieves', 'Lugo', 'Villalobos', 'Enriquez', 'Estrada', 'Reyna', 'Saenz', 'Delarosa', 'Avalos', 'Parra', 'Leal', 'Saldana', 'Galindo', 'Duarte', 'Cano', 'Nava', 'Sierra', 'Blanco', 'Becerra', 'Tovar', 'Vera', 'Zapata', 'Muniz', 'Cardona', 'Vigil', 'Baez', 'Peralta', 'Hinojosa', 'Renteria', 'Gallardo', 'Felix', 'Baca', 'Castellanos', 'Guillen', 'Cordero', 'Chacon', 'Valle', 'Coronado', 'Vela', 'Moran', 'Alonso', 'Velasco', 'Madrigal', 'Carranza', 'Quiroz', 'Montano', 'Madrid', 'Romo', 'Serna', 'Ybarra', 'Caballero', 'Burgos', 'Ventura', 'Olvera', 'Varela', 'Leyva', 'Quezada', 'Benavides', 'Aragon', 'Aviles', 'Uribe', 'Pagan', 'Paredes', 'Salinas', 'Robles', 'Solis', 'Lara', 'Cervantes', 'Aguirre', 'Deleon', 'Ochoa', 'Miranda', 'Cardenas', 'Trujillo', 'Velasquez', 'Fuentes', 'Cabrera', 'Leon', 'Rivas', 'Montoya', 'Colon', 'Calderon', 'Serrano', 'Gallegos', 'Rosales', 'Castaneda', 'Villareal', 'Guerra', 'Trevino', 'Pacheco', 'Ibarra', 'Valencia', 'Macias', 'Camacho', 'Salas', 'Orozco', 'Zamora', 'Suarez', 'Franco', 'Barrera', 'Mercado', 'Santana', 'Valenzuela', 'Escobar', 'Melendez', 'Velez', 'Lozano', 'Arias', 'Mora', 'Zuniga', 'Cantu', 'Acevedo', 'Cisneros', 'Arroyo', 'Pineda'];
 
 var randomCompletedFormGenerator = function() {
     //seeding normal random data first
@@ -87,8 +87,8 @@ var randomCompletedFormGenerator = function() {
         };
         sampleForm.formElements[0].value = lastNames[Math.floor(Math.random() * lastNames.length)];
         sampleForm.formElements[1].value = Math.floor((Math.random() * 10) + 1);
-        sampleForm.formElements[2].value.streetAddress = String(Math.floor(Math.random() * 100)) + " " + streets[Math.floor(Math.random() * streets.length)];
-        sampleForm.formElements[2].value.streetAddress2 = "Apartment " + Math.floor(Math.random() * 30);
+        sampleForm.formElements[2].value.streetAddress = String((Math.floor(Math.random() * 100))+1) + " " + streets[Math.floor(Math.random() * streets.length)];
+        sampleForm.formElements[2].value.streetAddress2 = "Apartment " + (Math.floor(Math.random() * 30)+1);
         sampleForm.formElements[2].value.city = cities[Math.floor(Math.random() * cities.length)];
         sampleForm.formElements[2].value.state = states[Math.floor(Math.random() * states.length)];
         sampleForm.formElements[3].value = latrines[Math.floor(Math.random() * latrines.length)];
