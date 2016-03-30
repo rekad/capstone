@@ -1,22 +1,22 @@
 <div class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html">the<b>Kraken</b></a>
+            <a href="../../index2.html">border<b>less</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">Log in to start your session</p>
-            <form action="../../index2.html" method="post">
+            <form>
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="Organization">
+                    <input type="text" class="form-control" placeholder="Organization" ng-model="loginInfo.organization">
                     <span class="glyphicon glyphicon-globe form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="text" class="form-control" placeholder="Username" ng-model="loginInfo.username">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" ng-model="loginInfo.password">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
@@ -29,7 +29,8 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
-                        <button ui-sref="completed-forms.forms-list({formTemplateId: null})" type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
+
+                        <button ng-click="login()" class="btn btn-primary btn-block btn-flat">Log In</button>
                     </div>
                     <!-- /.col -->
                 </div>
