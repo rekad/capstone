@@ -8,21 +8,31 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('LoginCtrl', function ($scope, AuthService, $state) {
+app.controller('LoginCtrl', function ($scope, AuthFactory, $state) {
 
-    $scope.login = {};
-    $scope.error = null;
+    $scope.login = function() {
+        AuthFactory.login($scope.loginInfo)
+            .then(function(user) {
+                $state.go('completed-forms');
+            })
+            .catch(function(error) {
+                console.log("error: ", error);
+            })
+    }
 
-    $scope.sendLogin = function (loginInfo) {
+    // $scope.login = {};
+    // $scope.error = null;
 
-        $scope.error = null;
+    // $scope.sendLogin = function (loginInfo) {
 
-        AuthService.login(loginInfo).then(function () {
-            $state.go('home');
-        }).catch(function () {
-            $scope.error = 'Invalid login credentials.';
-        });
+    //     $scope.error = null;
 
-    };
+    //     AuthService.login(loginInfo).then(function () {
+    //         $state.go('home');
+    //     }).catch(function () {
+    //         $scope.error = 'Invalid login credentials.';
+    //     });
+
+    // };
 
 });
