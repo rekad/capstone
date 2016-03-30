@@ -107,7 +107,7 @@
                 <form>
                     <div class="box-body" id="form-template-body">
                         <div class="row">
-                        <ul data-as-sortable="dragControlListeners" data-ng-model="elements">
+                        <ul data-as-sortable="dragControlListeners" data-ng-model="formElements">
                             <li class="form-element col-sm-11" data-ng-repeat="item in formElements" data-as-sortable-item ng-required="required" ng-mouseover="onHover(item)" ng-class="{'dotted-border': hovered.id === item.id, 'bg-light-blue': item.id === selected.id}" ng-click="selectElement(item)">
                                 <button ng-hide="item.id !== selected.id" type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
                                     <i ng-click="removeElement(item)" ng-class="{'fa': selected.type === item.type, 'fa-times': selected.type === item.type}"></i></button>
