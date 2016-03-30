@@ -5,6 +5,11 @@ app.directive('navbar', function ($rootScope, AuthFactory, $state) {
         scope: {},
         templateUrl: 'js/common/directives/navbar/navbar.html',
         link: function (scope) {
+            scope.online = $rootScope.online;
+
+            $rootScope.$on('onlineChange', function(event, onlineStatus) {
+                scope.online = onlineStatus;
+            })
 
             scope.isLoginState = function() {
                 return $state.is('login');
