@@ -1,4 +1,5 @@
 app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplate) {
+
     $scope.selected = undefined;
     $scope.savedForm = false;
     $scope.formTemplate = formTemplate;
@@ -6,10 +7,14 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
     $scope.description = $scope.formTemplate.description;
     $scope.formElements = $scope.formTemplate.formElements;
 
+
     $scope.save = function() {
+        $scope.savedForm = false;
         FormTemplatesFactory.updateForm($scope.formTemplate)
             .then(function(savedForm) {
                 $scope.savedForm = true;
+                $scope.formTemplate = savedForm;
+                $scope.$evalAsync();
             })
     }
 
@@ -76,4 +81,29 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
         if (type === "description") $scope.formTemplate.descAlign = alignment;
         if (type === "title") $scope.formTemplate.titleAlign = alignment;
     }
+
+    $scope.dragControlListeners = {
+    orderChanged: function(event) {
+        console.log(event)
+    },
+    containment: '#form-template-body',//optional param.
+};
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
