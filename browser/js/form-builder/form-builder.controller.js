@@ -1,4 +1,5 @@
 app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplate) {
+
     $scope.selected = undefined;
     $scope.savedForm = false;
     $scope.formTemplate = formTemplate;
@@ -80,4 +81,29 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
         if (type === "description") $scope.formTemplate.descAlign = alignment;
         if (type === "title") $scope.formTemplate.titleAlign = alignment;
     }
+
+    $scope.dragControlListeners = {
+    orderChanged: function(event) {
+        console.log(event)
+    },
+    containment: '#form-template-body',//optional param.
+};
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
