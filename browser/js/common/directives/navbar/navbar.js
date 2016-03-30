@@ -1,4 +1,4 @@
-app.directive('navbar', function ($rootScope, $state) {
+app.directive('navbar', function ($rootScope, AuthFactory, $state) {
 
     return {
         restrict: 'E',
@@ -10,9 +10,22 @@ app.directive('navbar', function ($rootScope, $state) {
                 return $state.is('login');
             }
 
-            scope.signup = function() {
-                
+            function setUser() {
+                AuthFactory.getUser()
+                    .then(function(user) {
+                        console.log(user);
+                        if (user) scope.user = user;
+                    });      
             }
+
+            scope.logout = function() {
+                AuthFactory.logout()
+                .then(function() {
+                    $state.go('login');
+                })
+            }
+
+            setUser();
 
             // scope.items = [
             //     { label: 'Home', state: 'home' },
@@ -46,7 +59,7 @@ app.directive('navbar', function ($rootScope, $state) {
 
             // setUser();
 
-            // $rootScope.$on(AUTH_EVENTS.loginSuccess, setUser);
+            $rootScope.$on('login-success', setUser);
             // $rootScope.$on(AUTH_EVENTS.logoutSuccess, removeUser);
             // $rootScope.$on(AUTH_EVENTS.sessionTimeout, removeUser);
 

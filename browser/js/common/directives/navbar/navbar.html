@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini">t<b>KR</b></span>
+        <span class="logo-mini">b<b>L</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg">the<b>KRAKEN</b></span>
+        <span class="logo-lg">border<b>LESS</b></span>
     </a>
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -19,7 +19,7 @@
                 <li><a ui-sref-active="active" ui-sref="completed-forms.forms-list({formTemplateId: null})"><i class="fa fa-database"></i> Form Data</a></li>
                 <li><a ui-sref-active="active" ui-sref="analysis"><i class="fa fa-pie-chart"></i> Analysis</a></li>
                 <li><a ui-sref-active="active" ui-sref="sync"><i class="fa fa-cloud-upload"></i> Sync</a></li>
-                <li><a ui-sref-active="active" ui-sref="form-templates"><i class="fa fa-edit"></i> Form Editor</a></li>
+                <li><a ui-sref-active="active" ui-sref="form-templates.form-builder({id: null})"><i class="fa fa-edit"></i> Form Editor</a></li>
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
@@ -27,7 +27,7 @@
                         <!-- The user image in the navbar-->
                         <img src="admin-lte/dist/img/avatar3.png" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Maria Bolivar</span>
+                        <span class="hidden-xs">{{user.first_name + " " + user.last_name}}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
@@ -36,15 +36,13 @@
                             <p>
                                 Specialized Nurse
                                 <small>Public Health Center, Tecuguigalpa, Honduras</small>
+                                <small>{{ user.organization }}</small>
                             </p>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                            <div class="center-block">
+                                <a ng-click="logout()" class="btn btn-default btn-flat">Logout</a>
                             </div>
                         </li>
                     </ul>
