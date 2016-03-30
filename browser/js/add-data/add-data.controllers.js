@@ -2,7 +2,7 @@ app.controller('AddDataCtrl', function($scope, forms) {
 	$scope.forms = forms;
 });
 
-app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory) {
+app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory, $uibModal) {
 	$scope.form = form;
 
 	$scope.formValues = [];
@@ -25,7 +25,16 @@ app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory
 
 		CompletedFormsFactory.createOne(completedForm)
 			.then(function(createdForm) {
-			console.log('Form submitted!', createdForm);
+				$uibModal.open({
+					templateUrl: '/js/add-data/add-data-success.html',
+					controller: function($scope, $uibModalInstance) {
+						$scope.close = function() {
+							$uibModalInstance.close();
+						}
+					},
+					size: 'sm'
+				});
+				console.log('Form submitted!', createdForm);
 			});
 	}
 })
