@@ -49,6 +49,14 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="" ng-if="online" id="onlineNav">
+                    <!-- Status: Online -->
+                    <i class="fa fa-wifi"></i> Online</a>
+                    <a href="" ng-if="!online" id="offlineNav">
+                    <!-- Status: Offline -->
+                    <i class="fa fa-ban"></i> Offline</a>
+                </li>
             </ul>
         </div>
     </nav>
