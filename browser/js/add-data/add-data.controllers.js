@@ -9,7 +9,6 @@ app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory
 
 
 	//DELETE AFTER DEMO DAY
-
 	$scope.form.formElements[0].value = "Sneep";
 	$scope.form.formElements[1].value = 2;
 	$scope.form.formElements[2].value = {
@@ -24,8 +23,7 @@ app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory
 	$scope.submitForm = function() {
 		// merge values with the formTemplate data and save as completed form
 
-		//ENABLE ME AFTER DEMO DAY
-		// var completedForm = angular.copy(form);
+		var completedForm = angular.copy(form);
 		console.log($scope.formValues)
 		completedForm.formElements = completedForm.formElements.map(function(el, i) {
 			el.value = $scope.formValues[i];
