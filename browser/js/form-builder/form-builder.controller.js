@@ -81,3 +81,29 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
         if (type === "title") $scope.formTemplate.titleAlign = alignment;
     }
 });
+
+$scope.dragControlListeners = {
+    // accept: function (sourceItemHandleScope, destSortableScope) {return boolean}//override to determine drag is allowed or not. default is true.
+    // itemMoved: function (event) {//Do what you want},
+    orderChanged: function(event) {
+        console.log(event)
+    },
+    containment: '#form-template-body'//optional param.
+    clone: false //optional param for clone feature.
+    allowDuplicates: false //optional param allows duplicates to be dropped.
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
