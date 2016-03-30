@@ -15,14 +15,6 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <li>
-                    <a href="" ng-if="online">
-                    <!-- Status: Online -->
-                    <i class="fa fa-wifi"></i> Online</a>
-                    <a href="" ng-if="!online">
-                    <!-- Status: Offline -->
-                    <i class="fa fa-ban"></i> Offline</a>
-                </li>
                 <li><a ui-sref-active="active" ui-sref="add-data.submit({formTemplateId: null})"><i class="fa fa-plus-circle"></i> Add Data</a></li>
                 <li><a ui-sref-active="active" ui-sref="completed-forms.forms-list({formTemplateId: null})"><i class="fa fa-database"></i> Form Data</a></li>
                 <li><a ui-sref-active="active" ui-sref="analysis"><i class="fa fa-pie-chart"></i> Analysis</a></li>
