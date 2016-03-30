@@ -6,10 +6,14 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
     $scope.description = $scope.formTemplate.description;
     $scope.formElements = $scope.formTemplate.formElements;
 
+
     $scope.save = function() {
+        $scope.savedForm = false;
         FormTemplatesFactory.updateForm($scope.formTemplate)
             .then(function(savedForm) {
                 $scope.savedForm = true;
+                $scope.formTemplate = savedForm;
+                $scope.$evalAsync();
             })
     }
 
