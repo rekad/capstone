@@ -1,11 +1,10 @@
 app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplate) {
-$scope.selected = undefined;
-console.log($scope.selected);
+    $scope.selected = undefined;
     $scope.savedForm = false;
     $scope.formTemplate = formTemplate;
     $scope.title = $scope.formTemplate.title;
     $scope.description = $scope.formTemplate.description;
-    $scope.formElements = angular.copy($scope.formTemplate.formElements);
+    $scope.formElements = $scope.formTemplate.formElements;
 
     $scope.save = function() {
         FormTemplatesFactory.updateForm($scope.formTemplate)
