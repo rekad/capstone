@@ -31,15 +31,14 @@ app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory
 					controller: function($scope, $uibModalInstance) {
 						$scope.close = function(result) {
 							$uibModalInstance.close(result);
-						}
-
+						};
 					},
 					size: 'md'
 				});
 
 				// console.log('Form submitted!', createdForm);
 				modalInstance.result.then(function(result){
-					console.log('result', result)
+					// console.log('result', result)
 					switch(result) {
 						case 'add':
 							$state.go('add-data.submit', {formTemplateId: $scope.form.formTemplateId});
@@ -54,5 +53,5 @@ app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory
 					}
 				});
 			});
-	}
-})
+	};
+});
