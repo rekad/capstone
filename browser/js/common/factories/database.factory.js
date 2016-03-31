@@ -13,6 +13,18 @@ app.factory('DatabaseFactory', function($window) {
 		},
 		getUsersDb: function() {
 			return usersDb;
+		},
+		clearLocalDb: function() {
+			return localDb.destroy()
+				.then(function() {
+					localDb = new PouchDB('trekraken-test');
+				})
+		},
+		replicateUp: function() {
+			return PouchDB.replicate(localDb, remoteDb);
+		},
+		replicateDown: function() {
+			return PouchDB.replicate(remoteDb, localDb);
 		}
 	}
 })
