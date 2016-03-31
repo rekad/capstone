@@ -23,6 +23,18 @@
         <select class="form-control" ng-model="dataOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]">
         </select>
         </div>
+
+        <div class="col-lg-2">
+        Drill Down By
+        <select class="form-control" ng-model="firstDrillDown" ng-change="drillDown()" ng-options="label as label for label in formLabels[currentForm]">
+        </select>
+        </div>
+
+        <div class="col-lg-2">
+        Drill Down Value
+        <select class="form-control" ng-model="furtherDrillDown" ng-change="drillDown(furtherDrillDown)" ng-options="value as value for value in drillDownValues">
+        </select>
+        </div>
     </div>
     <br>
 <!--         <div class="box box-primary" ng-show="!chartOptions">
