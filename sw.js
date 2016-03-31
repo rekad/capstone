@@ -1,6 +1,7 @@
 this.addEventListener('install', function(event) {
 
 	console.log('installing')
+	event.waitUntil(self.skipWaiting());
 	event.waitUntil(
 		caches.open('v1').then(function(cache) {
 			return cache.addAll([
@@ -82,6 +83,10 @@ this.addEventListener('install', function(event) {
 		})
 	);
 });
+
+this.addEventListener('activate', function(event) {
+	event.waitUntil(self.clients.claim());
+})
 
 this.addEventListener('fetch', function(event) {
 	event.respondWith(
