@@ -21,6 +21,7 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
                 }
             });
         });
+        console.log(result);
         return result;
     };
 
