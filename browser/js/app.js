@@ -19,9 +19,10 @@ app.config(function ($urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 
     // If we go to a URL that ui-router doesn't have registered, go to the this url.
-    $urlRouterProvider.otherwise('/completed-forms/list/null');
-
+    // $urlRouterProvider.otherwise('/completed-forms/list/null');
+    $urlRouterProvider.otherwise('/sync');
     // starting page are the forms
-    $urlRouterProvider.when('/', '/completed-forms/list/null');
+    // $urlRouterProvider.when('/', '/completed-forms/list/null');
+    $urlRouterProvider.when('/', '/sync');
 });
 
