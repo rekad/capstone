@@ -1,5 +1,4 @@
 var completedForms = [];
-
 var latrines = ['simple pit', 'indoor', 'open air'];
 var waterConditions = ['non-treated', 'bottled', 'filtered', 'chlorinated', 'boiled'];
 var virusInstances = ['Zika', 'Ebola', 'malaria', 'tuberculosis', 'HIV/AIDS', 'hepatitis'];
