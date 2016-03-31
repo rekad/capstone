@@ -11,6 +11,12 @@ app.config(function($stateProvider) {
 	});
 })
 
+app.controller('SyncModalCtrl', function($scope, $uibModalInstance) {
+	$scope.close = function() {
+		$uibModalInstance.close();
+	}
+})
+
 app.controller('SyncCtrl', function($scope, $rootScope, SyncFactory, stats, $uibModal) {
 
 	$scope.stats = stats;
@@ -28,12 +34,7 @@ app.controller('SyncCtrl', function($scope, $rootScope, SyncFactory, stats, $uib
 			updateStats();
 			$uibModal.open({
 				templateUrl: '/js/sync/syncUp-success.html',
-				controller: function($scope, $uibModalInstance) {
-					$scope.close = function() {
-						$uibModalInstance.close();
-					}
-					$scope.result = result;
-				},
+				controller: SyncModalCtrl,
 				size: 'sm'
 			});
 		})
