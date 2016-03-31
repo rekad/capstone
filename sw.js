@@ -19,9 +19,10 @@ this.addEventListener('install', function(event) {
 				'admin-lte/bootstrap/js/bootstrap.min.js',
 
 				'/font-awesome/fonts/fontawesome-webfont.woff2?v=4.5.0',
-				'ng-sortable/dist/ng-sortable.min.js',
+				'/ng-sortable/dist/ng-sortable.min.js',
+				'/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2',
 
-				'angular-chart.js/dist/angular-chart.min.css',
+				'/angular-chart.js/dist/angular-chart.min.css',
 				'/ng-sortable/dist/ng-sortable.min.css',
 				'/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf',
 
@@ -46,12 +47,20 @@ this.addEventListener('install', function(event) {
 				'/js/common/directives/individual-forms/multiple-choice-directive.html',
 				'/js/common/directives/individual-forms/number-directive.html',
 				'/js/common/directives/individual-forms/section-break-directive.html',
+				'/js/common/directives/individual-forms/address-directive.html',
+				'/js/common/directives/individual-forms/dropdown-directive.html',
+				'/js/common/directives/individual-forms/email-directive.html',
+				'/js/common/directives/individual-forms/line-text-directive.html',
+				'/js/common/directives/individual-forms/paragraph-text-directive.html',
+				'/js/common/directives/individual-forms/phone-directive.html',
 
 				'/js/common/directives/sidebar/sidebar-search-directive.html',
 
 				'/js/form-builder/templates/number.template.html',
 				'/js/form-builder/templates/address.template.html',
 				'/js/form-builder/templates/section.template.html',
+				'/js/form-builder/templates/email.template.html',
+				'/js/form-builder/templates/phone.template.html', 
 
 				'/js/completed-forms/templates/completed-forms-list.view.html',
 				'/js/completed-forms/templates/completed-forms.view.html',
