@@ -2,6 +2,7 @@ app.controller('AddDataCtrl', function($scope, forms) {
 	$scope.forms = forms;
 });
 
+
 app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory, $uibModal, $state) {
 	$scope.form = form;
 
@@ -35,8 +36,10 @@ app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory
 					},
 					size: 'md'
 				});
+
 				// console.log('Form submitted!', createdForm);
 				modalInstance.result.then(function(result){
+					console.log('result', result)
 					switch(result) {
 						case 'add':
 							$state.go('add-data.submit', {formTemplateId: $scope.form.formTemplateId});

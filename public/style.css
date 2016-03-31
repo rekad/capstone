@@ -1,13 +1,10 @@
-.flex {
-  width: 100%;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center; }
+.login-box {
+  margin-top: 0px;
+  padding-top: 58px; }
 
-.flex > button {
-  width: 35%; }
+.login-page {
+  height: 100vh; }
+
+#login-form {
+  width: 60%;
+  margin: 0 auto; }
