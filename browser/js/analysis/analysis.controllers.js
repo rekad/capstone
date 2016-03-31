@@ -30,9 +30,12 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
                 var result = [];
                 forms.forEach(function(form) {
                     form.formElements.forEach(function(element) {
+                      console.log(element.label);
                         if (element.label && element.label === soughtLabel) {
                           if (typeof element.value === 'object') {
                             if (Array.isArray(element.value)) {
+                              //put filter here for address data, like
+                              //if element.label is address just push city||
                             element.value.forEach(function(item) {
                               result.push(item);
                             });
