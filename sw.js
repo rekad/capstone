@@ -4,7 +4,7 @@ this.addEventListener('install', function(event) {
 	event.waitUntil(
 		caches.open('v1').then(function(cache) {
 			return cache.addAll([
-				'/index.html',
+				'/',
 
 				// linked files in index.html
 				'/bootstrap/dist/css/bootstrap.min.css',
@@ -19,6 +19,11 @@ this.addEventListener('install', function(event) {
 				'admin-lte/bootstrap/js/bootstrap.min.js',
 
 				'/font-awesome/fonts/fontawesome-webfont.woff2?v=4.5.0',
+				'ng-sortable/dist/ng-sortable.min.js',
+
+				'angular-chart.js/dist/angular-chart.min.css',
+				'/ng-sortable/dist/ng-sortable.min.css',
+				'/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf',
 
 				'/style.css',
 				'/lodash/index.js',
@@ -41,7 +46,13 @@ this.addEventListener('install', function(event) {
 				'/js/common/directives/individual-forms/multiple-choice-directive.html',
 				'/js/common/directives/individual-forms/number-directive.html',
 				'/js/common/directives/individual-forms/section-break-directive.html',
-				'/js/common/directives/individual-forms/text-directive.html',
+
+				'/js/common/directives/sidebar/sidebar-search-directive.html',
+
+				'/js/form-builder/templates/number.template.html',
+				'/js/form-builder/templates/address.template.html',
+				'/js/form-builder/templates/section.template.html',
+
 				'/js/completed-forms/templates/completed-forms-list.view.html',
 				'/js/completed-forms/templates/completed-forms.view.html',
 				'/js/completed-forms/templates/completed-individual-form.view.html',
@@ -65,13 +76,15 @@ this.addEventListener('install', function(event) {
 
 this.addEventListener('fetch', function(event) {
 	event.respondWith(
+
 		caches.match(event.request)
 		.then(function(match) {
 			if (match) return match;
 			else return fetch(event.request);
 		})
 		.catch(function(error) {
-			return Response.redirect('/index.html');
+			// return Response.redirect('/index.html');
+			return caches.match('/');
 		})
 		// ISSUES: 
 		// 1. going directly to a url in the browser fails 

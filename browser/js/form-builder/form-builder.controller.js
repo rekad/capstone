@@ -1,19 +1,24 @@
 app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplate) {
 
+    $scope.selected = undefined;
     $scope.savedForm = false;
     $scope.formTemplate = formTemplate;
     $scope.title = $scope.formTemplate.title;
     $scope.description = $scope.formTemplate.description;
+    $scope.formElements = $scope.formTemplate.formElements;
+
 
     $scope.save = function() {
+        $scope.savedForm = false;
         FormTemplatesFactory.updateForm($scope.formTemplate)
             .then(function(savedForm) {
                 $scope.savedForm = true;
+                $scope.formTemplate = savedForm;
+                $scope.$evalAsync();
             })
     }
 
     $scope.tabSelected = 'one';
-    $scope.formElements = formTemplate.formElements;
 
     $scope.placeElements = function(type) {
         $scope.elementToAdd = { type: type };
@@ -26,6 +31,10 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
         else if (type === 'phone') $scope.elementToAdd.label = "Phone Number";
         else if (type === 'email') $scope.elementToAdd.label = "Email";
         else if (type === 'address') $scope.elementToAdd.label = "Address";
+        else if (type === 'section') {
+            $scope.elementToAdd.label = "Section";
+            $scope.elementToAdd.sectionDescription = "Section Description";
+        };
 
         $scope.elementToAdd.id = nextId;
         nextId++;
@@ -34,8 +43,9 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
 
     $scope.required = false;
     $scope.selectElement = function(e) {
-        console.log("selected");
+        
         $scope.selected = e;
+        console.log($scope.selected);
         $scope.tabSelected = 'two';
     }
 
@@ -71,4 +81,29 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
         if (type === "description") $scope.formTemplate.descAlign = alignment;
         if (type === "title") $scope.formTemplate.titleAlign = alignment;
     }
+
+    $scope.dragControlListeners = {
+    orderChanged: function(event) {
+        console.log(event)
+    },
+    containment: '#form-template-body',//optional param.
+};
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

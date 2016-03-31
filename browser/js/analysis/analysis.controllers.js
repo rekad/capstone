@@ -4,7 +4,7 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
     $scope.currentForm = null;
     $scope.labels = [];
     $scope.data = [[]];
-    $scope.chartTypes = ['map', 'bar graph', 'pie chart', 'donut chart'];
+    $scope.chartTypes = ['bar graph', 'pie chart', 'donut chart'];
 
     $scope.scourForms = function(forms, soughtItem) {
         var result = {};
@@ -33,14 +33,18 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
                         if (element.label && element.label === soughtLabel) {
                           if (typeof element.value === 'object') {
                             if (Array.isArray(element.value)) {
-                            element.value.forEach(function(item) {
-                              result.push(item);
-                            });
+                                element.value.forEach(function(item) {
+                                  result.push(item);
+                                });
                             } else {
-                              for (var key in element.value) {
-                                result.push(element.value[key]);
+                                if (element.label === 'Address') {
+                                  result.push(element.value.city);
+                                } else {
+                                  for (var key in element.value) {
+                                  result.push(element.value[key]);
+                                  }
+                                }
                               }
-                            }
                           } else {
                             result.push(element.value);
                           }
@@ -80,11 +84,5 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
         $scope.valuesFromLabels($scope.dataOptions);
         //possibly include dataOptions2 at some point?
     };
-
-    // $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-    // $scope.series = ['Series A'];
-    // $scope.data = [
-    //   [28, 48, 40, 19, 86, 27, 90]
-    // ];
 
 });

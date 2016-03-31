@@ -1,29 +1,70 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper no-sidebar">
     <section class="content-header">
-        <h3>Select a chart type and which form data to visualize here.</h3>
+        <h3>Data Visualization <small>Select a chart type and which form data to visualize here.</small></h3>
     </section>
     <section class="content">
-        <span>Chart Type:</span>
-        <select ng-model="chartOptions" ng-change="graphChange()" ng-options="chartType as chartType for chartType in chartTypes"></select>
-        <span>Form Template:</span>
-        <select ng-change="seedLabels(formOptions)" ng-model="formOptions" ng-options="form as form.title for form in forms"></select>
-        <span>X-Axis Label:</span>
-        <select ng-model="dataOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]"></select>
-        <span ng-show="chartOptions==='bar graph'">Y-Axis Label:</span>
-        <select ng-change="graphChange()" ng-show="chartOptions==='bar graph'" ng-model="dataOptions2" ng-options="label as label for label in formLabels[currentForm]"></select>
+
+    <div class="container">
+        <div class="col-lg-2">
+        Chart Type
+        <select class="form-control" ng-model="chartOptions" ng-change="graphChange()" ng-options="chartType as chartType for chartType in chartTypes">
+        </select>
+        </div>
+
+        <div class="col-lg-2">
+        Form Template
+        <select class="form-control" ng-model="formOptions" ng-change="seedLabels(formOptions)" ng-options="form as form.title for form in forms">
+        </select>
+        </div>
+
+        <div class="col-lg-2">
+        X-Axis Data
+        <select class="form-control" ng-model="dataOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]">
+        </select>
+        </div>
+    </div>
+    <br>
+<!--         <div class="box box-primary" ng-show="!chartOptions">
+        <div class="box-header with-border">
+        <h3 class="box-title">Select Some Options!</h3>
         <div class="chart-container">
-            <canvas ng-show="chartOptions==='bar graph'" id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" width="400" height="200" style="margin-top:10px">
+            <canvas id="pie" class="chart chart-pie"  style="margin-top:10px">
             </canvas>
         </div>
+        </div>
+        </div> -->
+
+        <div class="box box-primary" ng-show="chartOptions==='bar graph'">
+        <div class="box-header with-border">
+        <h3 class="box-title">{{dataOptions}}</h3>
         <div class="chart-container">
-            <canvas ng-show="chartOptions==='pie chart'" id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" style="margin-top:20px">
+            <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels"  style="margin-top:10px">
             </canvas>
         </div>
+        </div>
+        </div>
+
+        <div class="box box-primary" ng-show='chartOptions==="pie chart"'>
+        <div class="box-header with-border">
+        <h3 class="box-title">{{dataOptions}}</h3>
         <div class="chart-container">
-            <canvas ng-show="chartOptions==='donut chart'" id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels" style="margin-top:20px">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-legend="true" style="margin-top:20px">
             </canvas>
         </div>
+        </div>
+        </div>
+
+        <div class="box box-primary" ng-show="chartOptions==='donut chart'">
+        <div class="box-header with-border">
+        <h3 class="box-title">{{dataOptions}}</h3>
+        <div class="chart-container">
+            <canvas id="doughnut" class="chart chart-doughnut" chart-legend="true" chart-data="data" chart-labels="labels" style="margin-top:20px">
+            </canvas>
+        </div>
+        </div>
+        </div>
+
     </section>
 </div>
 <!-- /.content-wrapper

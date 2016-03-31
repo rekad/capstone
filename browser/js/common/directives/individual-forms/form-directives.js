@@ -18,7 +18,7 @@ app.directive('formElement', function($compile) {
 
 ///////////////////
 
-app.directive('text', function() {
+app.directive('lineText', function() {
 	return {
 		scope: {
 			element: '=',
@@ -30,7 +30,23 @@ app.directive('text', function() {
 				ngModelCtrl.$setViewValue(newValue);
 			});
 		},
-		templateUrl: '/js/common/directives/individual-forms/text-directive.html'
+		templateUrl: '/js/common/directives/individual-forms/line-text-directive.html'
+	}
+});
+
+app.directive('paragraphText', function() {
+	return {
+		scope: {
+			element: '=',
+			isEditing: '='
+		},
+		require: "ngModel",
+		link: function(scope, el, attr, ngModelCtrl) {
+			scope.$watch('element.value', function(newValue, oldValue) {
+				ngModelCtrl.$setViewValue(newValue);
+			});
+		},
+		templateUrl: '/js/common/directives/individual-forms/paragraph-text-directive.html'
 	}
 });
 
@@ -50,6 +66,55 @@ app.directive('number', function() {
 	}
 });
 
+app.directive('email', function() {
+	return {
+		scope: {
+			element: '=',
+			isEditing: '='
+		},
+		require: "ngModel",
+		link: function(scope, el, attr, ngModelCtrl) {
+			scope.$watch('element.value', function(newValue, oldValue) {
+				ngModelCtrl.$setViewValue(newValue);
+			});
+		},
+		templateUrl: '/js/common/directives/individual-forms/email-directive.html'
+	}
+});
+
+app.directive('phone', function() {
+	return {
+		scope: {
+			element: '=',
+			isEditing: '='
+		},
+		require: "ngModel",
+		link: function(scope, el, attr, ngModelCtrl) {
+			scope.$watch('element.value', function(newValue, oldValue) {
+				ngModelCtrl.$setViewValue(newValue);
+			});
+		},
+		templateUrl: '/js/common/directives/individual-forms/phone-directive.html'
+	}
+});
+
+app.directive('address', function() {
+	return {
+		scope: {
+			element: '=',
+			isEditing: '='
+		},
+		require: "ngModel",
+		link: function(scope, el, attr, ngModelCtrl) {
+			scope.$watch('element.value', function(newValue, oldValue) {
+
+				ngModelCtrl.$setViewValue(newValue);
+			});
+		},
+		templateUrl: '/js/common/directives/individual-forms/address-directive.html'
+	}
+});
+
 app.directive('multipleChoice', function() {
 	return {
 		scope: {
@@ -58,8 +123,8 @@ app.directive('multipleChoice', function() {
 		},
 		require: "?ngModel",
 		link: function(scope, element, attr, ngModelCtrl) {
+
 			scope.$watch('element.value', function(newValue, oldValue) {
-				// console.log('there is a change in the radio button');
 				ngModelCtrl.$setViewValue(newValue);
 			});
 		},
@@ -67,7 +132,7 @@ app.directive('multipleChoice', function() {
 	}
 });
 
-app.directive('checkboxes', function() {
+app.directive('checkbox', function() {
 	return {
 		scope: {
 			element: '=',
@@ -81,6 +146,23 @@ app.directive('checkboxes', function() {
 			});
 		},
 		templateUrl: '/js/common/directives/individual-forms/checkboxes-directive.html'
+	}
+});
+
+app.directive('dropdown', function() {
+	return {
+		scope: {
+			element: '=',
+			isEditing: '='
+		},
+		require: "ngModel",
+		link: function(scope, element, attr, ngModelCtrl) {
+			scope.values = [];
+			scope.$watch('element.value', function(newValue, oldValue) {
+				ngModelCtrl.$setViewValue(newValue);
+			});
+		},
+		templateUrl: '/js/common/directives/individual-forms/dropdown-directive.html'
 	}
 });
 
