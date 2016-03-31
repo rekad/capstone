@@ -30,9 +30,12 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
                 var result = [];
                 forms.forEach(function(form) {
                     form.formElements.forEach(function(element) {
+                      console.log(element.label);
                         if (element.label && element.label === soughtLabel) {
                           if (typeof element.value === 'object') {
                             if (Array.isArray(element.value)) {
+                              //put filter here for address data, like
+                              //if element.label is address just push city||
                             element.value.forEach(function(item) {
                               result.push(item);
                             });
@@ -80,11 +83,5 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
         $scope.valuesFromLabels($scope.dataOptions);
         //possibly include dataOptions2 at some point?
     };
-
-    // $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-    // $scope.series = ['Series A'];
-    // $scope.data = [
-    //   [28, 48, 40, 19, 86, 27, 90]
-    // ];
 
 });
