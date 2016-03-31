@@ -11,10 +11,11 @@ app.config(function($stateProvider) {
 	});
 })
 
-app.controller('SyncModalCtrl', function($scope, $uibModalInstance) {
+app.controller('SyncModalCtrl', function($scope, $uibModalInstance, result) {
 	$scope.close = function() {
 		$uibModalInstance.close();
 	}
+	$scope.result = result;
 })
 
 app.controller('SyncCtrl', function($scope, $rootScope, SyncFactory, stats, $uibModal) {
@@ -35,7 +36,12 @@ app.controller('SyncCtrl', function($scope, $rootScope, SyncFactory, stats, $uib
 			$uibModal.open({
 				templateUrl: '/js/sync/syncUp-success.html',
 				controller: 'SyncModalCtrl',
-				size: 'sm'
+				size: 'sm',
+				resolve: {
+					result: function() {
+						return result;
+					}
+				}
 			});
 		})
 	}
@@ -46,13 +52,13 @@ app.controller('SyncCtrl', function($scope, $rootScope, SyncFactory, stats, $uib
 			updateStats();
 			$uibModal.open({
 				templateUrl: '/js/sync/syncDown-success.html',
-				controller: function($scope, $uibModalInstance) {
-					$scope.close = function() {
-						$uibModalInstance.close();
+				controller: 'SyncModalCtrl',
+				size: 'sm',
+				resolve: {
+					result: function() {
+						return result;
 					}
-					$scope.result = result;
-				},
-				size: 'sm'
+				}
 			});
 		})
 	}
@@ -63,13 +69,13 @@ app.controller('SyncCtrl', function($scope, $rootScope, SyncFactory, stats, $uib
 			updateStats();
 			$uibModal.open({
 				templateUrl: '/js/sync/clearDb-success.html',
-				controller: function($scope, $uibModalInstance) {
-					$scope.close = function() {
-						$uibModalInstance.close();
+				controller: 'SyncModalCtrl',
+				size: 'sm',
+				resolve: {
+					result: function() {
+						return result;
 					}
-					$scope.result = result;
-				},
-				size: 'sm'
+				}
 			});
 		})
 		.catch(function(error) {
