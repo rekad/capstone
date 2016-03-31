@@ -105,7 +105,6 @@ this.addEventListener('fetch', function(event) {
 		// ISSUES: 
 		// 1. going directly to a url in the browser fails 
 		// -> If the cache match fails we want to return index.html?
-
 		// 2. pouchDB requests are being intercepted too
 
 	);
