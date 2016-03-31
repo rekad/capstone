@@ -4,7 +4,7 @@ app.config(function($stateProvider) {
     templateUrl: '/js/completed-forms/templates/completed-forms.view.html',
     controller: 'CompletedFormsCtrl',
     resolve: {
-      forms: function(FormTemplatesFactory) {
+      allFormTemplates: function(FormTemplatesFactory) {
         return FormTemplatesFactory.fetchAll();
       }
     }
