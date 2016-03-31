@@ -25,11 +25,21 @@
         </div>
     </div>
     <br>
+<!--         <div class="box box-primary" ng-show="!chartOptions">
+        <div class="box-header with-border">
+        <h3 class="box-title">Select Some Options!</h3>
+        <div class="chart-container">
+            <canvas id="pie" class="chart chart-pie"  style="margin-top:10px">
+            </canvas>
+        </div>
+        </div>
+        </div> -->
+
         <div class="box box-primary" ng-show="chartOptions==='bar graph'">
         <div class="box-header with-border">
         <h3 class="box-title">{{dataOptions}}</h3>
         <div class="chart-container">
-            <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" width="400" height="200" style="margin-top:10px">
+            <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels"  style="margin-top:10px">
             </canvas>
         </div>
         </div>
