@@ -34,7 +34,7 @@ app.controller('SyncCtrl', function($scope, $rootScope, SyncFactory, stats, $uib
 			updateStats();
 			$uibModal.open({
 				templateUrl: '/js/sync/syncUp-success.html',
-				controller: SyncModalCtrl,
+				controller: 'SyncModalCtrl',
 				size: 'sm'
 			});
 		})
