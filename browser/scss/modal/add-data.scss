@@ -13,3 +13,7 @@
 .flex > button {
 	width: 35%;
 }
+
+body.modal-open {
+	overflow: hidden;
+}
