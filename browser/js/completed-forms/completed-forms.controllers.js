@@ -112,6 +112,7 @@ app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFo
         CompletedFormsFactory.updateOne($scope.completedForm)
             .then(function(updatedForm) {
                 console.log('Form submitted!', updatedForm);
+                completedForm = angular.copy(updatedForm);
                 $scope.completedForm = updatedForm;
                 $scope.toggleEdit();
                 $scope.$evalAsync();
