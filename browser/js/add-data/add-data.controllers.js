@@ -32,7 +32,7 @@ app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory
 							$uibModalInstance.close();
 						}
 					},
-					size: 'sm'
+					size: 'md'
 				});
 				console.log('Form submitted!', createdForm);
 			});

@@ -1,0 +1,15 @@
+.flex {
+	width: 100%;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+}
+
+.flex > button {
+	width: 35%;
+}
