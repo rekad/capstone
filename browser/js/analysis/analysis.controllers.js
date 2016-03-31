@@ -34,14 +34,18 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
                         if (element.label && element.label === soughtLabel) {
                           if (typeof element.value === 'object') {
                             if (Array.isArray(element.value)) {
-                            element.value.forEach(function(item) {
-                              result.push(item);
-                            });
+                                element.value.forEach(function(item) {
+                                  result.push(item);
+                                });
                             } else {
-                              for (var key in element.value) {
-                                result.push(element.value[key]);
+                                if (element.label === 'Address') {
+                                  result.push(element.value.city);
+                                } else {
+                                  for (var key in element.value) {
+                                  result.push(element.value[key]);
+                                  }
+                                }
                               }
-                            }
                           } else {
                             result.push(element.value);
                           }
