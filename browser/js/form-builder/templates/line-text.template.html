@@ -1,6 +1,6 @@
 <div class="form-group">
-	<label>{{item.label}}</label>
-	<input type="text" class="form-control" placeholder="Text input">
+	<label>{{item.label}}<span ng-show="item.required"> *</span></label>
+	<input type="text" class="form-control" placeholder="Text input" ng-disabled="true">
 </div>
 
 

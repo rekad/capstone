@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label>{{element.label}}</label>
+    <label>{{element.label}}<span ng-show="element.required"> *</span></label>
     <div>
         <input name="Field" type="text" tabindex="1" class="form-control" ng-model="element.value.streetAddress" ng-readonly="!isEditing">
         <p>Street Address</p>

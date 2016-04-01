@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label>{{element.label}}</label>
-    <textarea class="form-control" rows="5" ng-model="element.value" ng-readonly="!isEditing">
+    <label>{{element.label}}<span ng-show="element.required"> *</span></label>
+    <textarea class="form-control" rows="5" ng-model="element.value" ng-readonly="!isEditing" ng-required="element.required">
     </textarea>
 </div>

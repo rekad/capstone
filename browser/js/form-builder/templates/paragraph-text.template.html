@@ -1,4 +1,4 @@
 <div class="form-group">
-	<label>{{item.label}}</label>
-	<textarea class="form-control" rows="5"></textarea>
+	<label>{{item.label}}<span ng-show="item.required"> *</span></label>
+	<textarea class="form-control" rows="5" ng-disabled="true"></textarea>
 </div>

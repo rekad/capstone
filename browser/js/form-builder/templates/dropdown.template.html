@@ -1,7 +1,7 @@
 <div class="form-group select-group">
-	<label>{{item.label}}</label>
-	<select class="form-control">
-		<option ng-repeat="option in item.options">{{option.value}}</option>
+	<label>{{item.label}}<span ng-show="item.required"> *</span></label>
+	<select class="form-control" ng-readonly="true">
+		<option ng-repeat="option in item.options" >{{option.value}}</option>
 	</select>
 </div>
 

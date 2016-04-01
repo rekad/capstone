@@ -21,6 +21,7 @@ body {
 
 @import 'directives/main';
 @import 'login/main';
+@import 'forms/main';
 
 // Fixing content height issue with the AdminLTE CSS template used.
 // Height fixing javascript is executed on page load.
@@ -95,6 +96,8 @@ button {
 
 .field-btn {
     margin: 5px; 
+  font-size: .90em;
+
 }
 
 .add-form-btn {
@@ -109,3 +112,15 @@ button {
 .field-choices {
   margin-bottom: 5px;
 }
+
+#form-template-body {
+  ul {
+    padding-left: 0;
+  }
+}
+
+.left-col {
+  margin-left: 7%;
+}
+
+

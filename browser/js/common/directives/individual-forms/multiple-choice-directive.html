@@ -1,9 +1,9 @@
 <div class="form-group">
-    <label>{{element.label}}</label>
+    <label>{{element.label}}<span ng-show="element.required"> *</span></label>
     <div class="radio" ng-repeat="option in element.options">
         <label>
         	<!--   -->
-            <input type="radio" name="optionsRadio" ng-readonly="!isEditing" ng-model="element.value" ng-disabled="!isEditing" value="{{option.value}}"> {{ option.value }}
+            <input type="radio" name="optionsRadio" ng-readonly="!isEditing" ng-model="element.value" ng-disabled="!isEditing" value="{{option.value}}" ng-required="element.required"> {{ option.value }}
         </label>
     </div>
 </div>

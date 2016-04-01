@@ -1,8 +1,8 @@
 <div class="form-group">
-<label>{{item.label}}</label>
+<label>{{item.label}}<span ng-show="item.required"> *</span></label>
   <div class="radio" ng-repeat="option in item.options">
     <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" ng-disabled="true">
      {{option.value}}
     </label>
   </div>
