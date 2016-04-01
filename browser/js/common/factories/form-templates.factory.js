@@ -36,5 +36,5 @@ app.factory('FormTemplatesFactory', function(DatabaseFactory) {
         return db.post(form);
         // add error handling
     }
-    }
+  }
 })

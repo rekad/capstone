@@ -7,13 +7,15 @@ app.config(function($stateProvider) {
             allFormTemplates: function(FormTemplatesFactory) {
                 return FormTemplatesFactory.fetchAll();
             },
-            formTemplate: function($stateParams, FormTemplatesFactory, allFormTemplates) {
+            formTemplate: function($state, $stateParams, FormTemplatesFactory, allFormTemplates) {
                 if (!$stateParams.id) {
-                    if (!allFormTemplates[0]) return null;
+                    if (!allFormTemplates[0]) {
+                        return FormTemplatesFactory.createForm();
+                    };
                     $stateParams.id = allFormTemplates[0]._id;
                 }
                 return FormTemplatesFactory.fetchOne($stateParams.id);
             }
-        }
+         }
     });
 });
