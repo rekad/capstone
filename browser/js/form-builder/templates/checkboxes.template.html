@@ -1,5 +1,5 @@
 <div class="form-group">
-  <label>{{item.label}}<span ng-show="item.required"> *</span></label>
+  <label>{{item.label}}<small id="requiredItem" ng-show="item.required">   * required</small></label>
   <div class="checkbox" ng-repeat="option in item.options">
     <label>
       <input type="checkbox" value="" ng-disabled="true">
