@@ -35,7 +35,7 @@
                     <div ng-show="tabSelected === 'two'">
                         <div ng-if="selected.type === undefined">
                             <h3 class="text-center">Select a field to edit</h3></div>
-                        <div class="checkbox" ng-if="selected.type !== undefined && selected.type !== 'section'">
+                        <div class="checkbox" ng-if="selected.type !== undefined && selected.type !== 'section' && selected.type !== 'checkbox'">
                             <label>
                                 <input ng-model="selected.required" type="checkbox" value=""> Require Field
                             </label>
