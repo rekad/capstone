@@ -6,6 +6,7 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
     $scope.data = [[]];
     $scope.chartTypes = ['bar graph', 'pie chart', 'donut chart'];
     $scope.drillDownValues = [];
+    $scope.series = [];
 
     $scope.scourForms = function(forms, soughtItem) {
         var result = {};
@@ -95,7 +96,7 @@ $scope.resultFilter = function(form, firstDrillDown, drillDownValue) {
                   if ($scope.chartOptions === 'bar graph') $scope.data = [
                     []
                   ];
-                  else $scope.data = [];                
+                  else $scope.data = []; 
                 }
                 result.forEach(function(value) {
                     if (labelsDataObject[value]) {
@@ -116,6 +117,7 @@ $scope.resultFilter = function(form, firstDrillDown, drillDownValue) {
                     }
                 }
             }).then(function(result) {
+                console.log($scope.data)
                 $scope.$digest();
             });
     };
