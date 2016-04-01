@@ -111,8 +111,8 @@ gulp.task('buildJSProduction', function () {
     return gulp.src(['./browser/js/app.js', './browser/js/**/*.js'])
         .pipe(concat('main.js'))
         .pipe(babel())
-        .pipe(ngAnnotate())
-        .pipe(uglify())
+        // .pipe(ngAnnotate())
+        // .pipe(uglify())
         .pipe(gulp.dest('./public'));
 });
 

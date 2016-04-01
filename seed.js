@@ -282,15 +282,12 @@ var formTemplates = [{
 }]}];
 
 var cradle = require('cradle');
-var dbName = "thekraken-test";
+// var dbName = "https://rekad.cloudant.com/thekraken-test";
 
-var connection = new(cradle.Connection)('https://couch.io', 443, {
-     auth: { username: 'john', password: 'fha82l' }
- });
-var db = new(cradle.Connection)().database(dbName);
+var connection = new(cradle.Connection)("http://rekad.cloudant.com", 5984);
+var db = connection.database("thekraken-test");
 
-db.destroy(function() {
-db.create(function(err) {
+
         db.save(formTemplates, function(err, res) {
             if (err) console.log('Error while seeding database', err);
             else console.log('Seeding of form templates successful', res);
@@ -303,7 +300,6 @@ db.create(function(err) {
                 else console.log('Seeding of completed forms successful', res);
             });
         });
-});
-});
+
 
 
