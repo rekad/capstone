@@ -1,6 +1,7 @@
 app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplate, $uibModal) {
     $scope.selected = undefined;
     $scope.formTemplate = formTemplate;
+    console.log('formTemplate',formTemplate)
     $scope.title = $scope.formTemplate.title;
     $scope.description = $scope.formTemplate.description;
     $scope.formElements = $scope.formTemplate.formElements;
