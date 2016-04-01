@@ -35,7 +35,7 @@
                     <div ng-show="tabSelected === 'two'">
                         <div ng-if="selected.type === undefined">
                             <h3 class="text-center">Select a field to edit</h3></div>
-                        <div class="checkbox" ng-if="selected.type !== undefined">
+                        <div class="checkbox" ng-if="selected.type !== undefined && selected.type !== 'section'">
                             <label>
                                 <input ng-model="selected.required" type="checkbox" value=""> Require Field
                             </label>
@@ -145,9 +145,7 @@
                                     <button type="button" data-dismiss="modal" class="btn btn-outline" ng-click="clearForm()">Clear Form</button>
                                 </div>
                             </div>
-                            <!-- /.modal-content -->
                         </div>
-                        <!-- /.modal-dialog -->
                     </div>
                 </div>  
             </div>
