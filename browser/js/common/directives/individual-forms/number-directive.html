@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label>{{element.label}}</label>
-    <input type="number" class="form-control" ng-model="element.value" ng-readonly="!isEditing">
+    <label>{{element.label}}<span ng-show="element.required"> *</span></label>
+    <input type="number" class="form-control" ng-model="element.value" ng-readonly="!isEditing" ng-required="element.required">
     </input>
 </div>

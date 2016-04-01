@@ -25,6 +25,13 @@ body {
   width: 60%;
   margin: 0 auto; }
 
+#form-btn-holder {
+  margin: 1em;
+  padding: 5em; }
+
+#requiredItem {
+  color: red; }
+
 .content-wrapper {
   min-height: 90vh; }
 
@@ -79,7 +86,8 @@ button i {
   margin-right: 5px; }
 
 .field-btn {
-  margin: 5px; }
+  margin: 5px;
+  font-size: .90em; }
 
 .add-form-btn {
   margin-top: 10px;
@@ -90,3 +98,9 @@ button i {
 
 .field-choices {
   margin-bottom: 5px; }
+
+#form-template-body ul {
+  padding-left: 0; }
+
+.left-col {
+  margin-left: 7%; }
