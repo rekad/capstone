@@ -2,7 +2,7 @@
   <label>{{item.label}}<span ng-show="item.required"> *</span></label>
   <div class="checkbox" ng-repeat="option in item.options">
     <label>
-      <input type="checkbox" value="">
+      <input type="checkbox" value="" ng-disabled="true">
       {{option.value}}
     </label>
   </div>
