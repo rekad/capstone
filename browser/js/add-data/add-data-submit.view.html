@@ -21,7 +21,7 @@
             <!-- /.box-tools -->
         </div>
 
-        <form>
+        <form name="dataForm" ng-submit="dataForm.$valid && submitForm()">
             <div class="box-body">
                 <div ng-repeat="element in form.formElements">
                     <form-element element="element" ng-model="formValues[$index]" is-editing="true"></form-element>
@@ -31,7 +31,7 @@
 
             <div class="box-footer">
                 <div class="col-xs-2 pull-right">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat" ng-click="submitForm()">Save</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Save</button>
                 </div>
             </div>
 

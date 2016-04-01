@@ -144,6 +144,13 @@ app.directive('checkbox', function() {
 			scope.$watch('element.value', function(newValue, oldValue) {
 				ngModelCtrl.$setViewValue(newValue);
 			});
+			scope.hasNoElements = function(value) {
+				if(!value) return true;
+				if(Object.keys(value).length === 0) return true;
+
+				return false;
+
+			}
 		},
 		templateUrl: '/js/common/directives/individual-forms/checkboxes-directive.html'
 	}
