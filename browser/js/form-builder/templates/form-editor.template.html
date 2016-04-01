@@ -8,28 +8,28 @@
             </ul>
             <div class="panel">
                 <div class="panel-body">
-                    <div ng-show="tabSelected === 'one'">
+                    <div ng-show="tabSelected === 'one'" class="field-buttons-width">
                         <div class="row">
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 field-btn" ng-click="placeElements('lineText')"><i class="fa fa-pencil"></i>Single Line Text</button>
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 field-btn" ng-click="placeElements('paragraphText')"><i class="fa fa-paragraph"></i>Paragraph Text</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('lineText')"><i class="fa fa-pencil"></i>Single Line Text</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('paragraphText')"><i class="fa fa-paragraph"></i>Paragraph Text</button>
                         </div>
                         <div class="row">
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 field-btn" ng-click="placeElements('multipleChoice')"><i class="fa fa-dot-circle-o"></i>Multiple Choice</button>
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 field-btn" ng-click="placeElements('checkbox')"><i class="fa fa-check-square-o"></i>Checkboxes</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('multipleChoice')"><i class="fa fa-dot-circle-o"></i>Multiple Choice</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('checkbox')"><i class="fa fa-check-square-o"></i>Checkboxes</button>
                         </div>
                         <div class="row">
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 field-btn" ng-click="placeElements('dropdown')"><i class="glyphicon glyphicon-chevron-down"></i>Dropdown</button>
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 field-btn" ng-click="placeElements('number')">
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('dropdown')"><i class="glyphicon glyphicon-chevron-down"></i>Dropdown</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('number')">
                                 <i><strong>123</strong></i> Number
                             </button>
                         </div>
                         <div class="row">
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 field-btn" ng-click="placeElements('phone')"><i class="glyphicon glyphicon-phone-alt"></i>Phone Number</button>
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 field-btn" ng-click="placeElements('address')"><i class="glyphicon glyphicon-map-marker"></i>Address</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('phone')"><i class="glyphicon glyphicon-phone-alt"></i>Phone Number</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('address')"><i class="glyphicon glyphicon-map-marker"></i>Address</button>
                         </div>
                         <div class="row">
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 field-btn" ng-click="placeElements('email')"><i class="fa fa-envelope"></i>Email</button>
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 field-btn" ng-click="placeElements('section')">Section Break</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('email')"><i class="fa fa-envelope"></i>Email</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('section')">Section Break</button>
                         </div>
                     </div>
                     <div ng-show="tabSelected === 'two'">
@@ -37,7 +37,6 @@
                             <h3 class="text-center">Select a field to edit</h3></div>
                         <div class="checkbox" ng-if="selected.type !== undefined">
                             <label>
-
                                 <input ng-model="selected.required" type="checkbox" value=""> Require Field
                             </label>
                         </div>

@@ -1,4 +1,4 @@
 <div class="form-group select-group">
-<label>{{element.label}}</label>
-	<select class="form-control" ng-model="element.value" ng-readonly="!isEditing" ng-disabled="!isEditing" ng-options="option as option.value for option in element.options track by option.value"></select>
+<label>{{element.label}}<span ng-show="element.required"> *</span></label>
+	<select class="form-control" ng-model="element.value" ng-readonly="!isEditing" ng-disabled="!isEditing" ng-options="option as option.value for option in element.options track by option.value" ng-required="element.required"></select>
 </div>

@@ -91,3 +91,6 @@ button i {
 
 .field-choices {
   margin-bottom: 5px; }
+
+#form-template-body ul {
+  padding-left: 0; }
