@@ -25,6 +25,13 @@ body {
   width: 60%;
   margin: 0 auto; }
 
+#form-btn-holder {
+  margin: 1em;
+  padding: 5em; }
+
+#requiredItem {
+  color: red; }
+
 .content-wrapper {
   min-height: 90vh; }
 
@@ -69,11 +76,6 @@ body {
 
 .form-box h4 {
   max-width: 95%;
-<<<<<<< HEAD
-  overflow: hidden; }
-
-.form-box h2 {
-  max-width: 95%;
   overflow: hidden; }
 
 .form-box h2 {
@@ -102,4 +104,3 @@ button i {
 
 .left-col {
   margin-left: 7%; }
-
