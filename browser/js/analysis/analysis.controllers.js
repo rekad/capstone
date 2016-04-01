@@ -21,7 +21,6 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
                 }
             });
         });
-        console.log(result);
         return result;
     };
 
@@ -36,20 +35,20 @@ $scope.resultFilter = function(form, firstDrillDown, drillDownValue) {
             if (typeof elem.value === 'object') {
                 if (Array.isArray(elem.value)) {
                   elem.value.forEach(function(e) {
-                    if (e === drillDownValue) match = true;
+                    if (e == drillDownValue) match = true;
                   });
                 } else {
                     if (firstDrillDown === 'Address') {
-                        if (elem.value.city === drillDownValue) match = true;
+                        if (elem.value.city == drillDownValue) match = true;
                     } else {
                       for (var key in elem.value) {
-                        if (elem.value[key] === drillDownValue) match = true;
+                        if (elem.value[key] == drillDownValue) match = true;
                       }
                     }
                 }
             }
             else {
-              if (elem.value === drillDownValue) {
+              if (elem.value == drillDownValue) {
               match = true;
             }
           }
@@ -123,6 +122,8 @@ $scope.resultFilter = function(form, firstDrillDown, drillDownValue) {
 
     $scope.seedLabels = function(form) {
         $scope.currentForm = form._id;
+        $scope.firstDrillDown = null;
+        $scope.furtherDrillDown = null;
     };
 
     $scope.graphChange = function() {
@@ -133,12 +134,25 @@ $scope.resultFilter = function(form, firstDrillDown, drillDownValue) {
 
     $scope.drillDown = function(option) {
         if (!option) {
-          $scope.valuesFromLabels($scope.firstDrillDown, true);
+          $scope.drillDownValues = [];
           $scope.furtherDrillDown = null;
+          $scope.valuesFromLabels($scope.firstDrillDown, true);
         }
         else {
           $scope.valuesFromLabels($scope.dataOptions, false, $scope.firstDrillDown, $scope.furtherDrillDown);
         }
+    };
+
+    $scope.filter = function() {
+      if (!$scope.filtering) {
+        $scope.filtering = true;
+      } else {
+          $scope.drillDownValues = [];
+          $scope.firstDrillDown = null;
+          $scope.furtherDrillDown = null;
+          $scope.filtering = false;
+          $scope.graphChange();
+      }
     };
 
 });
