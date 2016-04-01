@@ -1,5 +1,5 @@
 <div class="form-group">
-	<label>{{item.label}}</label>
+	<label>{{item.label}}<span ng-show="item.required"> *</span></label>
 	<!-- <input type="number" class="form-control" name="quantity" min="{{minVal}}" max="{{maxVal}}"> -->
 	<input type="number" class="form-control" name="quantity" ng-disabled="true">
 </div>
