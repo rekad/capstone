@@ -45,6 +45,7 @@ this.addEventListener('install', function(event) {
 				'/js/add-data/add-data-submit.view.html',
 				'/js/add-data/add-data.view.html',
 				'/js/analysis/analysis.view.html',
+				'/js/add-data/add-data-success.html',
 				'/js/common/directives/navbar/navbar.html',
 				'/js/common/directives/individual-forms/checkboxes-directive.html',
 				'/js/common/directives/individual-forms/multiple-choice-directive.html',
@@ -64,6 +65,9 @@ this.addEventListener('install', function(event) {
 				'/js/form-builder/templates/section.template.html',
 				'/js/form-builder/templates/email.template.html',
 				'/js/form-builder/templates/phone.template.html', 
+				'/js/form-builder/templates/form-editor-success.html',
+
+
 
 				'/js/completed-forms/templates/completed-forms-list.view.html',
 				'/js/completed-forms/templates/completed-forms.view.html',
