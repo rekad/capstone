@@ -5,12 +5,14 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
     $scope.labels = [];
     $scope.data = [[]];
     $scope.chartTypes = ['bar graph', 'pie chart', 'donut chart'];
+    $scope.drillDownValues = [];
 
     $scope.scourForms = function(forms, soughtItem) {
         var result = {};
         forms.forEach(function(form) {
             form.formElements.forEach(function(element) {
                 if (element[soughtItem]) {
+                  if (element[soughtItem] === 'Address') element[soughtItem] = 'Nearest Village';
                     if (result[form._id]) {
                         result[form._id].push(element[soughtItem]);
                     } else {
@@ -24,13 +26,46 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
 
     $scope.formLabels = $scope.scourForms($scope.forms, 'label');
 
-    $scope.valuesFromLabels = function(soughtLabel) {
+$scope.resultFilter = function(form, firstDrillDown, drillDownValue) {
+  if (!firstDrillDown) return true;
+  if (firstDrillDown === 'Nearest Village') firstDrillDown = 'Address';
+    var match = false;
+    form.formElements.forEach(function(elem) {
+        if (elem.label === firstDrillDown) {
+            if (typeof elem.value === 'object') {
+                if (Array.isArray(elem.value)) {
+                  elem.value.forEach(function(e) {
+                    if (e == drillDownValue) match = true;
+                  });
+                } else {
+                    if (firstDrillDown === 'Address') {
+                        if (elem.value.city == drillDownValue) match = true;
+                    } else {
+                      for (var key in elem.value) {
+                        if (elem.value[key] == drillDownValue) match = true;
+                      }
+                    }
+                }
+            }
+            else {
+              if (elem.value == drillDownValue) {
+              match = true;
+            }
+          }
+        }
+    });
+    return match;
+};
+
+    $scope.valuesFromLabels = function(soughtLabel, options, firstDrillDown, drillDownValue) {
+      if (soughtLabel === 'Nearest Village') soughtLabel = 'Address';
         CompletedFormsFactory.fetchAll($scope.currentForm)
             .then(function(forms) {
                 var result = [];
                 forms.forEach(function(form) {
                     form.formElements.forEach(function(element) {
                         if (element.label && element.label === soughtLabel) {
+                          if ($scope.resultFilter(form, firstDrillDown, drillDownValue)) {
                           if (typeof element.value === 'object') {
                             if (Array.isArray(element.value)) {
                                 element.value.forEach(function(item) {
@@ -41,7 +76,7 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
                                   result.push(element.value.city);
                                 } else {
                                   for (var key in element.value) {
-                                  result.push(element.value[key]);
+                                    result.push(element.value[key]);
                                   }
                                 }
                               }
@@ -49,16 +84,19 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
                             result.push(element.value);
                           }
                         }
+                      }
                     });
                 });
                 return result;
             }).then(function(result) {
                 var labelsDataObject = {};
                 $scope.labels = [];
-                if ($scope.chartOptions === 'bar graph') $scope.data = [
+                if (!options) {
+                  if ($scope.chartOptions === 'bar graph') $scope.data = [
                     []
-                ];
-                else $scope.data = [];
+                  ];
+                  else $scope.data = [];                
+                }
                 result.forEach(function(value) {
                     if (labelsDataObject[value]) {
                         labelsDataObject[value]++;
@@ -67,9 +105,15 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
                     }
                 });
                 for (var key in labelsDataObject) {
-                    $scope.labels.push(key);
-                    if ($scope.chartOptions === 'bar graph') $scope.data[0].push(labelsDataObject[key]);
-                    else $scope.data.push(labelsDataObject[key]);
+                    if (options) {
+                      $scope.drillDownValues.push(key);
+                    } else {
+                      $scope.labels.push(key);
+                    }
+                    if (!options) {
+                      if ($scope.chartOptions === 'bar graph') $scope.data[0].push(labelsDataObject[key]);
+                      else $scope.data.push(labelsDataObject[key]);
+                    }
                 }
             }).then(function(result) {
                 $scope.$digest();
@@ -78,11 +122,37 @@ app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
 
     $scope.seedLabels = function(form) {
         $scope.currentForm = form._id;
+        $scope.firstDrillDown = null;
+        $scope.furtherDrillDown = null;
     };
 
     $scope.graphChange = function() {
         $scope.valuesFromLabels($scope.dataOptions);
-        //possibly include dataOptions2 at some point?
+        $scope.firstDrillDown = null;
+        $scope.furtherDrillDown = null;
+    };
+
+    $scope.drillDown = function(option) {
+        if (!option) {
+          $scope.drillDownValues = [];
+          $scope.furtherDrillDown = null;
+          $scope.valuesFromLabels($scope.firstDrillDown, true);
+        }
+        else {
+          $scope.valuesFromLabels($scope.dataOptions, false, $scope.firstDrillDown, $scope.furtherDrillDown);
+        }
+    };
+
+    $scope.filter = function() {
+      if (!$scope.filtering) {
+        $scope.filtering = true;
+      } else {
+          $scope.drillDownValues = [];
+          $scope.firstDrillDown = null;
+          $scope.furtherDrillDown = null;
+          $scope.filtering = false;
+          $scope.graphChange();
+      }
     };
 
 });
