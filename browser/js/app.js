@@ -12,3 +12,25 @@ app.config(function ($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.when('/', '/completed-forms/list/null');
 });
 
+app.run(function($window, $rootScope) {
+	var db = DatabaseFactory.getLocalDb();
+    $rootScope.areThereFormTemplates;
+    $rootScope.online = navigator.onLine;
+    
+    $window.addEventListener("offline", function() {
+        $rootScope.$broadcast('onlineChange', false);
+        $rootScope.$apply(function() {
+            $rootScope.online = false;
+        });
+    }, false);
+
+    $window.addEventListener("online", function() {
+        $rootScope.$broadcast('onlineChange', true);
+        $rootScope.$apply(function() {
+            $rootScope.online = true;
+        });
+    }, false);
+
+    db.query()
+
+});

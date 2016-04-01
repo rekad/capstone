@@ -58,20 +58,3 @@ app.factory("SyncFactory", function($window) {
 
     }
 })
-
-app.run(function($window, $rootScope) {
-    $rootScope.online = navigator.onLine;
-    $window.addEventListener("offline", function() {
-        $rootScope.$broadcast('onlineChange', false);
-        $rootScope.$apply(function() {
-            $rootScope.online = false;
-        });
-    }, false);
-
-    $window.addEventListener("online", function() {
-        $rootScope.$broadcast('onlineChange', true);
-        $rootScope.$apply(function() {
-            $rootScope.online = true;
-        });
-    }, false);
-});
