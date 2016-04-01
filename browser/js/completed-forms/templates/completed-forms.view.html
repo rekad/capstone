@@ -16,7 +16,7 @@
         <ul class="sidebar-menu">
             <li class="header">FORM DATA</li>
 
-            <li ui-sref-active="active" ng-repeat="form in forms" ><a ui-sref="completed-forms.forms-list({formTemplateId: form._id})"><i class="fa fa-file-text-o"></i> <span>{{form.title}}</span></a></li>
+            <li ng-if="allFormTemplates" ui-sref-active="active" ng-repeat="form in forms" ><a ui-sref="completed-forms.forms-list({formTemplateId: form._id})"><i class="fa fa-file-text-o"></i> <span>{{form.title}}</span></a></li>
 
         </ul>
         <!-- /.sidebar-menu -->
