@@ -9,26 +9,26 @@
             <div class="panel">
                 <div class="panel-body">
                     <div ng-show="tabSelected === 'one'" class="field-buttons-width">
-                        <div class="row">
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('lineText')"><i class="fa fa-pencil"></i>Single Line Text</button>
+                        <div class="row ">
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn left-col" ng-click="placeElements('lineText')"><i class="fa fa-pencil"></i>Single Line Text</button>
                             <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('paragraphText')"><i class="fa fa-paragraph"></i>Paragraph Text</button>
                         </div>
                         <div class="row">
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('multipleChoice')"><i class="fa fa-dot-circle-o"></i>Multiple Choice</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn left-col" ng-click="placeElements('multipleChoice')"><i class="fa fa-dot-circle-o"></i>Multiple Choice</button>
                             <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('checkbox')"><i class="fa fa-check-square-o"></i>Checkboxes</button>
                         </div>
                         <div class="row">
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('dropdown')"><i class="glyphicon glyphicon-chevron-down"></i>Dropdown</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn left-col" ng-click="placeElements('dropdown')"><i class="glyphicon glyphicon-chevron-down"></i>Dropdown</button>
                             <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('number')">
                                 <i><strong>123</strong></i> Number
                             </button>
                         </div>
                         <div class="row">
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('phone')"><i class="glyphicon glyphicon-phone-alt"></i>Phone Number</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn left-col" ng-click="placeElements('phone')"><i class="glyphicon glyphicon-phone-alt"></i>Phone Number</button>
                             <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('address')"><i class="glyphicon glyphicon-map-marker"></i>Address</button>
                         </div>
                         <div class="row">
-                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('email')"><i class="fa fa-envelope"></i>Email</button>
+                            <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn left-col" ng-click="placeElements('email')"><i class="fa fa-envelope"></i>Email</button>
                             <button class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5 field-btn" ng-click="placeElements('section')">Section Break</button>
                         </div>
                     </div>
@@ -40,7 +40,6 @@
                                 <input ng-model="selected.required" type="checkbox" value=""> Require Field
                             </label>
                         </div>
-
                         <div class="form-group" ng-if="selected.type !== undefined">
                             <label>Edit Label</label>
                             <input type="text" class="form-control" ng-model="selected.label">
@@ -61,16 +60,6 @@
                                 <button class="btn btn-success" ng-click="addChoice(selected)">Add Choice</button>
                             </div>
                         </div>
-                        <!--   <div ng-if="selected.type === 'multipleChoice' || selected.type === 'checkbox' ">
-                        <div class="form-group">
-                            <div class="checkbox" ng-if="selected.type !== undefined">
-                            <label>
-                                <input ng-model="horizontal" type="checkbox" value=""> Horizontal Options
-                            </label>
-                        </div>
-                        </div>
-                            
-                        </div> -->
                     </div>
                     <div ng-show="tabSelected === 'three'">
                         <div class="form-group">
@@ -107,21 +96,21 @@
                 <form>
                     <div class="box-body" id="form-template-body">
                         <div class="row">
-                        <ul data-as-sortable="dragControlListeners" data-ng-model="formElements">
-                            <li class="form-element col-sm-11" data-ng-repeat="item in formElements" data-as-sortable-item ng-mouseover="onHover(item)" ng-class="{'dotted-border': hovered.id === item.id, 'bg-light-blue': item.id === selected.id}" ng-click="selectElement(item)">
-                                <button ng-hide="item.id !== selected.id" type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
-                                    <i ng-click="removeElement(item)" ng-class="{'fa': selected.type === item.type, 'fa-times': selected.type === item.type}"></i></button>
-                                <line-text-template data-as-sortable-item-handle ng-if="item.type === 'lineText'"></line-text-template>
-                                <checkbox-template data-as-sortable-item-handle ng-if="item.type === 'checkbox'"></checkbox-template>
-                                <dropdown-template data-as-sortable-item-handle ng-if="item.type === 'dropdown'"></dropdown-template>
-                                <paragraph-text-template data-as-sortable-item-handle ng-if="item.type === 'paragraphText'"></paragraph-text-template>
-                                <multiple-choice-template data-as-sortable-item-handle ng-if="item.type === 'multipleChoice'"></multiple-choice-template>
-                                <number-template data-as-sortable-item-handle ng-if="item.type === 'number'"></number-template>
-                                <phone-template data-as-sortable-item-handle ng-if="item.type === 'phone'"></phone-template>
-                                <email-template data-as-sortable-item-handle ng-if="item.type === 'email'"></email-template>
-                                <address-template data-as-sortable-item-handle ng-if="item.type === 'address'"></address-template>
-                                <section-template data-as-sortable-item-handle ng-if="item.type === 'section'"></section-template>
-                            </li>
+                            <ul data-as-sortable="dragControlListeners" data-ng-model="formElements">
+                                <li class="form-element col-sm-11" data-ng-repeat="item in formElements" data-as-sortable-item ng-mouseover="onHover(item)" ng-class="{'dotted-border': hovered.id === item.id, 'bg-light-blue': item.id === selected.id}" ng-click="selectElement(item)">
+                                    <button ng-hide="item.id !== selected.id" type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
+                                        <i ng-click="removeElement(item)" ng-class="{'fa': selected.type === item.type, 'fa-times': selected.type === item.type}"></i></button>
+                                    <line-text-template data-as-sortable-item-handle ng-if="item.type === 'lineText'"></line-text-template>
+                                    <checkbox-template data-as-sortable-item-handle ng-if="item.type === 'checkbox'"></checkbox-template>
+                                    <dropdown-template data-as-sortable-item-handle ng-if="item.type === 'dropdown'"></dropdown-template>
+                                    <paragraph-text-template data-as-sortable-item-handle ng-if="item.type === 'paragraphText'"></paragraph-text-template>
+                                    <multiple-choice-template data-as-sortable-item-handle ng-if="item.type === 'multipleChoice'"></multiple-choice-template>
+                                    <number-template data-as-sortable-item-handle ng-if="item.type === 'number'"></number-template>
+                                    <phone-template data-as-sortable-item-handle ng-if="item.type === 'phone'"></phone-template>
+                                    <email-template data-as-sortable-item-handle ng-if="item.type === 'email'"></email-template>
+                                    <address-template data-as-sortable-item-handle ng-if="item.type === 'address'"></address-template>
+                                    <section-template data-as-sortable-item-handle ng-if="item.type === 'section'"></section-template>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -147,7 +136,7 @@
                             </div>
                         </div>
                     </div>
-                </div>  
+                </div>
             </div>
         </div>
     </div>
