@@ -1,29 +1,24 @@
-app.factory("SyncFactory", function($window) {
-
-    var PouchDB = $window.PouchDB;
-    var db = PouchDB('thekraken-test');
-    var remoteDb = 'http://127.0.0.1:5984/thekraken-test';
+app.factory("SyncFactory", function(DatabaseFactory) {
+    var db = DatabaseFactory.getLocalDb();
+    var remoteDb = DatabaseFactory.getRemoteDb();
 
     return {
 
         syncUp: function() {
-            return PouchDB.replicate(db, remoteDb);
+            return DatabaseFactory.replicateUp();
         },
 
         syncDown: function() {
-            return PouchDB.replicate(remoteDb, db);
+            return DatabaseFactory.replicateDown();
         },
 
         clearDb: function() {
-            return db.destroy()
-                .then(function() {
-                    db = PouchDB('thekraken-test');
-                });
+            return DatabaseFactory.clearLocalDb();
         },
 
         getStats: function() {
             // This has to be optimized using design docs and views
-            return db.allDocs({ include_docs: true })
+            return DatabaseFactory.getLocalDb().allDocs({ include_docs: true })
                 .then(function(docs) {
 
                     var groupedCompleted = _.groupBy(docs.rows.filter(function(row) {

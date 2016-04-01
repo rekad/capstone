@@ -1,5 +1,6 @@
-app.factory('CompletedFormsFactory', function(DatabaseFactory) {
-	var db = DatabaseFactory.getLocalDb();
+app.factory('CompletedFormsFactory', function($window) {
+	var PouchDB = $window.PouchDB;
+	var db = PouchDB('thekraken-test');
 
 	return {
 		fetchAll: function(templateId) {
