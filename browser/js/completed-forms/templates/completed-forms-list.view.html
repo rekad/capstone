@@ -1,9 +1,11 @@
-<section class="content-header">
-    <h1>
+<section class="content-header" >
+    <h1 ng-if="completedForms.length > 0">
         List View of Completed Forms
     </h1>
+    <h1 ng-if="completedForms.length < 1">There are no completed forms to display</h1>
 </section>
-<section class="content" ng-if="forms">
+
+<section ng-if="completedForms.length > 0" class="content">
     <!-- list of completed forms -->
     <div class="box box-primary">
         <div class="box-header">
@@ -84,7 +86,4 @@
             </div>
         </div>
     </div>
-</section>
-<section class="content" ng-if="forms === null || forms === 'null'">
-    <h3>There are no completed forms to display</h3>
 </section>

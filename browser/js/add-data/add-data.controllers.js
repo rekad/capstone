@@ -1,5 +1,17 @@
 app.controller('AddDataCtrl', function($scope, forms) {
-	$scope.forms = forms;
+	$scope.originalForms = forms;
+    $scope.forms = $scope.originalForms;
+    $scope.$watch('searchBar', function() {
+        $scope.filteredForms = $scope.originalForms;
+        if ($scope.searchBar) {
+            var reg = new RegExp($scope.searchBar, 'i');
+            $scope.filteredForms = $scope.filteredForms.filter(function(form) {
+                return reg.test(form.title);
+            });
+        }
+        $scope.forms = $scope.filteredForms.slice($scope.startSlice, $scope.endSlice);
+        $scope.$evalAsync();
+    });
 });
 
 app.controller('CompletedFormModalCtrl', function($scope, $uibModalInstance) {
@@ -10,7 +22,6 @@ app.controller('CompletedFormModalCtrl', function($scope, $uibModalInstance) {
 
 app.controller('AddDataSubmitCtrl', function($scope, form, CompletedFormsFactory, $uibModal, $state) {
 	$scope.form = form;
-
 	$scope.formValues = [];
 
 
