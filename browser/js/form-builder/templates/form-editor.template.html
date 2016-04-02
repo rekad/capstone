@@ -86,6 +86,10 @@
                     </div>
                 </div>
             </div>
+            <div class="builderFlex" id="builderButtons">
+                <button class="btn btn-primary btn-flat" ui-sref="add-data.submit({formTemplateId: formTemplate._id})"> <i class="fa fa-plus"></i>Fill Out Form Template</button>
+                <button class="btn btn-flat btn-primary" ui-sref="completed-forms.forms-list({formTemplateId: formTemplate._id})">View All Completed Forms</button>
+            </div>
         </div>
         <div class="col-lg-7 col-md-12 col-sm-12">
             <div class="box box-primary form-box">
