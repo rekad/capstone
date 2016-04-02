@@ -13,7 +13,7 @@ app.config(function($stateProvider) {
                         return FormTemplatesFactory.createForm()
                             .then(function(createdForm) {
                                 return FormTemplatesFactory.fetchOne(createdForm.id);
-                            })
+                            });
                     } 
                     $stateParams.id = allFormTemplates[0]._id;
                 }
