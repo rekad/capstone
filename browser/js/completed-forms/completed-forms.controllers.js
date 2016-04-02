@@ -3,17 +3,22 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     $scope.filteredForms = $scope.completedForms;
     $scope.completedFormsForPage = $scope.filteredForms.slice(0, 10);
     $scope.formTemplate = formTemplate;
+
+    //variables for pagination 
     $scope.currentPage = 1;
     $scope.formTemplateId = $scope.formTemplate._id;
-
+    $scope.maxSize = 5;
     $scope.data = { availableOptions: [{ name: 10, id: 0 }, { name: 25, id: 1 }, { name: 50, id: 2 }, { name: 100, id: 3 }], selectedOption: { name: 10, id: 0 } };
 
     $scope.startSlice = 0;
     $scope.endSlice = 10;
 
+    $scope.getTotalItems = function () {
+        return $scope.filteredForms.length;
+    };
 
     $scope.$watch('searchBar', function() {
-        $scope.filteredForms = $scope.completedForms
+        $scope.filteredForms = $scope.completedForms;
         if ($scope.searchBar) {
             var reg = new RegExp($scope.searchBar, 'i');
             $scope.filteredForms = $scope.filteredForms.filter(function(form) {
@@ -45,8 +50,6 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     };
 
     $scope.changePage = function(page) {
-        //set current page
-        $scope.currentPage = page || this.page;
         //change rows showed
         $scope.updateSlice();
         $scope.completedFormsForPage = $scope.filteredForms.slice($scope.startSlice, $scope.endSlice);
@@ -56,15 +59,6 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     $scope.updateSlice = function() {
         $scope.startSlice = ($scope.currentPage - 1) * $scope.data.selectedOption.name;
         $scope.endSlice = Math.min($scope.startSlice + $scope.data.selectedOption.name, $scope.filteredForms.length);
-    };
-
-    $scope.prevPage = function() {
-        if ($scope.currentPage !== 1) $scope.changePage($scope.currentPage - 1);
-
-    };
-
-    $scope.nextPage = function() {
-        if ($scope.currentPage !== $scope.getPaginationNumbers().length) $scope.changePage($scope.currentPage + 1);
     };
 
     $scope.updateRowsPerPage = function() {
@@ -82,7 +76,7 @@ app.controller('CompletedFormsCtrl', function($scope, allFormTemplates) {
         if ($scope.searchBar) {
             var reg = new RegExp($scope.searchBar, 'i');
             $scope.filteredForms = $scope.filteredForms.filter(function(form) {
-                return reg.test(form.title)
+                return reg.test(form.title);
             });
         }
         $scope.forms = $scope.filteredForms.slice($scope.startSlice, $scope.endSlice);
@@ -116,7 +110,7 @@ app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFo
                 $scope.completedForm = updatedForm;
                 $scope.toggleEdit();
                 $scope.$evalAsync();
-            })
+            });
             //handle errors
     };
 });
