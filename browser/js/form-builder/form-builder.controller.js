@@ -87,7 +87,7 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
 
     $scope.dragControlListeners = {
         orderChanged: function(event) {
-            console.log(event)
+            // console.log(event)
         },
         containment: '#form-template-body' //optional param.
     };

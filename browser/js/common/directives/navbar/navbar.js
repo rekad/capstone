@@ -19,7 +19,6 @@ app.directive('navbar', function ($rootScope, AuthFactory, $state) {
             function setUser() {
                 AuthFactory.getUser()
                     .then(function(user) {
-                        console.log(user);
                         if (user) scope.user = user;
                     });      
             }

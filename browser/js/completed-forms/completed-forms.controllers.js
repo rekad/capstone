@@ -26,7 +26,6 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
                             if (reg.test(val[j])) return true;
                         }
                     } else if (reg.test(val)) {
-                        // console.log('I am getting here!', val)
                         return true;
                     }
                 }
@@ -109,11 +108,9 @@ app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFo
 
     $scope.updateForm = function() {
 
-        console.log($scope.completedForm);
 
         CompletedFormsFactory.updateOne($scope.completedForm)
             .then(function(updatedForm) {
-                console.log('Form submitted!', updatedForm);
                 completedForm = angular.copy(updatedForm);
                 $scope.completedForm = updatedForm;
                 $scope.toggleEdit();
