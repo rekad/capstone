@@ -1,10 +1,12 @@
 app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     $scope.completedForms = forms;
-    $scope.filteredForms = $scope.completedForms;
-    $scope.completedFormsForPage = $scope.filteredForms.slice(0, 10);
     $scope.formTemplate = formTemplate;
-    $scope.currentPage = 1;
-    $scope.formTemplateId = $scope.formTemplate._id;
+    if (forms && formTemplate) {
+        $scope.filteredForms = $scope.completedForms;
+        $scope.completedFormsForPage = $scope.filteredForms.slice(0, 10);
+        $scope.currentPage = 1;
+        $scope.formTemplateId = $scope.formTemplate._id;
+    }
 
     $scope.data = { availableOptions: [{ name: 10, id: 0 }, { name: 25, id: 1 }, { name: 50, id: 2 }, { name: 100, id: 3 }], selectedOption: { name: 10, id: 0 } };
 
@@ -24,7 +26,6 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
                             if (reg.test(val[j])) return true;
                         }
                     } else if (reg.test(val)) {
-                        // console.log('I am getting here!', val)
                         return true;
                     }
                 }
@@ -107,11 +108,9 @@ app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFo
 
     $scope.updateForm = function() {
 
-        console.log($scope.completedForm);
 
         CompletedFormsFactory.updateOne($scope.completedForm)
             .then(function(updatedForm) {
-                console.log('Form submitted!', updatedForm);
                 completedForm = angular.copy(updatedForm);
                 $scope.completedForm = updatedForm;
                 $scope.toggleEdit();
