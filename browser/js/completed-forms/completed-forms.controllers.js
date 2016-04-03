@@ -7,10 +7,7 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     $scope.maxSize = 5;
     $scope.filteredForms = $scope.completedForms;
 
-    if ($scope.completedForms && $scope.formTemplate) {
-        $scope.completedFormsForPage = $scope.filteredForms.slice(0, 10);
-        $scope.currentPage = 1;
-    }
+    $scope.completedFormsForPage = $scope.filteredForms ? $scope.filteredForms.slice(0, 10) : null;
 
     $scope.data = { availableOptions: [{ name: 10, id: 0 }, { name: 25, id: 1 }, { name: 50, id: 2 }, { name: 100, id: 3 }], selectedOption: { name: 10, id: 0 } };
 
@@ -23,13 +20,14 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     
     $scope.getTemplateStatus = function () {
         return !!formTemplate;
-    }
+    };
 
-    $scope.$watch('searchInd', function() {
-        console.log("i search")
+    $scope.formsSearch = function () {
+        console.log('searching', $scope.searchFormsKey)
         $scope.filteredForms = $scope.completedForms;
-        if ($scope.searchBar) {
-            var reg = new RegExp($scope.searchBar, 'i');
+
+        if (newVal) {
+            var reg = new RegExp($scope.searchFormsKey, 'i');
             $scope.filteredForms = $scope.filteredForms.filter(function(form) {
                 for (let i = 0; i < form.formElements.length; i++) {
                     var val = form.formElements[i].value;
@@ -46,7 +44,7 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
         }
         $scope.completedFormsForPage = $scope.filteredForms.slice($scope.startSlice, $scope.endSlice);
         $scope.$evalAsync();
-    });
+    };
 
     $scope.changePage = function(page) {
         if ($scope.completedForms || !$scope.formTemplate) return;        
