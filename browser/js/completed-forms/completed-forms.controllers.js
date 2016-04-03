@@ -22,12 +22,15 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
         return !!formTemplate;
     };
 
-    $scope.formsSearch = function () {
-        console.log('searching', $scope.searchFormsKey)
-        $scope.filteredForms = $scope.completedForms;
+    $scope.changes = function () {
+        console.log('changing')
+    }
 
-        if (newVal) {
-            var reg = new RegExp($scope.searchFormsKey, 'i');
+    $scope.$watch('searchBar', function() {
+        console.log('here')
+        $scope.filteredForms = $scope.completedForms
+        if ($scope.searchBar) {
+            var reg = new RegExp($scope.searchBar, 'i');
             $scope.filteredForms = $scope.filteredForms.filter(function(form) {
                 for (let i = 0; i < form.formElements.length; i++) {
                     var val = form.formElements[i].value;
@@ -36,6 +39,7 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
                             if (reg.test(val[j])) return true;
                         }
                     } else if (reg.test(val)) {
+                        // console.log('I am getting here!', val)
                         return true;
                     }
                 }
@@ -44,7 +48,7 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
         }
         $scope.completedFormsForPage = $scope.filteredForms.slice($scope.startSlice, $scope.endSlice);
         $scope.$evalAsync();
-    };
+    });
 
     $scope.changePage = function(page) {
         if ($scope.completedForms || !$scope.formTemplate) return;        
