@@ -10,7 +10,6 @@ app.config(function($stateProvider) {
             formTemplate: function($state, $stateParams, FormTemplatesFactory, allFormTemplates) {
                 if (!$stateParams.id) {
                     if (!allFormTemplates[0]) {
-                        console.log('I am resolving here')
                         return FormTemplatesFactory.createForm()
                             .then(function(createdForm) {
                                 return FormTemplatesFactory.fetchOne(createdForm.id);
