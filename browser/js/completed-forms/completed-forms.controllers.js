@@ -1,13 +1,16 @@
 app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     $scope.completedForms = forms;
-    $scope.filteredForms = $scope.completedForms;
-    $scope.completedFormsForPage = $scope.filteredForms.slice(0, 10);
     $scope.formTemplate = formTemplate;
 
     //variables for pagination 
     $scope.currentPage = 1;
-    $scope.formTemplateId = $scope.formTemplate._id;
     $scope.maxSize = 5;
+
+    $scope.filteredForms = $scope.completedForms;
+    $scope.completedFormsForPage = $scope.filteredForms.slice(0, 10);
+    $scope.currentPage = 1;
+    $scope.formTemplateId = $scope.formTemplate._id;
+
     $scope.data = { availableOptions: [{ name: 10, id: 0 }, { name: 25, id: 1 }, { name: 50, id: 2 }, { name: 100, id: 3 }], selectedOption: { name: 10, id: 0 } };
 
     $scope.startSlice = 0;
@@ -17,7 +20,8 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
         return $scope.filteredForms.length;
     };
 
-    $scope.$watch('searchBar', function() {
+    $scope.$watch('searchInd', function() {
+        console.log("i search")
         $scope.filteredForms = $scope.completedForms;
         if ($scope.searchBar) {
             var reg = new RegExp($scope.searchBar, 'i');
@@ -29,7 +33,6 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
                             if (reg.test(val[j])) return true;
                         }
                     } else if (reg.test(val)) {
-                        // console.log('I am getting here!', val)
                         return true;
                     }
                 }
@@ -101,11 +104,9 @@ app.controller('IndividualFormCtrl', function($scope, completedForm, CompletedFo
 
     $scope.updateForm = function() {
 
-        console.log($scope.completedForm);
 
         CompletedFormsFactory.updateOne($scope.completedForm)
             .then(function(updatedForm) {
-                console.log('Form submitted!', updatedForm);
                 completedForm = angular.copy(updatedForm);
                 $scope.completedForm = updatedForm;
                 $scope.toggleEdit();
