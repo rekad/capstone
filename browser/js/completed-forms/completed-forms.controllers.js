@@ -5,9 +5,9 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     //variables for pagination 
     $scope.currentPage = 1;
     $scope.maxSize = 5;
+    $scope.filteredForms = $scope.completedForms;
 
-    if (forms && formTemplate) {
-        $scope.filteredForms = $scope.completedForms;
+    if ($scope.completedForms && $scope.formTemplate) {
         $scope.completedFormsForPage = $scope.filteredForms.slice(0, 10);
         $scope.currentPage = 1;
     }
@@ -20,6 +20,10 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     $scope.getTotalItems = function () {
         return $scope.filteredForms.length;
     };
+    
+    $scope.getTemplateStatus = function () {
+        return !!formTemplate;
+    }
 
     $scope.$watch('searchInd', function() {
         console.log("i search")
@@ -44,16 +48,8 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
         $scope.$evalAsync();
     });
 
-    $scope.getPaginationNumbers = function() {
-        var paginationAmount = Math.ceil($scope.filteredForms.length / $scope.data.selectedOption.name),
-            paginationArr = [];
-        for (let i = 1; i <= paginationAmount; i++) {
-            paginationArr.push(i);
-        }
-        return paginationArr;
-    };
-
     $scope.changePage = function(page) {
+        if ($scope.completedForms || !$scope.formTemplate) return;        
         //change rows showed
         $scope.updateSlice();
         $scope.completedFormsForPage = $scope.filteredForms.slice($scope.startSlice, $scope.endSlice);
@@ -61,11 +57,13 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     };
 
     $scope.updateSlice = function() {
+        if ($scope.completedForms || !$scope.formTemplate) return;
         $scope.startSlice = ($scope.currentPage - 1) * $scope.data.selectedOption.name;
         $scope.endSlice = Math.min($scope.startSlice + $scope.data.selectedOption.name, $scope.filteredForms.length);
     };
 
     $scope.updateRowsPerPage = function() {
+        if ($scope.completedForms || !$scope.formTemplate) return;
         $scope.updateSlice();
         $scope.completedFormsForPage = $scope.filteredForms.slice($scope.startSlice, $scope.endSlice);
         $scope.$evalAsync();
