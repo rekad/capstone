@@ -32,6 +32,7 @@ app.directive('navbar', function ($rootScope, AuthFactory, $state) {
 
             scope.toggleSidebar = function () {
                 $('body').hasClass('sidebar-collapse') ? $('body').removeClass('sidebar-collapse') : $('body').addClass('sidebar-collapse');
+                $('body').hasClass('sidebar-open') ? $('body').removeClass('sidebar-open') : $('body').addClass('sidebar-open');
             };
 
             setUser();
