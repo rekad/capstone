@@ -1,18 +1,20 @@
 app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     $scope.completedForms = forms;
     $scope.formTemplate = formTemplate;
-    if (forms && formTemplate) {
-        $scope.filteredForms = $scope.completedForms;
+    $scope.filteredForms = $scope.completedForms;
+    if ($scope.completedForms && $scope.formTemplate) {
         $scope.completedFormsForPage = $scope.filteredForms.slice(0, 10);
         $scope.currentPage = 1;
-        $scope.formTemplateId = $scope.formTemplate._id;
     }
 
     $scope.data = { availableOptions: [{ name: 10, id: 0 }, { name: 25, id: 1 }, { name: 50, id: 2 }, { name: 100, id: 3 }], selectedOption: { name: 10, id: 0 } };
 
     $scope.startSlice = 0;
     $scope.endSlice = 10;
-
+    
+    $scope.getTemplateStatus = function () {
+        return !!formTemplate;
+    }
 
     $scope.$watch('searchBar', function() {
         $scope.filteredForms = $scope.completedForms
@@ -37,6 +39,7 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     });
 
     $scope.getPaginationNumbers = function() {
+        if ($scope.completedForms || !$scope.formTemplate) return;
         var paginationAmount = Math.ceil($scope.filteredForms.length / $scope.data.selectedOption.name),
             paginationArr = [];
         for (let i = 1; i <= paginationAmount; i++) {
@@ -46,7 +49,7 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     };
 
     $scope.changePage = function(page) {
-        //set current page
+        if ($scope.completedForms || !$scope.formTemplate) return;        //set current page
         $scope.currentPage = page || this.page;
         //change rows showed
         $scope.updateSlice();
@@ -55,20 +58,24 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
     };
 
     $scope.updateSlice = function() {
-        $scope.startSlice = ($scope.currentPage - 1) * $scope.data.selectedOption.name;
+        if ($scope.completedForms || !$scope.formTemplate) return;
+       $scope.startSlice = ($scope.currentPage - 1) * $scope.data.selectedOption.name;
         $scope.endSlice = Math.min($scope.startSlice + $scope.data.selectedOption.name, $scope.filteredForms.length);
     };
 
     $scope.prevPage = function() {
+        if ($scope.completedForms || !$scope.formTemplate) return;
         if ($scope.currentPage !== 1) $scope.changePage($scope.currentPage - 1);
 
     };
 
     $scope.nextPage = function() {
+        if ($scope.completedForms || !$scope.formTemplate) return;
         if ($scope.currentPage !== $scope.getPaginationNumbers().length) $scope.changePage($scope.currentPage + 1);
     };
 
     $scope.updateRowsPerPage = function() {
+        if ($scope.completedForms || !$scope.formTemplate) return;
         $scope.updateSlice();
         $scope.completedFormsForPage = $scope.filteredForms.slice($scope.startSlice, $scope.endSlice);
         $scope.$evalAsync();

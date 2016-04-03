@@ -1,4 +1,5 @@
 <section class="content-header" >
+    <h1 ng-if="!getTemplateStatus()">There are no completed forms to display</h1>
     <h1 ng-if="completedForms.length > 0">
         List View of Completed Forms
     </h1>
