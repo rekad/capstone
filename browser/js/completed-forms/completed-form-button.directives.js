@@ -7,7 +7,7 @@ app.directive('editButton', function() {
 app.directive('newFormButton', function() {
 	return {
 		restrict: 'E',
-		template: '<button class="btn btn-primary btn-flat" ui-sref="add-data.submit({formTemplateId: formTemplateId})"> <i class="fa fa-plus"></i>Fill Out New Form</button>'
+		template: '<button class="btn btn-primary btn-flat" ui-sref="add-data.submit({formTemplateId: formTemplate._id})"> <i class="fa fa-plus"></i>Fill Out New Form</button>'
 	};
 });
 app.directive('cancelEditButton', function() {

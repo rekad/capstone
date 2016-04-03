@@ -10,16 +10,15 @@ app.directive('navbar', function ($rootScope, AuthFactory, $state) {
 
             $rootScope.$on('onlineChange', function(event, onlineStatus) {
                 scope.online = onlineStatus;
-            })
+            });
 
             scope.isLoginState = function() {
                 return $state.is('login');
-            }
+            };
 
             function setUser() {
                 AuthFactory.getUser()
                     .then(function(user) {
-                        console.log(user);
                         if (user) scope.user = user;
                     });      
             }
@@ -28,8 +27,12 @@ app.directive('navbar', function ($rootScope, AuthFactory, $state) {
                 AuthFactory.logout()
                 .then(function() {
                     $state.go('login');
-                })
-            }
+                });
+            };
+
+            scope.toggleSidebar = function () {
+                $('body').hasClass('sidebar-collapse') ? $('body').removeClass('sidebar-collapse') : $('body').addClass('sidebar-collapse');
+            };
 
             setUser();
 

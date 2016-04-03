@@ -10,7 +10,7 @@ app.config(function($stateProvider) {
             }
         })
         .state('add-data.submit', {
-            url: '/:formTemplateId/submit',
+            url: '/submit/:formTemplateId',
             templateUrl: '/js/add-data/add-data-submit.view.html',
             controller: 'AddDataSubmitCtrl',
             resolve: {

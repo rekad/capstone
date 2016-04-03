@@ -5,7 +5,7 @@
         <!-- search form (Optional) -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" ng-model="searchBar" placeholder="Search..." aria-controls="formTemplateSearch">
+                <input type="text" name="q" class="form-control" ng-model="searchBar" placeholder="Search..." aria-controls="formTemplateSearch" ng-disabled="originalForms.length < 1">
                 <span class="input-group-btn">
                 <span name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></span>
               </span>
@@ -14,9 +14,11 @@
         <!-- /.search form -->
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">FORM DATA</li>
+            <li ng-if="originalForms.length < 1" class="header">NO FORM TEMPLATES</li>
 
-            <li ui-sref-active="active" ng-repeat="form in forms" ><a ui-sref="completed-forms.forms-list({formTemplateId: form._id})"><i class="fa fa-file-text-o"></i> <span>{{form.title}}</span></a></li>
+            <li ng-if="originalForms.length > 0" class="header">FORM TEMPLATES</li>
+
+            <li ng-if="originalForms.length > 0" ui-sref-active="active" ng-repeat="form in forms" ><a ui-sref="completed-forms.forms-list({formTemplateId: form._id})"><i class="fa fa-file-text-o"></i> <span>{{form.title}}</span></a></li>
 
         </ul>
         <!-- /.sidebar-menu -->
