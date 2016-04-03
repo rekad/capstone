@@ -86,7 +86,7 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
     };
 
     $scope.dragControlListeners = {
-        containment: '#form-template-body';
+        containment: '#form-template-body'
     };
 });
 
