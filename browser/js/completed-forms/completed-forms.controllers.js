@@ -24,8 +24,8 @@ app.controller('CompletedFormsListCtrl', function($scope, forms, formTemplate) {
 
     $scope.changes = function () {
         $scope.filteredForms = $scope.completedForms;
-        if (this.searchInd) {
-            var reg = new RegExp(this.searchInd, 'i');
+        if ($scope.searchInd) {
+            var reg = new RegExp($scope.searchInd, 'i');
             $scope.filteredForms = $scope.filteredForms.filter(function(form) {
                 for (let i = 0; i < form.formElements.length; i++) {
                     var val = form.formElements[i].value;

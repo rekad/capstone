@@ -1,13 +1,13 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper no-sidebar">
     <section class="content-header">
-        <h3 ng-if="forms.length < 1">There is no data to visualize
+        <h3 ng-show="forms.length < 1">There is no data to visualize
         </h3>
-        <h3 ng-if="forms.length > 0">Data Visualization <small>Select a chart type and which form data to visualize here.</small></h3>
+        <h3 ng-show="forms.length > 0">Data Visualization <small>Select a chart type and which form data to visualize here.</small></h3>
     </section>
     <section class="content">
 
-    <div class="container" ng-if="forms.length > 0">
+    <div class="container" ng-show="forms.length > 0">
 
         <div class="col-lg-2">
         Form Template

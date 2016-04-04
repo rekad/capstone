@@ -1,12 +1,12 @@
 <section class="content-header" >
     <h1 ng-if="!getTemplateStatus()">There are no completed forms to display</h1>
-    <h1 ng-if="completedForms.length > 0">
+    <h1 ng-show="completedForms.length > 0">
         List View of Completed Forms
     </h1>
-    <h1 ng-if="completedForms.length < 1">There are no completed forms associated with the chosen form template</h1>
+    <h1 ng-show="completedForms.length < 1">There are no completed forms associated with the chosen form template</h1>
 </section>
 
-<section ng-if="completedForms.length > 0" class="content">
+<section ng-show="completedForms.length > 0" class="content">
     <!-- list of completed forms -->
     <div class="box box-primary">
         <div class="box-header">
