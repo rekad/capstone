@@ -5,9 +5,6 @@ describe('DatabaseFactory', function() {
 	var localDbName = 'thekraken-test';
 
 	var $httpBackend;
-	// beforeEach('Get tools', inject(function(_$httpBackend_) {
-		
-	// }));
 	var DatabaseFactory;
 	beforeEach('Get factory', inject(function($injector) {
 		DatabaseFactory = $injector.get('DatabaseFactory');
