@@ -14,7 +14,7 @@ this.addEventListener('install', function(event) {
 				'/admin-lte/dist/css/AdminLTE.min.css',
 				'/admin-lte/dist/css/skins/skin-blue.min.css',
 				'/admin-lte/bootstrap/js/bootstrap.min/js',
-				'/admin-lte/plugins/jQuery/jQuery-2.1.4.min.js',
+				'/admin-lte/plugins/jQuery/jQuery-2.2.0.min.js',
 				'/admin-lte/dist/js/app.min.js',
 				'/admin-lte/dist/img/avatar3.png',
 				'admin-lte/bootstrap/js/bootstrap.min.js',
