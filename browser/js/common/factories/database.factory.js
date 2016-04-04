@@ -17,7 +17,7 @@ app.factory('DatabaseFactory', function($window) {
 		clearLocalDb: function() {
 			return localDb.destroy()
 				.then(function() {
-					localDb = new PouchDB('trekraken-test');
+					localDb = new PouchDB('thekraken-test');
 				})
 		},
 		replicateUp: function() {

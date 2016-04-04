@@ -9,7 +9,7 @@
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" onclick="$('body').hasClass('sidebar-collapse') ? $('body').removeClass('sidebar-collapse') : $('body').addClass('sidebar-collapse')" role="button">
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" ng-click="toggleSidebar()" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
         <!-- Navbar Right Menu -->
@@ -20,7 +20,6 @@
                 <li><a ui-sref-active="active" ui-sref="analysis"><i class="fa fa-pie-chart"></i> Analysis</a></li>
                 <li><a ui-sref-active="active" ui-sref="sync"><i class="fa fa-cloud-upload"></i> Sync</a></li>
                 <li><a ui-sref-active="active" ui-sref="form-templates.form-builder({id: null})"><i class="fa fa-edit"></i> Form Editor</a></li>
-
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->

@@ -1,5 +1,4 @@
 app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplate, $uibModal) {
-
     $scope.selected = undefined;
     $scope.formTemplate = formTemplate;
     $scope.title = $scope.formTemplate.title;
@@ -27,8 +26,7 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
         if (type === 'checkbox' || type === 'dropdown' || type === 'multipleChoice') {
             $scope.elementToAdd.options = [{ value: "option 1" }, { value: "option 2" }, { value: "option 3" }];
             $scope.elementToAdd.label = "Select";
-        } 
-        else if (type === 'number') $scope.elementToAdd.label = "Enter Value";
+        } else if (type === 'number') $scope.elementToAdd.label = "Enter Value";
         else if (type === 'lineText' || type === 'paragraphText') $scope.elementToAdd.label = "Enter Text";
         else if (type === 'phone') $scope.elementToAdd.label = "Phone Number";
         else if (type === 'email') $scope.elementToAdd.label = "Email";
@@ -37,21 +35,19 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
             $scope.elementToAdd.label = "Section";
             $scope.elementToAdd.sectionDescription = "Section Description";
         };
-        
+
         $scope.elementToAdd.id = nextId;
         nextId++;
         $scope.elementToAdd.required = false;
     };
 
     $scope.require = function(element) {
-      
-
-        if(element.required === true && !element.value ) {
+        if (element.required === true && !element.value) {
             return true;
         }
     }
-  
-    $scope.selectElement = function(e) {   
+
+    $scope.selectElement = function(e) {
         $scope.selected = e;
         $scope.tabSelected = 'two';
     };
@@ -90,9 +86,7 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
     };
 
     $scope.dragControlListeners = {
-        orderChanged: function(event) {
-            console.log(event)
-        },
-        containment: '#form-template-body'//optional param.
+        containment: '#form-template-body'
     };
 });
+
