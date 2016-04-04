@@ -46,6 +46,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="/angular-ui-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="/socket.io-client/socket.io.js"></script>
     <script src="/main.js"></script>
+    <script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js', {
+            scope: '/'
+        }).then(function(reg) {
+            console.log('Registration succeeded. Scope is ' + reg.scope);
+        }).catch(function(error) {
+            console.log('Registration failed with ' + error);
+        })
+    }
+    </script>
 </head>
 <!--
   BODY TAG OPTIONS:
@@ -71,9 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body ng-app="borderLess" class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         <!-- Main Header -->
-
         <navbar></navbar>
-
         <ui-view></ui-view>
     </div>
     <!-- ./wrapper -->
@@ -88,11 +97,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
          Both of these plugins are recommended to enhance the
          user experience. Slimscroll is required when using the
          fixed layout. -->
-    <!-- Chart.js, needed for data visualization. --> 
+    <!-- Chart.js, needed for data visualization. -->
     <script src="angular-chart.js/dist/angular-chart.min.js"></script>
     <script src="admin-lte/dist/js/app.min.js"></script>
     <script type="text/javascript" src="ng-sortable/dist/ng-sortable.min.js"></script>
-
 </body>
 
 </html>

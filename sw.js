@@ -17,7 +17,7 @@ this.addEventListener('install', function(event) {
 				'/admin-lte/plugins/jQuery/jQuery-2.2.0.min.js',
 				'/admin-lte/dist/js/app.min.js',
 				'/admin-lte/dist/img/avatar3.png',
-				'admin-lte/bootstrap/js/bootstrap.min.js',
+				'/admin-lte/bootstrap/js/bootstrap.min.js',
 
 				'/font-awesome/fonts/fontawesome-webfont.woff2?v=4.5.0',
 				'/ng-sortable/dist/ng-sortable.min.js',
