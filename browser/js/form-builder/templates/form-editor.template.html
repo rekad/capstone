@@ -35,7 +35,7 @@
                     <div ng-show="tabSelected === 'two'">
                         <div ng-if="selected.type === undefined">
                             <h3 class="text-center">Select a field to edit</h3></div>
-                        <div class="checkbox" ng-if="selected.type !== undefined && selected.type !== 'section' && selected.type !== 'checkbox'">
+                        <div class="checkbox" ng-if="selected.type !== undefined && selected.type !== 'section'">
                             <label>
                                 <input ng-model="selected.required" type="checkbox" value=""> Require Field
                             </label>
@@ -102,8 +102,8 @@
                         <div class="row">
                             <ul data-as-sortable="dragControlListeners" data-ng-model="formElements">
                                 <li class="form-element col-sm-11" data-ng-repeat="item in formElements" data-as-sortable-item ng-mouseover="onHover(item)" ng-class="{'dotted-border': hovered.id === item.id, 'bg-light-blue': item.id === selected.id}" ng-click="selectElement(item)">
-                                    <button ng-hide="item.id !== selected.id" type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
-                                        <i ng-click="removeElement(item)" ng-class="{'fa': selected.type === item.type, 'fa-times': selected.type === item.type}"></i></button>
+                                    <button ng-click="removeElement(item)" ng-hide="item.id !== selected.id" type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-original-title="Remove">
+                                        <i  ng-class="{'fa': selected.type === item.type, 'fa-times': selected.type === item.type}"></i></button>
                                     <line-text-template data-as-sortable-item-handle ng-if="item.type === 'lineText'"></line-text-template>
                                     <checkbox-template data-as-sortable-item-handle ng-if="item.type === 'checkbox'"></checkbox-template>
                                     <dropdown-template data-as-sortable-item-handle ng-if="item.type === 'dropdown'"></dropdown-template>
