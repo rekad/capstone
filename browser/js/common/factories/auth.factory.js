@@ -22,14 +22,14 @@ app.factory('AuthFactory', function(DatabaseFactory) {
 	            })
 	            .then(function(user) {
 	            	masterUser = user;
-	            	console.log('masterUser: ', masterUser)
+	            	// console.log('masterUser: ', masterUser)
 
 	            	return usersDb.get('org.couchdb.user:' + masterUser.name)
 	            })
 	            .then(function(user) {
 	            	localUser = user;
 
-	            	console.log('localUser: ', localUser)
+	            	// console.log('localUser: ', localUser)
 
 	            	var localUserRev = localUser._rev;
 	            	localUser = masterUser;
@@ -39,7 +39,7 @@ app.factory('AuthFactory', function(DatabaseFactory) {
 	            }, function(error) {
 	            	delete masterUser._rev;
 	            	localUser = masterUser;
-	            	console.log('localUser in case it doesnt exist yet: ', localUser)
+	            	// console.log('localUser in case it doesnt exist yet: ', localUser)
 
 	            	return db.put(masterUser);
 	            })
@@ -49,12 +49,12 @@ app.factory('AuthFactory', function(DatabaseFactory) {
 	            .then(function(currentUser) {
 	            	currentUser.name = localUser.name;
 
-	            	console.log('currentUser: ', currentUser)
+	            	// console.log('currentUser: ', currentUser)
 
 	            	return db.put(currentUser);
 	            }, function(error) {
 	            	var currentUser = {_id: 'currentUser', name: localUser.name};
-	            	console.log('currentUser in ca d e y: ', currentUser)
+	            	// console.log('currentUser in ca d e y: ', currentUser)
 
 	            	return db.put(currentUser);
 
@@ -79,11 +79,11 @@ app.factory('AuthFactory', function(DatabaseFactory) {
 			return usersDb.get('currentUser')
 				.then(function(currentUser) {
 
-					console.log('found current user ', currentUser);
+					// console.log('found current user ', currentUser);
 					return db.get('org.couchdb.user:' + currentUser.name)
 				})
 				.catch(function(err) {
-					console.log('could not find current user')
+					// console.log('could not find current user')
 					return null;
 				})
 		}

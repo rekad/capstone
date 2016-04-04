@@ -1,0 +1,26 @@
+#form-btn-holder {
+    margin: 1em;
+    padding: 5em;
+}
+
+#requiredItem {
+    color: red;
+}
+
+.builderFlex {
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.builderF > #builderButtons {
+    width: 50%;
+
+}

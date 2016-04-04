@@ -1,16 +1,13 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper no-sidebar">
     <section class="content-header">
-        <h3>Data Visualization <small>Select a chart type and which form data to visualize here.</small></h3>
+        <h3 ng-if="forms.length < 1">There is no data to visualize
+        </h3>
+        <h3 ng-if="forms.length > 0">Data Visualization <small>Select a chart type and which form data to visualize here.</small></h3>
     </section>
     <section class="content">
 
-    <div class="container">
-        <div class="col-lg-2">
-        Chart Type
-        <select class="form-control" ng-model="chartOptions" ng-change="graphChange()" ng-options="chartType as chartType for chartType in chartTypes">
-        </select>
-        </div>
+    <div class="container" ng-if="forms.length > 0">
 
         <div class="col-lg-2">
         Form Template
@@ -19,10 +16,38 @@
         </div>
 
         <div class="col-lg-2">
-        X-Axis Data
+        Chart Data
         <select class="form-control" ng-model="dataOptions" ng-change="graphChange()" ng-options="label as label for label in formLabels[currentForm]">
         </select>
         </div>
+
+        <div class="col-lg-2">
+        Chart Type
+        <select class="form-control" ng-model="chartOptions" ng-change="graphChange()" ng-options="chartType as chartType for chartType in chartTypes">
+        </select>
+        </div>
+
+        <div class="col-lg-2" ng-show="filtering">
+        Show Only Results Where
+        <select class="form-control" ng-model="firstDrillDown" ng-change="drillDown()" ng-options="label as label for label in formLabels[currentForm]">
+        </select>
+        </div>
+
+        <div class="col-lg-2" ng-show="filtering">
+        Equals
+        <select class="form-control" ng-model="furtherDrillDown" ng-change="drillDown(furtherDrillDown)" ng-options="value as value for value in drillDownValues">
+        </select>
+        </div>
+
+        <div class="col-lg-2">
+        <br>
+        <button type="button" class="btn btn-success" ng-hide="filtering" ng-model="filterButton" ng-click="filter()">Filter</button>
+        </div>
+
+        <div class="col-lg-2">
+        <button type="button" class="btn btn-warning" ng-show="filtering" ng-model="filterButton2" ng-click="filter()">Stop Filtering</button>
+        </div>
+
     </div>
     <br>
 <!--         <div class="box box-primary" ng-show="!chartOptions">

@@ -1,5 +1,4 @@
 app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplate, $uibModal) {
-
     $scope.selected = undefined;
     $scope.formTemplate = formTemplate;
     $scope.title = $scope.formTemplate.title;
@@ -35,18 +34,21 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
         else if (type === 'section') {
             $scope.elementToAdd.label = "Section";
             $scope.elementToAdd.sectionDescription = "Section Description";
-        }
+        };
 
         $scope.elementToAdd.id = nextId;
         nextId++;
         $scope.elementToAdd.required = false;
     };
 
-    $scope.required = false;
+    $scope.require = function(element) {
+        if (element.required === true && !element.value) {
+            return true;
+        }
+    }
+
     $scope.selectElement = function(e) {
-        
         $scope.selected = e;
-        console.log($scope.selected);
         $scope.tabSelected = 'two';
     };
 
@@ -84,27 +86,10 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
     };
 
     $scope.dragControlListeners = {
-    orderChanged: function(event) {
-        console.log(event);
-    },
-    containment: '#form-template-body',//optional param.
-};
-
+        orderChanged: function(event) {
+            // console.log(event)
+        },
+        containment: '#form-template-body' //optional param.
+    };
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

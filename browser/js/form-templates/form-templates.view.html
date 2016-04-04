@@ -2,13 +2,14 @@
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-        <!-- search form (Optional) -->
         <sidebar-search></sidebar-search>
-        <!-- /.search form -->
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">FORM DATA</li>
-            <li ui-sref-active="active" ng-click="createNewForm()"> <a href=""> <i class="fa fa-plus"></i><span>Add New Form</span></a> </li>
+            <li ng-if="originalForms.length < 1" class="header">NO FORM TEMPLATES</li>
+
+            <li ng-if="originalForms.length > 0" class="header">FORM TEMPLATES</li>
+
+            <li ui-sref-active="active" ng-click="createNewForm()"> <a href=""> <i class="fa fa-plus"></i><span>Add New Form Template</span></a> </li>
             <li ui-sref-active="active" ui-sref="form-templates.form-builder({id: form._id})" ng-repeat="form in forms"><a ><i class="fa fa-file-text-o"></i> <span>{{form.title}}</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
