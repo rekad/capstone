@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  background: #fdfdfd; }
+
+#main {
+  padding-top: 60px;
+  margin: 0 auto; }
+
+#onlineNav {
+  background-color: #00a65a; }
+
+#offlineNav {
+  background-color: #f39c12; }
+
+.login-box {
+  margin-top: 0px;
+  padding-top: 58px; }
+
+.login-box-body {
+  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 2px; }
+
+.login-page {
+  height: 100vh;
+  background-color: #d5e7f6; }
+
+#login-form {
+  width: 60%;
+  margin: 0 auto; }
+
+#form-btn-holder {
+  margin: 1em;
+  padding: 5em; }
+
+#requiredItem {
+  color: red; }
+
+.builderFlex {
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  margin-bottom: 10px; }
+
+.builderF > #builderButtons {
+  width: 50%; }
+
+.flex {
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center; }
+
+.flex > button {
+  width: 35%; }
+
+body.modal-open {
+  overflow: hidden; }
+
+.content-wrapper {
+  min-height: 90vh; }
+
+.box {
+  max-width: 1200px; }
+
+.dotted-border {
+  border: dashed 1px black;
+  box-sizing: border-box; }
+
+.form-element {
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  position: relative; }
+  .form-element .fa-times {
+    position: absolute;
+    top: 0;
+    right: 0; }
+  .form-element .btn-box-tool {
+    position: absolute;
+    top: 0;
+    right: 0; }
+
+.select-group {
+  margin-top: 20px; }
+
+.form-box .box-body {
+  min-height: 70vh; }
+
+.form-box button {
+  margin-right: 10px; }
+
+.form-box .fa {
+  font-size: 150%; }
+
+.form-box label {
+  max-width: 90%;
+  overflow: hidden; }
+
+.form-box h4 {
+  max-width: 95%;
+  overflow: hidden; }
+
+.form-box h2 {
+  max-width: 95%;
+  overflow: hidden; }
+
+button i {
+  margin-right: 5px; }
+
+.field-btn {
+  margin: 5px;
+  font-size: .90em; }
+
+.add-form-btn {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+.no-sidebar {
+  margin-left: 0px; }
+
+.field-choices {
+  margin-bottom: 5px; }
+
+#form-template-body ul {
+  padding-left: 0; }
+
+.left-col {
+  margin-left: 7%; }
