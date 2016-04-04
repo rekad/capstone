@@ -32,7 +32,7 @@
                     <div class="col-sm-6">
                         <div id="completedFormsFilter" class="dataTables_filter">
                             <label>Search:
-                                <input type="search" class="form-control input-sm" ng-model="searchBar" placeholder="Type in Search Criteria" aria-controls="formsSearch">
+                                <input type="search" class="form-control input-sm" ng-model="searchInd" placeholder="Type in Search Criteria" aria-controls="formsSearch" ng-change="changes()">
                             </label>
                         </div>
                     </div>
@@ -71,17 +71,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-5">
+                    <div class="col-md-5">
                         <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing {{startSlice+1}} to {{endSlice}} of {{completedForms.length}} entries</div>
                     </div>
-                    <div class="col-sm-7">
-                        <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-                            <ul class="pagination">
-                                <li class="paginate_button previous" ng-click="prevPage()" ng-class="{disabled: currentPage === 1}" id="forms_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li>
-                                <li class="paginate_button" ng-click="changePage()" ng-class="{active: currentPage === {{page}}}" ng-repeat="page in getPaginationNumbers()"><a href="#" aria-controls="example1" data-dt-idx="{{page}}" tabindex="0">{{page}}</a></li>
-                                <li class="paginate_button next" ng-click="nextPage()" ng-class="{disabled: currentPage === getPaginationNumbers().length}" id="forms_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a></li>
-                            </ul>
-                        </div>
+                    <div class="col-md-7">
+                        <uib-pagination boundary-links="true" total-items="getTotalItems()" ng-model="currentPage" items-per-page="data.selectedOption.name" class="pagination-md" previous-text="Previous" next-text="Next" boundary-link-numbers="true" max-size="maxSize" force-ellipses="true" ng-change="changePage()"></uib-pagination>
                     </div>
                 </div>
             </div>
