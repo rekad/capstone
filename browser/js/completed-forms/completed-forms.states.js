@@ -18,7 +18,7 @@ app.config(function($stateProvider) {
         return FormTemplatesFactory.fetchAll();
       },
       forms: function($stateParams, CompletedFormsFactory, allFormTemplates) {
-        if (!$stateParams.formTemplateId || $stateParams.formTemplateId === "null") {
+        if (!$stateParams.formTemplateId) {
           if (!allFormTemplates[0]) return null;
           $stateParams.formTemplateId = allFormTemplates[0]._id;
         }
