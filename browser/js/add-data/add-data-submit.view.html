@@ -1,4 +1,4 @@
-<section class="content-header" ng-if="form">
+<section class="content-header" ng-show="form">
     <h1>
         New Form Data
         <small>This page allows you to fill out a new form</small>
@@ -7,13 +7,13 @@
     <button class="btn btn-flat btn-primary" ui-sref="completed-forms.forms-list({formTemplateId: form._id})">View All Completed Forms</button>
 </section>
 
-<section class="content-header" ng-if="!form">
+<section class="content-header" ng-show="!form">
     <h1>
         There are no form templates to fill out
     </h1>
 </section>
 
-<section class="content" ng-if="form">
+<section class="content" ng-show="form">
     <!-- Your Page Content Here -->
     <div class="box box-primary">
 
