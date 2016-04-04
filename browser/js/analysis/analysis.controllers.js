@@ -117,8 +117,7 @@ $scope.resultFilter = function(form, firstDrillDown, drillDownValue) {
                     }
                 }
             }).then(function(result) {
-                console.log($scope.data)
-                $scope.$digest();
+                $scope.$evalAsync();
             });
     };
 

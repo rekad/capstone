@@ -1,7 +1,6 @@
 app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplate, $uibModal) {
     $scope.selected = undefined;
     $scope.formTemplate = formTemplate;
-    console.log('formTemplate',formTemplate)
     $scope.title = $scope.formTemplate.title;
     $scope.description = $scope.formTemplate.description;
     $scope.formElements = $scope.formTemplate.formElements;
@@ -87,10 +86,7 @@ app.controller('FormBuilder', function($scope, FormTemplatesFactory, formTemplat
     };
 
     $scope.dragControlListeners = {
-        orderChanged: function(event) {
-            console.log(event)
-        },
-        containment: '#form-template-body' //optional param.
+        containment: '#form-template-body'
     };
 });
 

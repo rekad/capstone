@@ -1,7 +1,7 @@
 <div class="form-group">
     <label>{{element.label}}<span ng-show="element.required"> *</span></label>
     <div>
-        <input name="Field" type="text" tabindex="1" class="form-control" ng-model="element.value.streetAddress" ng-readonly="!isEditing">
+        <input name="Field" type="text" tabindex="1" class="form-control" ng-model="element.value.streetAddress" ng-readonly="!isEditing" ng-required="element.required">
         <p>Street Address</p>
     </div>
     <div>
@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col-sm-6">
-            <input name="Field" type="text" tabindex="3" class="form-control"  ng-model="element.value.city" ng-readonly="!isEditing">
+            <input name="Field" type="text" tabindex="3" class="form-control"  ng-model="element.value.city" ng-readonly="!isEditing" ng-required="element.required">
             <p>City</p>
         </div>
         <div class="col-sm-6">
@@ -24,7 +24,7 @@
             <p>Postal / Zip Code</p>
         </div>
         <div class="col-sm-6">
-            <select name="Field" tabindex="6" class="form-control"  ng-model="element.value.country" ng-readonly="!isEditing" ng-disabled="!isEditing">
+            <select name="Field" tabindex="6" class="form-control"  ng-model="element.value.country" ng-readonly="!isEditing" ng-disabled="!isEditing" ng-required="element.required">
                 <option value="United States">United States</option>
                 <option value="United Kingdom">United Kingdom</option>
                 <option value="Australia">Australia</option>
