@@ -3,6 +3,7 @@ app.factory('DatabaseFactory', function($window) {
 	var localDb = new PouchDB('thekraken-test');
 	var usersDb = new PouchDB('users');
 	var remoteDb = new PouchDB('https://rekad.cloudant.com/thekraken-test', {skipSetup: true});
+	var output;
 
 	return {
 		getLocalDb: function() {
@@ -18,7 +19,7 @@ app.factory('DatabaseFactory', function($window) {
 			return localDb.destroy()
 				.then(function() {
 					localDb = new PouchDB('trekraken-test');
-				})
+				});
 		},
 		replicateUp: function() {
 			return PouchDB.replicate(localDb, remoteDb);
@@ -26,5 +27,5 @@ app.factory('DatabaseFactory', function($window) {
 		replicateDown: function() {
 			return PouchDB.replicate(remoteDb, localDb);
 		}
-	}
-})
+	};
+});

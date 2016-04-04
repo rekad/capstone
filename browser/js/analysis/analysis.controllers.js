@@ -1,4 +1,4 @@
-app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory) {
+app.controller('AnalysisCtrl', function($scope, forms, CompletedFormsFactory, DatabaseFactory) {
     $scope.forms = forms;
     $scope.values = null;
     $scope.currentForm = null;
