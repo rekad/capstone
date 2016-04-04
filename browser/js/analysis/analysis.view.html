@@ -1,11 +1,13 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper no-sidebar">
     <section class="content-header">
-        <h3>Data Visualization <small>Select a chart type and which form data to visualize here.</small></h3>
+        <h3 ng-if="forms.length < 1">There is no data to visualize
+        </h3>
+        <h3 ng-if="forms.length > 0">Data Visualization <small>Select a chart type and which form data to visualize here.</small></h3>
     </section>
     <section class="content">
 
-    <div class="container">
+    <div class="container" ng-if="forms.length > 0">
 
         <div class="col-lg-2">
         Form Template
@@ -48,15 +50,6 @@
 
     </div>
     <br>
-<!--         <div class="box box-primary" ng-show="!chartOptions">
-        <div class="box-header with-border">
-        <h3 class="box-title">Select Some Options!</h3>
-        <div class="chart-container">
-            <canvas id="pie" class="chart chart-pie"  style="margin-top:10px">
-            </canvas>
-        </div>
-        </div>
-        </div> -->
 
         <div class="box box-primary" ng-show="chartOptions==='bar graph'">
         <div class="box-header with-border">

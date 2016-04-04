@@ -1,6 +1,6 @@
 <div class="form-group select-group">
 	<label>{{item.label}}<span ng-show="item.required"> *</span></label>
-	<select class="form-control" ng-readonly="true">
+	<select class="form-control" ng-readonly="true" name="dropdown">
 		<option ng-repeat="option in item.options" >{{option.value}}</option>
 	</select>
 </div>

@@ -6,14 +6,14 @@ app.controller('FormTemplatesCtrl', function($scope, forms, FormTemplatesFactory
         FormTemplatesFactory.createForm()
             .then(function(form) {
                 $state.go("form-templates.form-builder", { id: form.id });
-            })
-    }
+            });
+    };
     $scope.$watch('searchBar', function() {
         $scope.filteredForms = $scope.originalForms;
         if ($scope.searchBar) {
             var reg = new RegExp($scope.searchBar, 'i');
             $scope.filteredForms = $scope.filteredForms.filter(function(form) {
-                return reg.test(form.title)
+                return reg.test(form.title);
             });
         }
         $scope.forms = $scope.filteredForms.slice($scope.startSlice, $scope.endSlice);
