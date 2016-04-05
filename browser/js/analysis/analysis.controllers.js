@@ -155,5 +155,4 @@ $scope.resultFilter = function(form, firstDrillDown, drillDownValue) {
           $scope.graphChange();
       }
     };
-
 });
