@@ -23,7 +23,7 @@ this.addEventListener('install', function(event) {
 				'/ng-sortable/dist/ng-sortable.min.js',
 				'/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2',
 
-				'/chart.js/Chart.min.js',
+				'/CustomizedChart.js',
 				'/angular-chart.js/dist/angular-chart.min.js',
 				'/angular-chart.js/dist/angular-chart.min.css',
 				'/ng-sortable/dist/ng-sortable.min.css',
