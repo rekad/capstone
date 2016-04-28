@@ -29,6 +29,7 @@ npm install
   ```bash
 node seed.js
 ```
+Note: you will want to customize the seed.js file if you want to start with your own data. Alternatively, you can set up your database using CouchDB.
 
 3. Run the application by typing
   ```bash
