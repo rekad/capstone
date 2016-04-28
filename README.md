@@ -20,7 +20,9 @@ npm install
 ## Usage
 
 1. Follow the instructions at these sites to set up PouchDB and CouchDB.
+
 [PouchDB.](https://pouchdb.com/guides/setup-pouchdb.html)
+
 [CouchDB.](https://pouchdb.com/guides/setup-couchdb.html)
 
 2. Seed the database by running
@@ -48,6 +50,7 @@ gulp
 ### Demo
 
 See a live version of the app [here.](http://goborderless.org/)
+
 See a video demonstration of Borderless [here.](http://www.fullstackacademy.com/final-projects/borderless)
 
 ### Screenshots
