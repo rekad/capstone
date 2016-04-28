@@ -21,9 +21,9 @@ npm install
 
 1. Follow the instructions at these sites to set up PouchDB and CouchDB.
 
-[PouchDB.](https://pouchdb.com/guides/setup-pouchdb.html)
+  [PouchDB.](https://pouchdb.com/guides/setup-pouchdb.html)
 
-[CouchDB.](https://pouchdb.com/guides/setup-couchdb.html)
+  [CouchDB.](https://pouchdb.com/guides/setup-couchdb.html)
 
 2. Seed the database by running
   ```bash
